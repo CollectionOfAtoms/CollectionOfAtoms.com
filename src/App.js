@@ -20,7 +20,10 @@ function App() {
 
         {/* Navigation Bar */}
         <nav className="navbar">
-          <div className="navbar-brand">CollectionOfAtoms.com</div>
+          <div className="navbar-brand">
+            <img src="/heart-molecule.svg" alt="Collection of Atoms logo" className="navbar-logo" />
+            <span>CollectionOfAtoms.com</span>
+          </div>
           <button className="hamburger" onClick={toggleMenu}>
             ☰
           </button>
