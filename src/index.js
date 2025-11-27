@@ -7,8 +7,6 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <title>CollectionOfAtoms</title>
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" /> 
     <App />
   </React.StrictMode>
 );

@@ -7,6 +7,7 @@ import About from './pages/About';
 import Projects from './pages/Projects';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
+import Photography from './pages/Photography';
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -21,7 +22,7 @@ function App() {
         {/* Navigation Bar */}
         <nav className="navbar">
           <div className="navbar-brand">
-            <img src="/heart-molecule.svg" alt="Collection of Atoms logo" className="navbar-logo" />
+            <img src="/atoms_heart.png" alt="Collection of Atoms logo" className="navbar-logo" />
             <span>CollectionOfAtoms.com</span>
           </div>
           <button className="hamburger" onClick={toggleMenu}>
@@ -33,6 +34,7 @@ function App() {
             <li><NavLink to="/about" onClick={closeMenu} className={({ isActive }) => isActive ? 'active' : ''}>About Me</NavLink></li>
             <li><NavLink to="/projects" onClick={closeMenu} className={({ isActive }) => isActive ? 'active' : ''}>Projects</NavLink></li>
             <li><NavLink to="/blog" onClick={closeMenu} className={({ isActive }) => isActive ? 'active' : ''}>Blog</NavLink></li>
+            <li><NavLink to="/photography" onClick={closeMenu} className={({ isActive }) => isActive ? 'active' : ''}>Photography</NavLink></li>
             <li><NavLink to="/contact" onClick={closeMenu} className={({ isActive }) => isActive ? 'active' : ''}>Contact</NavLink></li>
           </ul>
         </nav>
@@ -42,6 +44,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/photography" element={<Photography />} />
           <Route path="/contact" element={<Contact />} />
           {/* 404 Page */}
           <Route

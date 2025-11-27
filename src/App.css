@@ -4,7 +4,71 @@ body, html {
   margin: 0;
   padding: 0;
   font-family: 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
-  background-color: #1f2024;
+  background-color: #000000;
+  /* Layered radial gradients to simulate dense, multi-sized stars in the night sky.
+     Positions, sizes, and colors vary per layer to avoid a visible grid and keep the specks looking random. */
+  background-image:
+    radial-gradient(2.8px 2.8px at 12% 18%, #ffffff, transparent 40%),
+    radial-gradient(3.2px 3.2px at 23% 72%, #fffbcc, transparent 40%),
+    radial-gradient(3px 3px at 41% 39%, #a8d8ff, transparent 40%),
+    radial-gradient(4px 4px at 63% 82%, #ffb3b3, transparent 45%),
+    radial-gradient(3.4px 3.4px at 69% 21%, #ffffff, transparent 40%),
+    radial-gradient(3px 3px at 87% 53%, #fffbcc, transparent 40%),
+    radial-gradient(4px 4px at 53% 18%, #a8d8ff, transparent 40%),
+    radial-gradient(3px 3px at 96% 37%, #ffffff, transparent 40%),
+    radial-gradient(3.4px 3.4px at 17% 48%, #ffb3b3, transparent 40%),
+    radial-gradient(5px 5px at 33% 12%, #ffffff, transparent 45%),
+    radial-gradient(3px 3px at 57% 63%, #a8d8ff, transparent 40%),
+    radial-gradient(3.5px 3.5px at 79% 8%, #fffbcc, transparent 40%),
+    radial-gradient(3px 3px at 46% 93%, #ffffff, transparent 40%),
+    radial-gradient(10px 10px at 9% 17%, #ffffff, transparent 55%), /* largest stars */
+    radial-gradient(10px 10px at 58% 28%, #ffffff, transparent 55%),
+    radial-gradient(10px 10px at 81% 73%, #ffffff, transparent 55%),
+    radial-gradient(6px 6px at 68% 62%, #a8d8ff, transparent 50%),
+    radial-gradient(5.5px 5.5px at 19% 91%, #ffb3b3, transparent 50%),
+    radial-gradient(3.5px 3.5px at 10% 90%, #fffbcc, transparent 40%),
+    radial-gradient(4px 4px at 88% 22%, #ffffff, transparent 45%),
+    radial-gradient(6.5px 6.5px at 52% 78%, #a8d8ff, transparent 55%),
+    radial-gradient(6px 6px at 35% 64%, #fffbcc, transparent 50%),
+    radial-gradient(7px 7px at 27% 32%, #ffffff, transparent 52%);
+  background-repeat: repeat;
+  background-size:
+    140px 160px,
+    170px 190px,
+    190px 210px,
+    220px 240px,
+    250px 270px,
+    280px 300px,
+    310px 330px,
+    340px 360px,
+    370px 390px,
+    400px 420px,
+    430px 450px,
+    460px 480px,
+    490px 510px,
+    520px 540px,
+    550px 570px,
+    580px 600px,
+    610px 630px,
+    640px 660px,
+    670px 690px;
+  background-position:
+    12px 18px,
+    80px 120px,
+    150px 60px,
+    40px 200px,
+    220px 140px,
+    100px 300px,
+    260px 40px,
+    320px 180px,
+    60px 360px,
+    340px 300px,
+    180px 420px,
+    420px 80px,
+    500px 260px,
+    120px 500px,
+    460px 460px,
+    280px 560px;
   color: #ffffff;
 }
 
@@ -16,7 +80,7 @@ body, html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(135deg, #0b1d36, #0c2446);
+  background: linear-gradient(135deg, #2a2a2d, #0b0b0c);
   padding: 1rem 2rem;
   position: sticky;
   top: 0;
@@ -30,6 +94,7 @@ body, html {
   gap: 0.65rem;
   font-size: 1.5rem;
   font-weight: 700;
+  font-family: 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
 }
 
 .navbar-logo {
@@ -112,14 +177,19 @@ body, html {
 
 /* Basic layout for pages */
 .page {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+  max-width: 860px;
+  margin: 3rem auto;
+  padding: 2rem 2rem;
+  background: #2a2a2d;
+  border: 1px solid #3a3a3f;
+  border-radius: 18px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
 }
 
 .page h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
+  font-family: 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
 }
 
 .page p {
@@ -139,6 +209,7 @@ body, html {
   font-size: 2.4rem;
   margin: 0;
   letter-spacing: -0.01em;
+  font-family: 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
 }
 
 .home-logo {
@@ -154,6 +225,84 @@ body, html {
   font-size: 1.1rem;
 }
 
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.photo-grid__item {
+  position: relative;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.photo-grid__item:focus,
+.photo-grid__item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.55);
+  outline: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.photo-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 2000;
+}
+
+.photo-overlay__inner {
+  position: relative;
+  max-width: calc(100vw - 2rem);
+  max-height: calc(100vh - 2rem);
+  padding-bottom: 1rem; /* breathing room under the image */
+}
+
+.photo-overlay__inner img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - 4rem); /* stay within viewport with extra space */
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.photo-overlay__close {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.photo-overlay__close:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: scale(1.05);
+}
 /* Blog post card */
 .blog-post {
   background: linear-gradient(135deg, #0f1624 0%, #0b1018 100%);
