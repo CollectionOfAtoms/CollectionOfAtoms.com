@@ -82,7 +82,6 @@ export default function Photography() {
   return (
     <div className="page">
       <h1>Photography</h1>
-      <p>Tap any image to view it full size.</p>
       <PhotoGrid photos={photos} />
     </div>
   );

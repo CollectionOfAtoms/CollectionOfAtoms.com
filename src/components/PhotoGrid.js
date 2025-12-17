@@ -3,7 +3,12 @@ import React, { useEffect, useState } from 'react';
 export default function PhotoGrid({ photos = [] }) {
   const [activeIndex, setActiveIndex] = useState(null);
 
-  const closeOverlay = () => setActiveIndex(null);
+  const closeOverlay = () => {
+    setActiveIndex(null);
+    if (typeof document !== 'undefined' && document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+  };
 
   const showPrev = () => {
     if (activeIndex === null || photos.length === 0) return;
