@@ -54,6 +54,11 @@ export default function PhotoGrid({ photos = [] }) {
           <div className="photo-overlay__inner" onClick={(e) => e.stopPropagation()}>
             <button className="photo-overlay__close" onClick={closeOverlay} aria-label="Close photo">✕</button>
             <img src={activePhoto.src} alt={activePhoto.alt || 'Full size photo'} />
+            {(activePhoto.caption || activePhoto.alt) && (
+              <p className="photo-overlay__caption">
+                {activePhoto.caption || activePhoto.alt}
+              </p>
+            )}
           </div>
         </div>
       ) : null}

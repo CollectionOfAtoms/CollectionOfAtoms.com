@@ -8,6 +8,7 @@ import Projects from './pages/Projects';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 import Photography from './pages/Photography';
+import Music from './pages/Music';
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -35,6 +36,7 @@ function App() {
             <li><NavLink to="/projects" onClick={closeMenu} className={({ isActive }) => isActive ? 'active' : ''}>Projects</NavLink></li>
             <li><NavLink to="/blog" onClick={closeMenu} className={({ isActive }) => isActive ? 'active' : ''}>Blog</NavLink></li>
             <li><NavLink to="/photography" onClick={closeMenu} className={({ isActive }) => isActive ? 'active' : ''}>Photography</NavLink></li>
+            <li><NavLink to="/music" onClick={closeMenu} className={({ isActive }) => isActive ? 'active' : ''}>Music</NavLink></li>
             <li><NavLink to="/contact" onClick={closeMenu} className={({ isActive }) => isActive ? 'active' : ''}>Contact</NavLink></li>
           </ul>
         </nav>
@@ -45,6 +47,7 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/photography" element={<Photography />} />
+          <Route path="/music" element={<Music />} />
           <Route path="/contact" element={<Contact />} />
           {/* 404 Page */}
           <Route
