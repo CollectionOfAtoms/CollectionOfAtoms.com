@@ -60,6 +60,11 @@ function App() {
             }
             />
         </Routes>
+        <footer className="site-footer">
+          <div>Becoming still and still becoming</div>
+          <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="Atom logo" />
+          <div>Jesse Caldwell - 2025</div>
+        </footer>
       </div>
     </Router>
   );

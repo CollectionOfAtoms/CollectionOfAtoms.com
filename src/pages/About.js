@@ -40,6 +40,7 @@ export default function About() {
       title: 'This Space',
       text: `This site is a collection of projects, thoughts, experiments, and partial answers. It’s not a declaration or a finished body of work—just a place to think in public, to build slowly, and to leave behind a few useful traces.`,
       image: '/CollectionOfAtoms_logo/Logo_yellow_transparent_bold.svg',
+      key: 'space',
     },
   ];
 
@@ -71,32 +72,46 @@ export default function About() {
           const isEven = idx % 2 === 0;
           if (section.fullBleed) {
             return (
-              <section className="about-hero-block" key={section.title + idx}>
-                <div className="about-hero-image">
-                  <img src={section.image} alt={section.title} />
-                </div>
-                <div className="about-hero-content">
-                  <h2>{section.title}</h2>
-                  <p dangerouslySetInnerHTML={renderRichText(section.text)} />
-                </div>
-              </section>
+              <>
+                <section className="about-hero-block" key={section.title + idx}>
+                  <div className="about-hero-image">
+                    <img src={section.image} alt={section.title} />
+                  </div>
+                  <div className="about-hero-content">
+                    <h2>{section.title}</h2>
+                    <p dangerouslySetInnerHTML={renderRichText(section.text)} />
+                  </div>
+                </section>
+                {idx < sections.length - 1 ? (
+                  <div className="about-divider">
+                    <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="" aria-hidden="true" />
+                  </div>
+                ) : null}
+              </>
             );
           }
           return (
-            <section
-              className={`about-block ${isEven ? 'about-block--right' : 'about-block--left'}`}
-              key={section.title + idx}
-            >
-              <button
-                className={`about-photo ${isEven ? 'about-photo--right' : 'about-photo--left'}`}
-                onClick={() => setActiveImage({ src: section.image, alt: section.title })}
-                aria-label={`Open ${section.title} photo`}
+            <>
+              <section
+                className={`about-block ${isEven ? 'about-block--right' : 'about-block--left'} ${section.key === 'space' ? 'about-block--space' : ''}`}
+                key={section.title + idx}
               >
-                <img src={section.image} alt={section.title} />
-              </button>
-              <h2>{section.title}</h2>
-              <p dangerouslySetInnerHTML={renderRichText(section.text)} />
-            </section>
+                <button
+                  className={`about-photo ${isEven ? 'about-photo--right' : 'about-photo--left'} ${section.key === 'space' ? 'about-photo--no-shadow' : ''}`}
+                  onClick={() => setActiveImage({ src: section.image, alt: section.title })}
+                  aria-label={`Open ${section.title} photo`}
+                >
+                  <img src={section.image} alt={section.title} />
+                </button>
+                <h2>{section.title}</h2>
+                <p dangerouslySetInnerHTML={renderRichText(section.text)} />
+              </section>
+              {idx < sections.length - 1 ? (
+                <div className="about-divider">
+                  <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="" aria-hidden="true" />
+                </div>
+              ) : null}
+            </>
           );
         })}
       </div>

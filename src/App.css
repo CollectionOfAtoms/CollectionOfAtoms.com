@@ -93,7 +93,8 @@ body, html {
   justify-content: space-between;
   align-items: center;
   background: linear-gradient(135deg, #2a2a2d, #0b0b0c);
-  padding: 0.05rem 1.5rem;
+  min-height: 66px;
+  padding: 0.4rem 1.5rem;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -104,14 +105,14 @@ body, html {
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 700;
   font-family: 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
 }
 
 .navbar-logo {
-  width: 100px;
-  height: 100px;
+  width: 64px;
+  height: 64px;
   border-radius: 12px;
   object-fit: cover;
   padding: 0;
@@ -174,8 +175,22 @@ body, html {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* Hide brand text a bit earlier to make space */
+@media (max-width: 1350px) {
+  .navbar-brand span {
+    display: none;
+  }
+  .navbar-logo {
+    width: 64px;
+    height: 64px;
+  }
+  .navbar {
+    padding: 0.3rem 1.2rem;
+  }
+}
+
 /* Responsive nav */
-@media (max-width: 1100px) {
+@media (max-width: 1000px) {
   .hamburger {
     display: block;
   }
@@ -187,7 +202,7 @@ body, html {
     left: 0;
     right: 0;
     flex-direction: column;
-    background-color: #0c1f3c;
+    background: linear-gradient(135deg, #2a2a2d, #0b0b0c);
     padding: 1rem 2rem;
     animation: fadeIn 0.3s ease-in-out;
   }
@@ -198,6 +213,11 @@ body, html {
 
   .navbar-links li {
     margin: 0.5rem 0;
+  }
+
+  .navbar-links li::after {
+    content: '';
+    display: none;
   }
 }
 
@@ -219,6 +239,7 @@ body, html {
 
 .page.home {
   max-width: 1000px;
+  width: min(1000px, 90vw);
   margin: 0 auto;
   padding: 0;
   background: none;
@@ -240,7 +261,7 @@ body, html {
 
 .page p {
   line-height: 1.6;
-  color: #c9d1d9;
+  color: #ffecd3;
   font-size: 1.43rem;
   text-align: justify;
   text-justify: inter-word;
@@ -321,14 +342,26 @@ body, html {
 .about-sections {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   margin-top: 1.5rem;
+}
+
+.about-divider {
+  display: flex;
+  justify-content: center;
+  padding: 0.1rem 0 0.2rem;
+}
+
+.about-divider img {
+  width: 24px;
+  height: 24px;
+  opacity: 0.7;
 }
 
 .about-block {
   display: flow-root;
   position: relative;
-  padding: 1.25rem 0;
+  padding: 0.75rem 0;
 }
 
 .about-block h2 {
@@ -353,11 +386,35 @@ body, html {
   border-radius: 50%;
   overflow: hidden;
   shape-outside: circle(50%);
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.4);
   border: none;
   padding: 0;
   background: transparent;
   cursor: pointer;
+}
+
+.about-block--space .about-photo {
+  box-shadow: none;
+}
+
+.about-photo:not(.about-photo--no-shadow) {
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.4);
+}
+
+.site-footer {
+  margin: 2rem auto 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 236, 211, 0.7); /* #ffecd3 dimmed 30% */
+  font-size: 0.7rem; /* 50% smaller than base paragraph-ish sizes */
+  text-align: center;
+}
+
+.site-footer img {
+  width: 28px;
+  height: 28px;
+  opacity: 0.8;
 }
 
 .about-photo img {
@@ -467,7 +524,7 @@ body, html {
   justify-content: center;
   gap: 0.35rem;
   text-align: center;
-  color: #ffecd3ff;
+  color: #ffecd3;
   background: none;
   border-radius: 0;
   box-shadow: none;
@@ -476,14 +533,14 @@ body, html {
 }
 
 .home-hero-logo {
-  width: min(512px, 51vw);
-  max-width: 528px;
-  margin-bottom: -3rem; /* allow text to intersect */
+  width: min(460px, 46vw);
+  max-width: 475px;
+  margin-bottom: -2.7rem; /* allow text to intersect with a bit more breathing room */
 }
 
 .home-hero-title {
   margin: -0.5rem 0 0;
-  font-size: clamp(3.4rem, 7vw, 5.2rem);
+  font-size: clamp(3.9rem, 8.05vw, 5.98rem);
   font-family: 'Playfair Display', 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
   letter-spacing: -0.01em;
   position: relative;
@@ -492,10 +549,10 @@ body, html {
 
 .home-hero-tagline {
   margin: 0.35rem 0 0;
-  font-size: clamp(1.1rem, 2.3vw, 1.4rem);
+  font-size: clamp(1.265rem, 2.645vw, 1.61rem);
   font-weight: 400;
   letter-spacing: 0.02em;
-  color: #ffecd3ff;
+  color: inherit;
   position: relative;
   z-index: 1;
 }

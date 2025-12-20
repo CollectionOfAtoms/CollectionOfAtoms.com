@@ -80,6 +80,7 @@ export default function Home() {
       bg: '#400406',
       textColor: '#000000',
       bgImage: '/photos/20190726_190449.jpg',
+      bgPosition: 'center center',
       noOverlay: true,
       link: '/photography',
       ctaBg: 'rgba(0,0,0,0.78)',
@@ -98,7 +99,7 @@ export default function Home() {
               className="home-hero-logo"
             />
           <h1 className="home-hero-title">CollectionOfAtoms</h1>
-          <p className="home-hero-tagline">A place to think, build, and leave traces.</p>
+          <p className="home-hero-tagline">Thoughts, projects, and things still becoming.</p>
           <button className="home-hero-button" onClick={scrollToFirstSection}>
             Explore ↓
           </button>
