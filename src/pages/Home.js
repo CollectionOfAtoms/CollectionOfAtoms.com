@@ -1,7 +1,28 @@
 import { useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
 
 export default function Home() {
   const navigate = useNavigate();
+  const sectionsRef = useRef(null);
+
+  const scrollToFirstSection = () => {
+    const firstSection = sectionsRef.current?.querySelector('.home-section-wrapper .home-section');
+    if (firstSection) {
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+      const sectionRect = firstSection.getBoundingClientRect();
+      const sectionHeight = sectionRect.height;
+      const currentScroll = window.scrollY || window.pageYOffset;
+
+      const offsetForCenter = (viewportHeight - sectionHeight) / 2;
+      const baseTarget =
+        sectionHeight <= viewportHeight
+          ? sectionRect.top + currentScroll - offsetForCenter
+          : sectionRect.top + currentScroll;
+
+      const target = Math.max(baseTarget - 50, 0); // 2rem upward adjustment
+      window.scrollTo({ top: target, behavior: 'smooth' });
+    }
+  };
   const sections = [
     {
       key: 'about',
@@ -68,69 +89,92 @@ export default function Home() {
 
   return (
     <div className="page home">
-      <div className="home-sections">
-        {sections.map((section) => (
-          <div
-            key={section.key}
-            className={`home-section home-section--${section.key} ${section.key === 'about' ? 'home-section--about' : ''}`}
-            style={(() => {
-              const isPhoto = section.key === 'photography';
-              const style = section.bgImage
-                ? {
-                    backgroundImage: section.noOverlay
-                      ? `url(${section.bgImage})`
-                      : `linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(${section.bgImage})`,
-                    color: section.textColor,
-                    backgroundPosition: section.bgPosition || 'left center',
-                  }
-                : { backgroundColor: section.bg, color: section.textColor };
-              if (isPhoto) style.cursor = 'pointer';
-              return style;
-            })()}
-            onClick={section.key === 'photography' ? () => navigate(section.link) : undefined}
-            role={section.key === 'photography' ? 'button' : undefined}
-            tabIndex={section.key === 'photography' ? 0 : undefined}
-            onKeyDown={
-              section.key === 'photography'
-                ? (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      navigate(section.link);
-                    }
-                  }
-                : undefined
-            }
-          >
-            <h2>{section.title}</h2>
-            {section.key === 'about' && section.portrait ? (
-              <div className="home-about-layout">
-                <img src={section.portrait} alt="Portrait of Jesse" className="home-portrait" />
-                <p>{section.content}</p>
-              </div>
-            ) : section.key === 'music' ? (
-              <div className="home-music">
-                <div className="home-music__title">{section.content_title}</div>
-                <p className="home-music__desc">{section.content_description}</p>
-                {section.audio ? (
-                  <audio controls preload="none" src={section.audio} className="home-music__audio">
-                    Your browser does not support the audio element.
-                  </audio>
+      <div className="home-content-wrapper">
+        <div className="home-section-wrapper">
+          <section className="home-hero-banner">
+            <img
+              src="/CollectionOfAtoms_logo/logo_yellow_transparent_bold.svg"
+              alt="Collection of Atoms logo"
+              className="home-hero-logo"
+            />
+          <h1 className="home-hero-title">CollectionOfAtoms</h1>
+          <p className="home-hero-tagline">A place to think, build, and leave traces.</p>
+          <button className="home-hero-button" onClick={scrollToFirstSection}>
+            Explore ↓
+          </button>
+        </section>
+        </div>
+
+        <div className="home-sections" ref={sectionsRef}>
+          {sections.map((section, idx) => (
+            <div className="home-section-wrapper" key={`${section.key}-${idx}`}>
+              <div
+                className={`home-section home-section--${section.key} ${section.key === 'about' ? 'home-section--about' : ''}`}
+                style={(() => {
+                  const isPhoto = section.key === 'photography';
+                  const style = section.bgImage
+                    ? {
+                        backgroundImage: section.noOverlay
+                          ? `url(${section.bgImage})`
+                          : `linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url(${section.bgImage})`,
+                        color: section.textColor,
+                        backgroundPosition: section.bgPosition || 'left center',
+                      }
+                    : { backgroundColor: section.bg, color: section.textColor };
+                  if (isPhoto) style.cursor = 'pointer';
+                  return style;
+                })()}
+                onClick={section.key === 'photography' ? () => navigate(section.link) : undefined}
+                role={section.key === 'photography' ? 'button' : undefined}
+                tabIndex={section.key === 'photography' ? 0 : undefined}
+                onKeyDown={
+                  section.key === 'photography'
+                    ? (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          navigate(section.link);
+                        }
+                      }
+                    : undefined
+                }
+              >
+                <h2>{section.title}</h2>
+                {section.key === 'about' && section.portrait ? (
+                  <div className="home-about-layout">
+                    <img src={section.portrait} alt="Portrait of Jesse" className="home-portrait" />
+                    <p>{section.content}</p>
+                  </div>
+                ) : section.key === 'music' ? (
+                  <div className="home-music">
+                    <div className="home-music__title">{section.content_title}</div>
+                    <p className="home-music__desc">{section.content_description}</p>
+                    {section.audio ? (
+                      <audio controls preload="none" src={section.audio} className="home-music__audio">
+                        Your browser does not support the audio element.
+                      </audio>
+                    ) : null}
+                  </div>
+                ) : (
+                  section.content ? <p>{section.content}</p> : null
+                )}
+                {section.link ? (
+                  <a
+                    className="section-link"
+                    href={section.link}
+                    style={{ backgroundColor: section.ctaBg, color: section.ctaColor }}
+                  >
+                    {section.ctaText || 'See more'}
+                  </a>
                 ) : null}
               </div>
-            ) : (
-              section.content ? <p>{section.content}</p> : null
-            )}
-            {section.link ? (
-              <a
-                className="section-link"
-                href={section.link}
-                style={{ backgroundColor: section.ctaBg, color: section.ctaColor }}
-              >
-                {section.ctaText || 'See more'}
-              </a>
-            ) : null}
-          </div>
-        ))}
+              {idx < sections.length - 1 ? (
+                <div className="home-divider">
+                  <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="" aria-hidden="true" />
+                </div>
+              ) : null}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
