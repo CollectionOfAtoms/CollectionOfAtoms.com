@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
 import Blog from './pages/Blog';
+import BlogPostPage from './pages/BlogPostPage';
 import Contact from './pages/Contact';
 import Photography from './pages/Photography';
 import Music from './pages/Music';
@@ -23,7 +24,7 @@ function App() {
         {/* Navigation Bar */}
         <nav className="navbar">
           <div className="navbar-brand">
-            <img src="CollectionOfAtoms_logo/Heart_bold_transparent.svg" alt="Collection of Atoms logo" className="navbar-logo" />
+            <img src="/CollectionOfAtoms_logo/Heart_bold_transparent.svg" alt="Collection of Atoms logo" className="navbar-logo" />
             <span>CollectionOfAtoms.com</span>
           </div>
           <button className="hamburger" onClick={toggleMenu}>
@@ -46,6 +47,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:postId" element={<BlogPostPage />} />
           <Route path="/photography" element={<Photography />} />
           <Route path="/music" element={<Music />} />
           <Route path="/contact" element={<Contact />} />

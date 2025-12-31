@@ -94,7 +94,7 @@ export default function Home() {
         <div className="home-section-wrapper">
           <section className="home-hero-banner">
             <img
-              src="/CollectionOfAtoms_logo/logo_yellow_transparent_bold.svg"
+              src="/CollectionOfAtoms_logo/Logo_yellow_transparent_bold.svg"
               alt="Collection of Atoms logo"
               className="home-hero-logo"
             />

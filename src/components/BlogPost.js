@@ -1,6 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default function BlogPost({ title, date, readTime, excerpt, tags = [], status }) {
+export default function BlogPost({
+  id,
+  title,
+  date,
+  readTime,
+  excerpt,
+  tags = [],
+  status,
+}) {
   return (
     <article className="blog-post">
       <header className="blog-post__header">
@@ -11,7 +20,12 @@ export default function BlogPost({ title, date, readTime, excerpt, tags = [], st
         {status ? <span className="blog-post__status">{status}</span> : null}
       </header>
 
-      <p className="blog-post__excerpt">{excerpt}</p>
+      {excerpt ? (
+        <Link className="blog-post__link" to={`/blog/${id}`}>
+          <p className="blog-post__excerpt">{excerpt}</p>
+          <span className="blog-post__cta">Read the full post →</span>
+        </Link>
+      ) : null}
 
       {tags.length > 0 && (
         <ul className="blog-post__tags">

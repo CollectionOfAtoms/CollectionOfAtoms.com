@@ -93,7 +93,7 @@ body, html {
   justify-content: space-between;
   align-items: center;
   background: linear-gradient(135deg, #2a2a2d, #0b0b0c);
-  min-height: 66px;
+  min-height: 74px;
   padding: 0.4rem 1.5rem;
   position: sticky;
   top: 0;
@@ -535,11 +535,11 @@ body, html {
 .home-hero-logo {
   width: min(460px, 46vw);
   max-width: 475px;
-  margin-bottom: -2.7rem; /* allow text to intersect with a bit more breathing room */
+  margin-bottom: 0.75rem;
 }
 
 .home-hero-title {
-  margin: -0.5rem 0 0;
+  margin: 0 0 0.35rem;
   font-size: clamp(3.9rem, 8.05vw, 5.98rem);
   font-family: 'Playfair Display', 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
   letter-spacing: -0.01em;
@@ -1030,6 +1030,124 @@ body, html {
   margin: 0.5rem 0 1rem;
   color: #c9d1d9;
   line-height: 1.7;
+}
+
+.blog-post__link {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.blog-post__link:hover .blog-post__excerpt {
+  color: #eef2f8;
+}
+
+.blog-post__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.95rem;
+  color: #8ab4ff;
+}
+
+.blog-post-page {
+  max-width: 720px;
+}
+
+.blog-post-page__back {
+  display: inline-flex;
+  margin-bottom: 1.25rem;
+  color: #8ab4ff;
+  text-decoration: none;
+}
+
+.blog-post-page__header {
+  margin-bottom: 1.5rem;
+}
+
+.blog-post-page__title {
+  margin: 0.35rem 0 0;
+  font-size: 2.1rem;
+}
+
+.blog-post__content {
+  color: #d6dde6;
+  line-height: 1.75;
+}
+
+.blog-post__content h1,
+.blog-post__content h2,
+.blog-post__content h3,
+.blog-post__content h4 {
+  margin: 1.2rem 0 0.5rem;
+  color: #f0f6fc;
+}
+
+.blog-post__content p {
+  margin: 0 0 1rem;
+}
+
+.blog-post__content ul,
+.blog-post__content ol {
+  margin: 0 0 1rem 1.2rem;
+}
+
+.blog-post__content li {
+  margin: 0.35rem 0;
+}
+
+.blog-post__content a {
+  color: #8ab4ff;
+}
+
+.blog-post__content blockquote {
+  margin: 1rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid rgba(138, 180, 255, 0.5);
+  color: #b8c4d4;
+}
+
+.blog-post__content code {
+  background: rgba(88, 166, 255, 0.15);
+  padding: 0.15rem 0.35rem;
+  border-radius: 6px;
+  font-family: 'Fira Code', 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+.blog-post__content pre {
+  background: #0b1018;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  overflow-x: auto;
+  margin: 0 0 1rem;
+}
+
+.blog-post__content pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.blog-post__content img[alt="Collection of Atoms logo"] {
+  display: block;
+  width: min(368px, 80%);
+  height: auto;
+  margin: 1.5rem auto;
+}
+
+.blog-post__content img[alt$="icon"] {
+  display: block;
+  width: 72px;
+  height: auto;
+  margin: 1.5rem auto 0.35rem;
+}
+
+.blog-post__content img[alt="Heart icon"] {
+  width: 120px;
+}
+
+.blog-post__content img[alt="Brain icon"] {
+  width: min(276px, 60%);
 }
 
 .blog-post__tags {
