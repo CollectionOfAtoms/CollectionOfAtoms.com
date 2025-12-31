@@ -108,6 +108,16 @@ body, html {
   font-size: 1.5rem;
   font-weight: 700;
   font-family: 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar-brand:visited,
+.navbar-brand:hover,
+.navbar-brand:active,
+.navbar-brand:focus {
+  text-decoration: none;
+  color: inherit;
 }
 
 .navbar-logo {
@@ -394,6 +404,11 @@ body, html {
 
 .about-block--space .about-photo {
   box-shadow: none;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  shape-outside: circle(50%);
+  overflow: hidden;
 }
 
 .about-photo:not(.about-photo--no-shadow) {
@@ -422,6 +437,10 @@ body, html {
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+.about-block--space .about-photo img {
+  object-fit: contain;
 }
 
 .about-block:nth-of-type(4) .about-photo img { /* "Making Meaning" is 4th in the list (after hero) */
@@ -598,7 +617,7 @@ body, html {
   justify-content: center;
 }
 
-.home-section h2 {
+.home-section > h2 {
   margin: 0;
   font-family: 'Playfair Display', 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
   letter-spacing: -0.01em;
@@ -613,6 +632,73 @@ body, html {
   line-height: 1.6;
   text-align: justify;
   text-justify: inter-word;
+}
+
+.home-section--blog {
+  align-items: stretch;
+  height: calc(100vh - 180px);
+  min-height: calc(100vh - 180px);
+  max-height: calc(100vh - 180px);
+}
+
+.home-blog-card {
+  position: relative;
+  background: #2a2a2d;
+  border: 1px solid #3a3a3f;
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  font-size: 1rem;
+}
+
+.home-blog-card__title {
+  margin: 0;
+  font-size: 1.6rem;
+  color: #f5dbc2;
+  letter-spacing: -0.01em;
+  font-family: 'Playfair Display', 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.home-blog-excerpt {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.home-blog-excerpt__content {
+  position: relative;
+  z-index: 1;
+}
+
+.home-blog-card__fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 35%;
+  border-radius: 0 0 16px 16px;
+  background: linear-gradient(180deg, rgba(42, 42, 45, 0) 0%, rgba(42, 42, 45, 0.55) 55%, rgba(31, 31, 34, 0.95) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.home-blog-excerpt p {
+  margin: 0 0 1rem;
+  color: inherit;
+  text-align: left;
+}
+
+.home-blog-card__link {
+  position: relative;
+  z-index: 3;
+  align-self: flex-start;
+  margin-top: auto;
 }
 
 .home-music {

@@ -23,10 +23,10 @@ function App() {
 
         {/* Navigation Bar */}
         <nav className="navbar">
-          <div className="navbar-brand">
+          <NavLink to="/" className="navbar-brand" onClick={closeMenu}>
             <img src="/CollectionOfAtoms_logo/Heart_bold_transparent.svg" alt="Collection of Atoms logo" className="navbar-logo" />
             <span>CollectionOfAtoms.com</span>
-          </div>
+          </NavLink>
           <button className="hamburger" onClick={toggleMenu}>
             ☰
           </button>

@@ -1,9 +1,94 @@
 import { useNavigate } from 'react-router-dom';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
+import { posts } from '../data/posts';
 
 export default function Home() {
   const navigate = useNavigate();
   const sectionsRef = useRef(null);
+  const [latestExcerpt, setLatestExcerpt] = useState('');
+  const latestPost = posts[0];
+
+  useEffect(() => {
+    let isActive = true;
+
+    const countWords = (text) => {
+      const cleaned = text
+        .replace(/```[\s\S]*?```/g, '')
+        .replace(/`[^`]*`/g, '')
+        .replace(/!\[[^\]]*]\([^)]+\)/g, '')
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+        .replace(/[#>*_~\-]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      return cleaned ? cleaned.split(' ').length : 0;
+    };
+
+    const extractExcerpt = (markdown) => {
+      const withoutTitle = markdown.replace(/^#\s+.*(?:\r?\n)+/, '');
+      const blocks = withoutTitle.split(/\n{2,}/);
+      const excerptBlocks = [];
+      let wordTotal = 0;
+
+      for (const block of blocks) {
+        const trimmed = block.trim();
+        if (!trimmed) {
+          continue;
+        }
+
+        if (/^!\[[^\]]*]\([^)]+\)$/.test(trimmed) || trimmed === '---') {
+          continue;
+        }
+
+        const words = countWords(trimmed);
+        if (!words) {
+          continue;
+        }
+
+        excerptBlocks.push(trimmed);
+        wordTotal += words;
+
+        if (wordTotal >= 300) {
+          break;
+        }
+      }
+
+      return excerptBlocks.join('\n\n');
+    };
+
+    const loadLatestExcerpt = async () => {
+      if (!latestPost?.file) {
+        return;
+      }
+
+      try {
+        const response = await fetch(latestPost.file);
+        if (!response.ok) {
+          throw new Error(`Failed to load ${latestPost.file}`);
+        }
+        const text = await response.text();
+        const excerpt = extractExcerpt(text);
+        if (isActive) {
+          setLatestExcerpt(excerpt);
+        }
+      } catch (error) {
+        if (isActive) {
+          setLatestExcerpt('');
+        }
+      }
+    };
+
+    loadLatestExcerpt();
+
+    return () => {
+      isActive = false;
+    };
+  }, [latestPost]);
+
+  const blogExcerpt = latestPost && latestExcerpt
+    ? latestExcerpt
+    : 'Latest writing from the lab.';
 
   const scrollToFirstSection = () => {
     const firstSection = sectionsRef.current?.querySelector('.home-section-wrapper .home-section');
@@ -51,7 +136,8 @@ export default function Home() {
     {
       key: 'blog',
       title: 'Blog',
-      content: 'My First Longform Post — An upcoming deep-dive on the experiments, side quests, and lessons learned while building CollectionOfAtoms.com.',
+      content: blogExcerpt,
+      contentIsMarkdown: true,
       bg: '#7a4419',
       textColor: '#f7f1e9',
       link: '/blog',
@@ -94,7 +180,7 @@ export default function Home() {
         <div className="home-section-wrapper">
           <section className="home-hero-banner">
             <img
-              src="/CollectionOfAtoms_logo/Logo_yellow_transparent_bold.svg"
+              src="/CollectionOfAtoms_logo/logo_aura.svg"
               alt="Collection of Atoms logo"
               className="home-hero-logo"
             />
@@ -155,10 +241,29 @@ export default function Home() {
                       </audio>
                     ) : null}
                   </div>
+                ) : section.key === 'blog' && section.contentIsMarkdown ? (
+                  <div className="home-blog-card">
+                    <h3 className="home-blog-card__title">{latestPost?.title || 'Latest post'}</h3>
+                    <div className="home-blog-excerpt blog-post__content">
+                      <div className="home-blog-excerpt__content">
+                        <ReactMarkdown>{section.content}</ReactMarkdown>
+                      </div>
+                    </div>
+                    <div className="home-blog-card__fade" aria-hidden="true" />
+                    {latestPost ? (
+                      <a
+                        className="section-link home-blog-card__link"
+                        href={`/blog/${latestPost.id}`}
+                        style={{ backgroundColor: section.ctaBg, color: section.ctaColor }}
+                      >
+                        Read On
+                      </a>
+                    ) : null}
+                  </div>
                 ) : (
                   section.content ? <p>{section.content}</p> : null
                 )}
-                {section.link ? (
+                {section.link && section.key !== 'blog' ? (
                   <a
                     className="section-link"
                     href={section.link}
