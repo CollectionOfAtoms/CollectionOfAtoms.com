@@ -7,7 +7,7 @@ This mark is about refusing a false choice: between thinking deeply and caring d
 ## Atom
 ![Atom icon](/CollectionOfAtoms_logo/Atom.svg)
 
-The atom represents the invisible unit of our world. Unintuitively, we find *everything* composed of the same building blocks — a hidden relationship underlying it all. As we find ways to look deeper and discover what is really going on, we are often surprised by what we share.
+The atom represents the invisible unit of our world. Unintuitively, we find *everything* composed of the same building blocks — a hidden relationship underlying it all. As we find ways to look deeper and elucidate what is really going on, we are often surprised by what we discover.
 
 Without atoms to compose us, there could be no heart to sustain us.
 

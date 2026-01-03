@@ -134,7 +134,7 @@ export default function Home() {
       \n Putting myself forward in this way feels vulnerable, but vulnerable is something I am aiming to be more often. 
       \n Stay a minute and check something out.`,
       bg: '#515a47',
-      textColor: '#f4f4f0',
+      textColor: '#ffecd3',
       link: '/about',
       ctaBg: '#f4f4f0',
       ctaColor: '#1c2118',
@@ -146,8 +146,8 @@ export default function Home() {
       title: 'Projects',
       content: '',
       featuredProject,
-      bg: '#400406',
-      textColor: '#f7f1e9',
+      bg: '#0f2320',
+      textColor: '#ffecd3',
       link: '/projects',
       ctaBg: '#f7f1e9',
       ctaColor: '#3a1c07',
@@ -157,20 +157,21 @@ export default function Home() {
       title: 'Blog',
       content: blogExcerpt,
       contentIsMarkdown: true,
-      bg: '#7a4419',
-      textColor: '#f7f1e9',
+      bg: '#2b1416',
+      textColor: '#ffecd3',
       link: '/blog',
       ctaBg: '#f7f1e9',
       ctaColor: '#3a1c07',
+      ctaText: 'Read On',
     },
     {
       key: 'music',
       title: 'Music',
       content_title: 'Everything Stays',
       content_description: 'A classical guitar arrangement of a song from Adventure Time.',
-      bg: '#755c1b',
+      bg: '#1b1b13',
       audio: '/music/everything_stays_classical.mpeg',
-      textColor: '#f8f2e7',
+      textColor: '#ffecd3',
       link: '/music',
       ctaBg: '#f8f2e7',
       ctaColor: '#2e1f08',
@@ -182,8 +183,8 @@ export default function Home() {
       key: 'photography',
       title: 'Photography',
       content: '',
-      bg: '#cdb58a',
-      textColor: '#2b1c0c',
+      bg: '#121615',
+      textColor: '#ffecd3',
       mediaImage: '/photos/20190726_190449.jpg',
       mediaPosition: 'center center',
       link: '/photography',
@@ -351,30 +352,20 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="home-blog-card__fade" aria-hidden="true" />
-                    {latestPost ? (
-                      <a
-                        className="section-link home-blog-card__link"
-                        href={`/blog/${latestPost.id}`}
-                        style={{ backgroundColor: section.ctaBg, color: section.ctaColor }}
-                      >
-                        Read On
-                      </a>
-                    ) : null}
                   </div>
                 ) : (
                   section.content ? <p>{section.content}</p> : null
                 )}
-                {section.link && section.key !== 'blog' ? (
+                {section.link ? (
                   <a
                     className="section-link"
                     href={section.link}
-                    style={{ backgroundColor: section.ctaBg, color: section.ctaColor }}
                   >
                     {section.ctaText || 'See more'}
                   </a>
                 ) : null}
               </div>
-              {idx < sections.length - 1 ? (
+              {idx < sections.length - 1 && idx % 2 === 0 ? (
                 <div className="home-divider">
                   <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="" aria-hidden="true" />
                 </div>

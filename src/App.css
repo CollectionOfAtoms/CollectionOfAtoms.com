@@ -93,8 +93,8 @@ body, html {
   justify-content: space-between;
   align-items: center;
   background: linear-gradient(135deg, #2a2a2d, #0b0b0c);
-  min-height: 37px;
-  padding: 0.2rem 0.75rem;
+  min-height: 43px;
+  padding: 0.23rem 0.86rem;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -105,7 +105,7 @@ body, html {
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  font-size: 1.2rem;
+  font-size: 1.38rem;
   font-weight: 700;
   font-family: 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
   text-decoration: none;
@@ -121,8 +121,8 @@ body, html {
 }
 
 .navbar-logo {
-  width: 32px;
-  height: 32px;
+  width: 37px;
+  height: 37px;
   border-radius: 12px;
   object-fit: cover;
   padding: 0;
@@ -131,7 +131,7 @@ body, html {
 .hamburger {
   background: none;
   border: none;
-  font-size: 1.2rem;
+  font-size: 1.38rem;
   color: #ffecd3;
   display: none;
   cursor: pointer;
@@ -155,8 +155,8 @@ body, html {
   color: #ffecd3;
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.96rem;
-  padding: 0.32rem 0.6rem;
+  font-size: 1.1rem;
+  padding: 0.37rem 0.69rem;
   border-radius: 10px;
   transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -164,13 +164,13 @@ body, html {
 .navbar-links li::after {
   content: '';
   display: inline-block;
-  width: 13px;
-  height: 13px;
-  margin: 0 0.6rem;
+  width: 15px;
+  height: 15px;
+  margin: 0 0.69rem;
   background: url('/public/CollectionOfAtoms_logo/Atom_transparent.svg') center/contain no-repeat;
   opacity: 0.75;
   position: relative;
-  top: 1px;
+  top: 1.15px;
 }
 
 .navbar-links li:last-child::after {
@@ -178,11 +178,12 @@ body, html {
 }
 
 .navbar-links li a.active {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: transparent;
   color: #ffecd3;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  padding: 0.22rem 0.45rem;
-  border-radius: 8px;
+  border: none;
+  padding: 0.32rem 0.6rem;
+  border-radius: 0;
+  border-bottom: 1px solid rgba(255, 236, 211, 0.4);
 }
 
 /* Hide brand text a bit earlier to make space */
@@ -191,11 +192,11 @@ body, html {
     display: none;
   }
   .navbar-logo {
-    width: 32px;
-    height: 32px;
+    width: 37px;
+    height: 37px;
   }
   .navbar {
-    padding: 0.2rem 0.7rem;
+    padding: 0.23rem 0.81rem;
   }
 }
 
@@ -208,12 +209,12 @@ body, html {
   .navbar-links {
     display: none;
     position: absolute;
-    top: 2.25rem;
+    top: 2.6rem;
     left: 0;
     right: 0;
     flex-direction: column;
     background: linear-gradient(135deg, #2a2a2d, #0b0b0c);
-    padding: 0.8rem 1.5rem;
+    padding: 0.92rem 1.73rem;
     animation: fadeIn 0.3s ease-in-out;
   }
 
@@ -255,6 +256,7 @@ body, html {
   background: none;
   border: none;
   box-shadow: none;
+  --home-accent: #d7be82;
 }
 
 .home-content-wrapper {
@@ -269,10 +271,10 @@ body, html {
   font-family: 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
 }
 
-.page p {
+.page:not(.home) p {
   line-height: 1.6;
   color: #ffecd3;
-  font-size: 1.43rem;
+  font-size: 1.37rem;
   text-align: justify;
   text-justify: inter-word;
 }
@@ -443,6 +445,10 @@ body, html {
   object-fit: contain;
 }
 
+.about-photo--image-left img {
+  object-position: left center;
+}
+
 .about-block:nth-of-type(4) .about-photo img { /* "Making Meaning" is 4th in the list (after hero) */
   object-position: 80% center;
 }
@@ -535,12 +541,12 @@ body, html {
 }
 
 .home-hero-banner {
-  height: 80vh;
-  min-height: 520px;
+  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: top;
   gap: 0.35rem;
   text-align: center;
   color: #ffecd3;
@@ -548,12 +554,16 @@ body, html {
   border-radius: 0;
   box-shadow: none;
   overflow: visible;
-  padding-top: 1rem; /* keep clear of navbar */
+  /* padding-top: 0.75rem; keep clear of navbar */
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
 }
 
 .home-hero-logo {
   width: min(460px, 80vw);
   max-width: 475px;
+  margin-top: 2rem;
   margin-bottom: 1.1rem;
 }
 
@@ -577,30 +587,35 @@ body, html {
   color: inherit;
   position: relative;
   z-index: 1;
+  text-align: center;
+  text-justify: justify;
 }
 
 .home-hero-tagline.home-hero-tagline--secondary {
   font-size: clamp(0.75rem, 1.15vw, 0.95rem);
   line-height: 1.5;
   margin-top: 0.35rem;
+  text-align: center;
 }
 
 .home-hero-button {
-  margin-top: 1.5rem;
+  margin-top: 2.9rem;
   padding: 1rem 1.9rem;
   border: 1px solid rgba(255, 255, 255, 0.45);
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.16);
+  background: #1b1b1f;
   color: #ffecd3ff;
   font-weight: 700;
   font-family: 'Inter', 'Exo 2', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  position: relative;
+  z-index: 2;
 }
 
 .home-hero-button:hover {
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.18);
+  background: #232327;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
 
@@ -608,10 +623,11 @@ body, html {
   padding: 1.5rem;
   border-radius: 18px;
   color: #0b0b0c;
+  border: 1px solid rgba(255, 236, 211, 0.12);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1.5rem;
   min-height: calc(100vh - 180px);
   scroll-snap-align: center;
   scroll-snap-stop: always;
@@ -636,12 +652,13 @@ body, html {
   letter-spacing: -0.01em;
   text-align: center;
   font-size: clamp(2.2rem, 10vh, 3.6rem);
+  color: #ffecd3;
 }
 
 .home-section p {
   margin: 0;
-  color: inherit;
-  font-size: 1.5rem;
+  color: rgba(255, 236, 211, 0.92);
+  font-size: 1.44rem;
   line-height: 1.6;
   text-align: justify;
   text-justify: inter-word;
@@ -667,6 +684,7 @@ body, html {
   min-height: 0;
   overflow: hidden;
   font-size: 1rem;
+  color: rgba(255, 236, 211, 0.92);
   max-width: 854px;
   width: 100%;
   margin: 0 auto;
@@ -676,7 +694,7 @@ body, html {
 .home-blog-card__title {
   margin: 0;
   font-size: 1.6rem;
-  color: #f5dbc2;
+  color: #ffecd3;
   letter-spacing: -0.01em;
   font-family: 'Playfair Display', 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
 }
@@ -715,7 +733,7 @@ body, html {
 
 .home-blog-excerpt p {
   margin: 0 0 1rem;
-  color: inherit;
+  color: rgba(255, 236, 211, 0.92);
   text-align: left;
 }
 
@@ -756,22 +774,6 @@ body, html {
   text-align: center;
 }
 
-.home-section--music .section-link,
-.home-section--photography .section-link {
-  position: absolute;
-  left: 50%;
-  bottom: 2.5rem;
-  transform: translateX(-50%);
-  margin: 0;
-  width: min(320px, 80%);
-  z-index: 3;
-}
-
-.home-section--music .section-link:hover,
-.home-section--photography .section-link:hover {
-  transform: translateX(-50%) translateY(-2px);
-}
-
 .home-section--music .home-music {
   margin: 0;
 }
@@ -798,6 +800,7 @@ body, html {
 .home-music__title {
   font-family: 'Playfair Display', 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
   font-size: 1.8rem;
+  color: #ffecd3;
 }
 
 .home-music__desc {
@@ -805,6 +808,7 @@ body, html {
   font-size: 1.5rem;
   line-height: 1.6;
   text-align: center;
+  color: rgba(255, 236, 211, 0.92);
 }
 
 .home-music__audio {
@@ -842,33 +846,40 @@ body, html {
 
 .home-about-layout p {
   white-space: pre-line;
+  text-align: left;
+  text-justify: auto;
 }
 
 .home-portrait {
   float: right;
   display: block;
-  width: clamp(260px, 28vw, 360px);
-  height: clamp(260px, 28vw, 360px);
+  width: clamp(221px, 24vw, 306px);
+  height: clamp(221px, 24vw, 306px);
   border-radius: 50%;
   object-fit: cover;
   shape-outside: circle(50%);
-  shape-margin: 16px;
+  shape-margin: 5px;
   margin: 1.5rem 0 1.5rem 1.5rem;
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4);
+  border: 3px solid rgba(255, 236, 211, 0.12);
+  /* border: 5px solid #000000; */
 }
 
 .section-link {
   align-self: center;
   margin-top: auto;
-  margin-bottom: 1.5rem;
-  padding: 1.05rem 1.6rem;
+  margin-bottom: 0;
+  padding: 1rem 1.6rem;
   width: 70%;
   text-align: center;
   border-radius: 18px;
   text-decoration: none;
   font-family: 'Inter', 'Exo 2', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 700;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+  border: 1px solid #ffecd3;
+  color: #ffecd3;
+  background: transparent;
+  box-shadow: none;
   transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
 }
 
@@ -885,15 +896,14 @@ body, html {
 }
 
 .section-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
-  filter: brightness(1.05);
+  background: #ffecd3;
+  color: #2e1f08;
 }
 
 @media (max-width: 680px) {
   .home-portrait {
-    width: clamp(180px, 60vw, 280px);
-    height: clamp(180px, 60vw, 280px);
+    width: clamp(153px, 51vw, 238px);
+    height: clamp(153px, 51vw, 238px);
     float: none;
     margin: 0 auto 1rem;
     shape-outside: none;
@@ -909,15 +919,6 @@ body, html {
   .home-section--music {
     background-position: 25% center;
   }
-}
-.home-audio {
-  display: block;
-  margin: 1rem auto 0;
-  width: 80%;
-  max-width: 520px;
-  padding: 0.75rem;
-  background: rgba(0, 0, 0, 0.12);
-  border-radius: 12px;
 }
 
 .photo-grid {
@@ -1431,6 +1432,7 @@ body, html {
 .project-card__title {
   margin: 0;
   font-size: 1.5rem;
+  color: #ffecd3;
 }
 
 .home-project-card {
@@ -1441,13 +1443,9 @@ body, html {
   box-sizing: border-box;
 }
 
-.home-project-card .project-card__title {
-  color: #f0f6fc;
-}
-
 .project-card__desc {
   margin: 0;
-  color: #c9d1d9;
+  color: rgba(255, 236, 211, 0.92);
   line-height: 1.65;
 }
 
