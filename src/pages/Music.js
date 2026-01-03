@@ -1,13 +1,18 @@
 const tracks = [
   {
-    title: 'Frozen In',
-    description: 'The first piano piece I have ever written. It\'s simple, but I like it',
-    src: '/music/Frozen_in.mpeg',
-  },
-  {
     title: 'Everything Stays',
     description: 'A classical guitar arrangement of a song from Adventure Time',
     src: '/music/everything_stays_classical.mpeg',
+  },
+  {
+    title: 'Jade',
+    description: 'Original instrumental composition feat. Hans Swenson on violin.',
+    src: '/music/Jade_w_Hans.m4a',
+  },
+  {
+    title: 'Frozen In',
+    description: 'The first piano piece I have ever written. It\'s simple, but I like it',
+    src: '/music/Frozen_in.mpeg',
   },
   {
     title: 'Transatlanticism',

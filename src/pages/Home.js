@@ -90,6 +90,24 @@ export default function Home() {
     ? latestExcerpt
     : 'Latest writing from the lab.';
 
+  const featuredProject = {
+    title: 'Sprialator',
+    description: [
+      "The Sprialator is an in-browser visualizer that leverages HTML5's canvas feature to animate with SVGs.",
+      'Included as placed art at SOAK 2024, shown through a projection installation with custom microcontroller interactivity.',
+    ],
+    website: {
+      label: 'Check it out',
+      url: 'https://collectionofatoms.github.io/sprialator/',
+    },
+    link: 'https://github.com/CollectionOfAtoms/sprialator',
+    tags: ['creative-coding', 'generative', 'HTML5', 'SVG', 'visualizer'],
+    video: {
+      src: '/projects/spiralator-preview.mp4',
+      poster: '/projects/sprialator-poster.png',
+    },
+  };
+
   const scrollToFirstSection = () => {
     const firstSection = sectionsRef.current?.querySelector('.home-section-wrapper .home-section');
     if (firstSection) {
@@ -126,7 +144,8 @@ export default function Home() {
     {
       key: 'projects',
       title: 'Projects',
-      content: 'A rotating collection of builds and experiments in web, visuals, and interactive toys.',
+      content: '',
+      featuredProject,
       bg: '#d7be82',
       textColor: '#2b1c0c',
       link: '/projects',
@@ -147,10 +166,10 @@ export default function Home() {
     {
       key: 'music',
       title: 'Music',
-      content_title: 'Jade',
-      content_description: 'Original Instrumental composition feat. Hans Swenson on violin.',
+      content_title: 'Everything Stays',
+      content_description: 'A classical guitar arrangement of a song from Adventure Time.',
       bg: '#755c1b',
-      audio: '/music/Jade_w_Hans.m4a',
+      audio: '/music/everything_stays_classical.mpeg',
       textColor: '#f8f2e7',
       link: '/music',
       ctaBg: '#f8f2e7',
@@ -231,6 +250,65 @@ export default function Home() {
                     <img src={section.portrait} alt="Portrait of Jesse" className="home-portrait" />
                     <p>{section.content}</p>
                   </div>
+                ) : section.key === 'projects' && section.featuredProject ? (
+                  <article className="project-card home-project-card">
+                    <div className="project-card__media project-card__media--center">
+                      {section.featuredProject.video ? (
+                        <video
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          preload="metadata"
+                          poster={section.featuredProject.video.poster}
+                        >
+                          <source src={section.featuredProject.video.src} type="video/mp4" />
+                        </video>
+                      ) : section.featuredProject.image ? (
+                        <img
+                          src={section.featuredProject.image}
+                          alt={`${section.featuredProject.title} preview`}
+                        />
+                      ) : (
+                        <span>Project image coming soon</span>
+                      )}
+                    </div>
+                    <div className="project-card__body">
+                      <h2 className="project-card__title">{section.featuredProject.title}</h2>
+                      <div className="project-card__desc">
+                        {section.featuredProject.description.map((paragraph) => (
+                          <p key={paragraph}>{paragraph}</p>
+                        ))}
+                        {section.featuredProject.website ? (
+                          <a
+                            href={section.featuredProject.website.url}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {section.featuredProject.website.label} →
+                          </a>
+                        ) : null}
+                      </div>
+                      <ul className="project-card__tags">
+                        {section.featuredProject.tags.map((tag) => (
+                          <li key={tag}>#{tag}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <a
+                      className="project-card__github"
+                      href={section.featuredProject.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`Open ${section.featuredProject.title} on GitHub`}
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.72-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.1-1.5-1.1-1.5-.9-.64.07-.63.07-.63 1 .07 1.52 1.05 1.52 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.38-2.04 1-2.76-.1-.26-.43-1.3.09-2.71 0 0 .82-.27 2.7 1.03a9.08 9.08 0 0 1 2.46-.34c.84 0 1.69.12 2.46.34 1.88-1.3 2.7-1.03 2.7-1.03.52 1.41.2 2.45.1 2.71.62.72 1 1.64 1 2.76 0 3.93-2.34 4.79-4.57 5.05.36.33.68.97.68 1.96 0 1.41-.01 2.55-.01 2.9 0 .27.18.6.69.49 3.96-1.35 6.83-5.17 6.83-9.67C22 6.58 17.52 2 12 2z"
+                        />
+                      </svg>
+                    </a>
+                  </article>
                 ) : section.key === 'music' ? (
                   <div className="home-music">
                     <div className="home-music__title">{section.content_title}</div>
