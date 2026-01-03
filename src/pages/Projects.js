@@ -21,12 +21,12 @@ export default function Projects() {
     {
       title: 'KrampusBot',
       description: ['A mischievous bot project I built for a high-concept party with lore where guests emerged from their vaults for the first time in 1000 years to arrive mysteriously at a holiday party.', 
-        'The KrampusBot snarkily seeks to be entertained and is programmed to have a short conversation with the guest then assign them tasks "festive" Christmas tasks like leaving a friend a ransom note or engaging an a nice game of fire-dreidel',
-        'When the KrampusBot finishes it would automatically print out the victim\'s tasks from a printer hidden overhead for them to check off'
+        'The KrampusBot snarkily seeks to be entertained and is programmed to have a short conversation with the guest then assign them "festive" Christmas tasks like leaving a friend a ransom note or engaging an a nice game of fire-dreidel (beyblades with kerosene soaked dreidels)',
+        'When the KrampusBot finishes it would automatically print out the victim\'s tasks from a printer hidden overhead for them to check off.'
       ],
       image: '/projects/KrampusBot.png',
       link: 'https://github.com/CollectionOfAtoms/krampusbot',
-      tags: ['automation', 'bot'],
+      tags: ['automation', 'ChatGPT', 'bot'],
       mediaAlign: 'left',
     },
   ];

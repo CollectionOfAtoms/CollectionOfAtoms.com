@@ -146,11 +146,11 @@ export default function Home() {
       title: 'Projects',
       content: '',
       featuredProject,
-      bg: '#d7be82',
-      textColor: '#2b1c0c',
+      bg: '#400406',
+      textColor: '#f7f1e9',
       link: '/projects',
-      ctaBg: '#2b1c0c',
-      ctaColor: '#f7f0e4',
+      ctaBg: '#f7f1e9',
+      ctaColor: '#3a1c07',
     },
     {
       key: 'blog',
@@ -175,18 +175,17 @@ export default function Home() {
       ctaBg: '#f8f2e7',
       ctaColor: '#2e1f08',
       ctaText: 'Keep Listening',
-      bgImage: '/me/Guitar_Outside.jpg',
-      bgPosition: '25% center',
+      mediaImage: '/me/Guitar_Outside.jpg',
+      mediaPosition: '25% center',
     },
     {
       key: 'photography',
       title: 'Photography',
       content: '',
-      bg: '#400406',
-      textColor: '#000000',
-      bgImage: '/photos/20190726_190449.jpg',
-      bgPosition: 'center center',
-      noOverlay: true,
+      bg: '#cdb58a',
+      textColor: '#2b1c0c',
+      mediaImage: '/photos/20190726_190449.jpg',
+      mediaPosition: 'center center',
       link: '/photography',
       ctaBg: 'rgba(0,0,0,0.78)',
       ctaColor: '#f5e9e9',
@@ -205,6 +204,9 @@ export default function Home() {
             />
           <h1 className="home-hero-title">CollectionOfAtoms</h1>
           <p className="home-hero-tagline">Thoughts, projects, and things still becoming.</p>
+          <p className="home-hero-tagline home-hero-tagline--secondary">
+            Currently: exploring creative code + animal ethics + looking for my dream-job.
+          </p>
           <button className="home-hero-button" onClick={scrollToFirstSection}>
             Explore ↓
           </button>
@@ -310,14 +312,35 @@ export default function Home() {
                     </a>
                   </article>
                 ) : section.key === 'music' ? (
-                  <div className="home-music">
-                    <div className="home-music__title">{section.content_title}</div>
-                    <p className="home-music__desc">{section.content_description}</p>
-                    {section.audio ? (
-                      <audio controls preload="none" src={section.audio} className="home-music__audio">
-                        Your browser does not support the audio element.
-                      </audio>
-                    ) : null}
+                  <div className="home-media-frame">
+                    <div
+                      className="home-media-frame__image"
+                      style={{
+                        backgroundImage: `url(${section.mediaImage})`,
+                        backgroundPosition: section.mediaPosition || 'center',
+                      }}
+                    />
+                    <div className="home-media-frame__content">
+                      <div className="home-music">
+                        <div className="home-music__title">{section.content_title}</div>
+                        <p className="home-music__desc">{section.content_description}</p>
+                        {section.audio ? (
+                          <audio controls preload="none" src={section.audio} className="home-music__audio">
+                            Your browser does not support the audio element.
+                          </audio>
+                        ) : null}
+                      </div>
+                    </div>
+                  </div>
+                ) : section.key === 'photography' ? (
+                  <div className="home-media-frame">
+                    <div
+                      className="home-media-frame__image"
+                      style={{
+                        backgroundImage: `url(${section.mediaImage})`,
+                        backgroundPosition: section.mediaPosition || 'center',
+                      }}
+                    />
                   </div>
                 ) : section.key === 'blog' && section.contentIsMarkdown ? (
                   <div className="home-blog-card">
