@@ -23,7 +23,7 @@ const tracks = [
 
 export default function Music() {
   return (
-    <div className="page">
+    <div className="page music-page">
       <h1>Music</h1>
       <p>Enjoy</p>
 

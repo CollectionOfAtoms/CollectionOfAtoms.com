@@ -32,10 +32,11 @@ export default function About() {
     },
     {
       title: 'I\'d Rather Be Working',
-      text: `After quitting my job in April of 2025, I spent the summer attempting a hike from Mexico to Canada on the Continetal Divide Trail.  I didn't make it, but I did have an excellent summer.  Now that I'm back, I'm looking for a job I can be excited about: one that does good in the world.  
-      \n Download my resumé [here](/resume.png) and give me a shout if you have something to send my way.`,
+      text: `After being included in a layoff in April of 2025, I spent the summer attempting a hike from Mexico to Canada on the Continetal Divide Trail.  I didn't make it, but I did have an excellent summer.  Now that I'm back, I'm looking for a job I can be excited about: one that does good in the world.  
+      \n Download my resumé [here](/me/resume.png) and contact me if you any opportunities for me.`,
       image: '/me/High_Mountain.jpg',
       imagePosition: 'left',
+      key: 'working',
     },
     {
       title: 'This Space',
@@ -58,15 +59,16 @@ export default function About() {
 
   const renderRichText = (text = '') => {
     const withLinks = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_match, label, url) => {
-      const href = url.startsWith('http') ? url : `https://${url}`;
-      return `<a href="${href}" target="_blank" rel="noreferrer">${label}</a>`;
+      const href = url.startsWith('http') || url.startsWith('/') ? url : `https://${url}`;
+      const downloadAttr = href === '/me/resume.png' ? ' download' : '';
+      return `<a href="${href}" target="_blank" rel="noreferrer"${downloadAttr}>${label}</a>`;
     });
     const withBreaks = withLinks.replace(/\n/g, '<br/>');
     return { __html: withBreaks };
   };
 
   return (
-    <div className="page">
+    <div className="page about-page">
       <h1>About</h1>
       <div className="about-sections">
         {sections.map((section, idx) => {
@@ -80,23 +82,21 @@ export default function About() {
                   <div className="about-hero-image">
                     <img src={section.image} alt={section.title} />
                   </div>
+                  <div className="about-divider about-divider--hero">
+                    <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="" aria-hidden="true" />
+                  </div>
                   <div className="about-hero-content">
                     <h2>{section.title}</h2>
                     <p dangerouslySetInnerHTML={renderRichText(section.text)} />
                   </div>
                 </section>
-                {idx < sections.length - 1 && !['Care Beyond The Usual Scope', 'Thinking at Scale', 'Making Meaning'].includes(section.title) ? (
-                  <div className="about-divider">
-                    <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="" aria-hidden="true" />
-                  </div>
-                ) : null}
               </>
             );
           }
           return (
             <>
               <section
-                className={`about-block ${isRightAligned ? 'about-block--right' : 'about-block--left'} ${section.key === 'space' ? 'about-block--space' : ''}`}
+                className={`about-block ${isRightAligned ? 'about-block--right' : 'about-block--left'} ${section.key === 'space' ? 'about-block--space' : ''} ${section.key === 'working' ? 'about-block--working' : ''}`}
                 key={section.title + idx}
               >
                 <button
@@ -106,8 +106,10 @@ export default function About() {
                 >
                   <img src={section.image} alt={section.title} />
                 </button>
-                <h2>{section.title}</h2>
-                <p dangerouslySetInnerHTML={renderRichText(section.text)} />
+                <div className={section.key === 'working' ? 'about-block__content about-block__content--working' : 'about-block__content'}>
+                  <h2>{section.title}</h2>
+                  <p dangerouslySetInnerHTML={renderRichText(section.text)} />
+                </div>
               </section>
               {idx < sections.length - 1 && !['Care Beyond The Usual Scope', 'Thinking at Scale', 'Making Meaning'].includes(section.title) ? (
                 <div className="about-divider">

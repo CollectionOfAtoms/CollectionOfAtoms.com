@@ -80,7 +80,7 @@ const photos = [
 
 export default function Photography() {
   return (
-    <div className="page">
+    <div className="page photography-page">
       <h1>Photography</h1>
       <PhotoGrid photos={photos} />
     </div>
