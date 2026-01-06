@@ -367,7 +367,7 @@ body, html {
   padding-bottom: 0;
   text-decoration: underline;
   text-decoration-color: rgba(81, 90, 71, 0.6);
-  text-decoration-thickness: 1px;
+  text-decoration-thickness: 2px;
   text-underline-offset: 0.8rem;
 }
 
@@ -457,8 +457,8 @@ body, html {
   padding-bottom: 0;
   text-decoration: underline;
   text-decoration-color: rgba(81, 90, 71, 0.6);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.35rem;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.8rem;
 }
 
 .about-block h2::after {

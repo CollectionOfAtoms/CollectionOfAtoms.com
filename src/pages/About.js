@@ -111,7 +111,7 @@ export default function About() {
                   <p dangerouslySetInnerHTML={renderRichText(section.text)} />
                 </div>
               </section>
-              {idx < sections.length - 1 && !['Care Beyond The Usual Scope', 'Thinking at Scale', 'Making Meaning'].includes(section.title) ? (
+              {idx < sections.length - 1 && !['Care Beyond The Usual Scope', 'Thinking at Scale', 'Making Meaning', 'I\'d Rather Be Working'].includes(section.title) ? (
                 <div className="about-divider">
                   <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="" aria-hidden="true" />
                 </div>
