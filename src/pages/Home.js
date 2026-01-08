@@ -116,18 +116,10 @@ export default function Home() {
   const scrollToFirstSection = () => {
     const firstSection = sectionsRef.current?.querySelector('.home-section-wrapper .home-section');
     if (firstSection) {
-      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
       const sectionRect = firstSection.getBoundingClientRect();
-      const sectionHeight = sectionRect.height;
       const currentScroll = window.scrollY || window.pageYOffset;
 
-      const offsetForCenter = (viewportHeight - sectionHeight) / 2;
-      const baseTarget =
-        sectionHeight <= viewportHeight
-          ? sectionRect.top + currentScroll - offsetForCenter
-          : sectionRect.top + currentScroll;
-
-      const target = Math.max(baseTarget - 50, 0); // 2rem upward adjustment
+      const target = Math.max(sectionRect.top + currentScroll, 0);
       window.scrollTo({ top: target, behavior: 'smooth' });
     }
   };

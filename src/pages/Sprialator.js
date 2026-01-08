@@ -79,7 +79,7 @@ export default function Sprialator() {
             playsInline
             preload="metadata"
           >
-            <source src="/projects/Sprialator_festival_web.mp4" type="video/mp4" />
+            <source src="/projects/sprialator_festival_web.mp4" type="video/mp4" />
           </video>
           <figcaption className="sprialator-media__caption">
             Sprialator Setup Soak 2024 with custom microcontroller.
