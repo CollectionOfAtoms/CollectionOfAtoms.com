@@ -2,12 +2,15 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { posts } from '../data/posts';
+import { tracks } from '../data/tracks';
+import { useAudioPlayer } from '../context/AudioPlayerContext';
 
 export default function Home() {
   const navigate = useNavigate();
   const sectionsRef = useRef(null);
   const [latestExcerpt, setLatestExcerpt] = useState('');
   const latestPost = posts[0];
+  const { playTrack, togglePlay, currentIndex, isPlaying } = useAudioPlayer();
 
   useEffect(() => {
     let isActive = true;
@@ -134,7 +137,7 @@ export default function Home() {
       content: `Welcome to CollectionOfAtoms.com, my new home online. As time goes on, all of the places where we share ourselves online are being more and more corrupted by antagonistic business incentives.  This is my hedge against enshitification and censorship.  A place to keep those ideas I want to keep sharing, and place for me express myself and an avenue for people that once lost contact with me to find me once again.
       \n Putting myself forward in this way feels vulnerable, but vulnerable is something I am aiming to be more often. 
       \n Stay a minute and check something out.`,
-      bg: '#182908',
+      bg: '#15200B',
       textColor: '#ffecd3',
       link: '/about',
       ctaBg: '#f4f4f0',
@@ -168,10 +171,9 @@ export default function Home() {
     {
       key: 'music',
       title: 'Music',
-      content_title: 'Everything Stays',
-      content_description: 'A classical guitar arrangement of a song from Adventure Time.',
+      content_title: tracks[0]?.title || 'Featured track',
+      content_description: tracks[0]?.description || '',
       bg: '#1A0427',
-      audio: '/music/everything_stays_classical.mpeg',
       textColor: '#ffecd3',
       link: '/music',
       ctaBg: '#f8f2e7',
@@ -179,6 +181,7 @@ export default function Home() {
       ctaText: 'Keep Listening',
       mediaImage: '/me/Guitar_Outside.jpg',
       mediaPosition: '25% center',
+      trackIndex: 0,
     },
     {
       key: 'photography',
@@ -338,10 +341,20 @@ export default function Home() {
                       <div className="home-music">
                         <div className="home-music__title">{section.content_title}</div>
                         <p className="home-music__desc">{section.content_description}</p>
-                        {section.audio ? (
-                          <audio controls preload="none" src={section.audio} className="home-music__audio">
-                            Your browser does not support the audio element.
-                          </audio>
+                        {typeof section.trackIndex === 'number' ? (
+                          <button
+                            type="button"
+                            className="home-music__button"
+                            onClick={() => {
+                              if (currentIndex === section.trackIndex) {
+                                togglePlay();
+                                return;
+                              }
+                              playTrack(section.trackIndex);
+                            }}
+                          >
+                            {currentIndex === section.trackIndex && isPlaying ? 'Pause' : 'Play'}
+                          </button>
                         ) : null}
                       </div>
                     </div>

@@ -1,44 +1,77 @@
-const tracks = [
-  {
-    title: 'Everything Stays',
-    description: 'A classical guitar arrangement of a song from Adventure Time',
-    src: '/music/everything_stays_classical.mpeg',
-  },
-  {
-    title: 'Jade',
-    description: 'Original instrumental composition feat. Hans Swenson on violin.',
-    src: '/music/Jade_w_Hans.m4a',
-  },
-  {
-    title: 'Frozen In',
-    description: 'The first piano piece I have ever written. It\'s simple, but I like it',
-    src: '/music/Frozen_in.mpeg',
-  },
-  {
-    title: 'Transatlanticism',
-    description: 'Solo piano performance.  Death Cab For Cutie Cover',
-    src: '/music/Transatlanticism.mp3',
-  },
-];
+import { tracks } from '../data/tracks';
+import { useAudioPlayer } from '../context/AudioPlayerContext';
 
 export default function Music() {
+  const { currentIndex, isPlaying, playTrack, togglePlay, progress, seekTo } = useAudioPlayer();
+  const { currentTime, duration } = progress;
+
+  const formatTime = (time) => {
+    if (!Number.isFinite(time)) return '0:00';
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60).toString().padStart(2, '0');
+    return `${minutes}:${seconds}`;
+  };
+
   return (
     <div className="page music-page">
       <h1>Music</h1>
       <p>Enjoy</p>
 
       <div className="music-list">
-        {tracks.map((track) => (
+        {tracks.map((track, index) => {
+          const isCurrent = currentIndex === index;
+          const scrubValue = isCurrent ? currentTime : 0;
+          const scrubMax = isCurrent ? duration : 0;
+          const scrubPercent = scrubMax ? (scrubValue / scrubMax) * 100 : 0;
+          return (
           <div key={track.title} className="music-card">
             <div className="music-card__meta">
               <h2 className="music-card__title">{track.title}</h2>
               <p className="music-card__desc">{track.description}</p>
             </div>
-            <audio controls preload="none" src={track.src} className="music-card__player">
-              Your browser does not support the audio element.
-            </audio>
+            <div className="music-card__player">
+              <button
+                type="button"
+                className="music-card__control"
+                onClick={() => {
+                  if (isCurrent) {
+                    togglePlay();
+                    return;
+                  }
+                  playTrack(index);
+                }}
+              >
+                {isCurrent && isPlaying ? (
+                  <svg className="music-card__icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7 5h4v14H7zM13 5h4v14h-4z" />
+                  </svg>
+                ) : (
+                  <svg className="music-card__icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 5l11 7-11 7V5z" />
+                  </svg>
+                )}
+              </button>
+              <div className="music-card__scrub">
+                <span className="music-card__time">{formatTime(isCurrent ? currentTime : 0)}</span>
+                <input
+                  className="music-card__range"
+                  type="range"
+                  min="0"
+                  max={scrubMax || 0}
+                  value={scrubValue}
+                  onChange={(event) => {
+                    if (!isCurrent) return;
+                    seekTo(Number(event.target.value));
+                  }}
+                  disabled={!isCurrent || !duration}
+                  style={{ '--progress': `${scrubPercent}%` }}
+                />
+                <span className="music-card__time">{formatTime(isCurrent ? duration : 0)}</span>
+              </div>
+            </div>
           </div>
-        ))}
+        );
+      })}
       </div>
 
       <div className="video-embed">

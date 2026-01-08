@@ -187,6 +187,127 @@ body, html {
   border-bottom: 1px solid rgba(255, 236, 211, 0.4);
 }
 
+.mini-player {
+  position: sticky;
+  top: 0;
+  left: 0;
+  transform: none;
+  z-index: 900;
+  display: block;
+  padding: 0.4rem 0;
+  width: 100%;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #2a2a2d, #0b0b0c);
+  border: 1px solid rgba(255, 236, 211, 0.12);
+  border-radius: 0;
+  backdrop-filter: blur(6px);
+  font-family: 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+}
+
+body.at-top .mini-player {
+  top: 43px;
+}
+
+.mini-player__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: min(860px, 96vw);
+  margin: 0 auto;
+}
+
+.mini-player__title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffecd3;
+  flex: 0 0 auto;
+  max-width: 40%;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mini-player__scrub {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1 1 400px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.mini-player__time {
+  font-size: 0.7rem;
+  color: rgba(255, 236, 211, 0.72);
+}
+
+.mini-player__range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 236, 211, 0.8) var(--progress, 0%),
+    rgba(255, 236, 211, 0.2) var(--progress, 0%)
+  );
+  cursor: pointer;
+}
+
+.mini-player__range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffecd3;
+  box-shadow: 0 0 8px rgba(255, 236, 211, 0.6);
+}
+
+.mini-player__range::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffecd3;
+  border: none;
+  box-shadow: 0 0 8px rgba(255, 236, 211, 0.6);
+}
+
+.mini-player__controls {
+  display: flex;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+  justify-content: flex-end;
+}
+
+.mini-player__button {
+  border: none;
+  background: none;
+  color: #ffecd3;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
+}
+
+.mini-player__button:hover {
+  opacity: 1;
+}
+
+.mini-player__icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
 /* Hide brand text a bit earlier to make space */
 @media (max-width: 1350px) {
   .navbar-brand span {
@@ -251,7 +372,7 @@ body, html {
 
 .page.about-page {
   background-color: #2a2a2d;
-  background-image: linear-gradient(-15deg, #2a2a2d 0%, #2a2a2d 60%, #182908 100%);
+  background-image: linear-gradient(-15deg, #2a2a2d 0%, #2a2a2d 60%, #15200B 100%);
   background-repeat: no-repeat;
   background-size: 100% 100vh;
 }
@@ -963,6 +1084,20 @@ body, html {
   color: rgba(255, 236, 211, 0.92);
 }
 
+.home-music__button {
+  margin-top: 0.5rem;
+  border: 1px solid rgba(255, 236, 211, 0.6);
+  background: rgba(15, 15, 18, 0.6);
+  color: #ffecd3;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.home-music__button:hover {
+  background: rgba(255, 236, 211, 0.12);
+}
 .home-music__audio {
   width: 100%;
   height: 56px;
@@ -1211,6 +1346,100 @@ body, html {
 .music-card__player {
   width: 100%;
   margin-top: 0.5rem;
+  border: 1px solid rgba(255, 236, 211, 0.35);
+  background: transparent;
+  color: #ffecd3;
+  padding: 0.6rem 0.8rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.music-card__player:hover {
+  background: rgba(255, 236, 211, 0.12);
+}
+
+.music-card__control {
+  border: none;
+  background: none;
+  color: #ffecd3;
+  padding: 0;
+  border-radius: 0;
+  cursor: pointer;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
+}
+
+.music-card__control:hover {
+  opacity: 1;
+}
+
+.music-card__scrub {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.music-card__time {
+  font-size: 0.75rem;
+  color: rgba(255, 236, 211, 0.72);
+  min-width: 2.4rem;
+  text-align: center;
+}
+
+.music-card__range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  max-width: 100%;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 236, 211, 0.8) var(--progress, 0%),
+    rgba(255, 236, 211, 0.2) var(--progress, 0%)
+  );
+  cursor: pointer;
+}
+
+.music-card__range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.music-card__range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffecd3;
+  box-shadow: 0 0 6px rgba(255, 236, 211, 0.45);
+}
+
+.music-card__range::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffecd3;
+  border: none;
+  box-shadow: 0 0 6px rgba(255, 236, 211, 0.45);
+}
+
+.music-card__icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
 }
 
 .video-embed {
@@ -1325,6 +1554,13 @@ body, html {
 .music-card__player {
   width: 100%;
   margin-top: 0.5rem;
+  border: 1px solid rgba(255, 236, 211, 0.35);
+  background: transparent;
+  color: #ffecd3;
+  padding: 0.6rem 0.8rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
 }
 /* Blog post card */
 .blog-post {
