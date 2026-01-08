@@ -465,14 +465,15 @@ body.at-top .mini-player {
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  height: 366px;
 }
 
 .about-hero-image img {
   width: 100%;
   display: block;
+  height: 100%;
   object-fit: cover;
-  object-position: center 35%;
-  height: auto;
+  object-position: center;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
 }
 
@@ -589,16 +590,7 @@ body.at-top .mini-player {
 }
 
 .about-block__title {
-  grid-area: title;
-  text-align: center;
-}
-
-.about-block__text--working {
-  grid-area: text;
-}
-
-.about-photo--working {
-  grid-area: photo;
+  text-align: right;
 }
 
 .about-block h2 {
@@ -720,18 +712,30 @@ body.at-top .mini-player {
   }
 
   .about-block__text--working {
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .about-block--working {
+    display: block;
+  }
+
+  .about-block--working .about-block__title {
+    margin: 0;
+    background: transparent;
+    border-radius: 0;
+    padding: 0 0 0.65rem;
+    box-shadow: none;
+    text-align: center;
+  }
+
+  .about-block--working .about-block__gold {
     background: rgba(215, 190, 130, 0.12);
     border-radius: 18px;
     padding: 1rem 1.25rem;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
-  }
-
-  .about-block--working {
-    display: grid;
-    grid-template-areas:
-      "photo"
-      "title"
-      "text";
   }
 
   .about-photo {
@@ -1080,7 +1084,7 @@ body.at-top .mini-player {
   margin: 0;
   font-size: 1.5rem;
   line-height: 1.6;
-  text-align: center;
+  text-align: left;
   color: rgba(255, 236, 211, 0.92);
 }
 
@@ -1188,6 +1192,10 @@ body.at-top .mini-player {
 }
 
 @media (max-width: 680px) {
+  .page.home {
+    width: 100%;
+  }
+
   .home-portrait {
     width: clamp(153px, 51vw, 238px);
     height: clamp(153px, 51vw, 238px);

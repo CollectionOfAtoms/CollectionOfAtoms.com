@@ -97,7 +97,6 @@ export default function About() {
             return (
               <>
                 <section className="about-block about-block--working" key={section.title + idx}>
-                  <h2 className="about-block__title">{section.title}</h2>
                   <button
                     className={`about-photo about-photo--working ${section.imagePosition === 'left' ? 'about-photo--image-left' : ''}`}
                     onClick={() => setActiveImage({ src: section.image, alt: section.title })}
@@ -105,10 +104,13 @@ export default function About() {
                   >
                     <img src={section.image} alt={section.title} />
                   </button>
-                  <div
-                    className="about-block__text about-block__text--working"
-                    dangerouslySetInnerHTML={renderRichText(section.text)}
-                  />
+                  <div className="about-block__gold">
+                    <h2 className="about-block__title">{section.title}</h2>
+                    <div
+                      className="about-block__text about-block__text--working"
+                      dangerouslySetInnerHTML={renderRichText(section.text)}
+                    />
+                  </div>
                 </section>
               </>
             );

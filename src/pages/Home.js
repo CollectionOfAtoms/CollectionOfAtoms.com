@@ -10,7 +10,8 @@ export default function Home() {
   const sectionsRef = useRef(null);
   const [latestExcerpt, setLatestExcerpt] = useState('');
   const latestPost = posts[0];
-  const { playTrack, togglePlay, currentIndex, isPlaying } = useAudioPlayer();
+  const { playTrack, togglePlay, currentIndex, isPlaying, progress, seekTo } = useAudioPlayer();
+  const { currentTime, duration } = progress;
 
   useEffect(() => {
     let isActive = true;
@@ -189,7 +190,7 @@ export default function Home() {
       content: '',
       bg: '#271E04',
       textColor: '#ffecd3',
-      mediaImage: '/photos/20190624_183358.jpg',
+      mediaImage: '/photos/20250801_100930.jpg',
       mediaPosition: 'center center',
       link: '/photography',
       ctaBg: 'rgba(0,0,0,0.78)',
@@ -337,28 +338,68 @@ export default function Home() {
                         backgroundPosition: section.mediaPosition || 'center',
                       }}
                     />
-                    <div className="home-media-frame__content">
-                      <div className="home-music">
-                        <div className="home-music__title">{section.content_title}</div>
-                        <p className="home-music__desc">{section.content_description}</p>
-                        {typeof section.trackIndex === 'number' ? (
-                          <button
-                            type="button"
-                            className="home-music__button"
-                            onClick={() => {
-                              if (currentIndex === section.trackIndex) {
-                                togglePlay();
-                                return;
-                              }
-                              playTrack(section.trackIndex);
-                            }}
-                          >
-                            {currentIndex === section.trackIndex && isPlaying ? 'Pause' : 'Play'}
-                          </button>
-                        ) : null}
-                      </div>
+                  <div className="home-media-frame__content">
+                    <div className="home-music">
+                      <div className="home-music__title">{section.content_title}</div>
+                      <p className="home-music__desc">{section.content_description}</p>
+                      {typeof section.trackIndex === 'number' ? (() => {
+                        const isCurrent = currentIndex === section.trackIndex;
+                        const scrubValue = isCurrent ? currentTime : 0;
+                        const scrubMax = isCurrent ? duration : 0;
+                        const scrubPercent = scrubMax ? (scrubValue / scrubMax) * 100 : 0;
+                        const formatTime = (time) => {
+                          if (!Number.isFinite(time)) return '0:00';
+                          const minutes = Math.floor(time / 60);
+                          const seconds = Math.floor(time % 60).toString().padStart(2, '0');
+                          return `${minutes}:${seconds}`;
+                        };
+
+                        return (
+                          <div className="music-card__player">
+                            <button
+                              type="button"
+                              className="music-card__control"
+                              onClick={() => {
+                                if (isCurrent) {
+                                  togglePlay();
+                                  return;
+                                }
+                                playTrack(section.trackIndex);
+                              }}
+                            >
+                              {isCurrent && isPlaying ? (
+                                <svg className="music-card__icon" viewBox="0 0 24 24" aria-hidden="true">
+                                  <path d="M7 5h4v14H7zM13 5h4v14h-4z" />
+                                </svg>
+                              ) : (
+                                <svg className="music-card__icon" viewBox="0 0 24 24" aria-hidden="true">
+                                  <path d="M8 5l11 7-11 7V5z" />
+                                </svg>
+                              )}
+                            </button>
+                            <div className="music-card__scrub">
+                              <span className="music-card__time">{formatTime(isCurrent ? currentTime : 0)}</span>
+                              <input
+                                className="music-card__range"
+                                type="range"
+                                min="0"
+                                max={scrubMax || 0}
+                                value={scrubValue}
+                                onChange={(event) => {
+                                  if (!isCurrent) return;
+                                  seekTo(Number(event.target.value));
+                                }}
+                                disabled={!isCurrent || !duration}
+                                style={{ '--progress': `${scrubPercent}%` }}
+                              />
+                              <span className="music-card__time">{formatTime(isCurrent ? duration : 0)}</span>
+                            </div>
+                          </div>
+                        );
+                      })() : null}
                     </div>
                   </div>
+                </div>
                 ) : section.key === 'photography' ? (
                   <div className="home-media-frame">
                     <div
