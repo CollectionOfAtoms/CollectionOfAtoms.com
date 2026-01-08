@@ -93,17 +93,18 @@ export default function Home() {
   const featuredProject = {
     title: 'Sprialator',
     description: [
-      "The Sprialator is an in-browser visualizer that leverages HTML5's canvas feature to animate with SVGs.",
-      'Included as placed art at SOAK 2024, shown through a projection installation with custom microcontroller interactivity.',
+      "An in-browser visual experiment exploring recursive geometry and motion.",
+      "Built for projection and physical interaction."
     ],
     website: {
       label: 'Check it out',
       url: 'https://collectionofatoms.github.io/sprialator/',
     },
+    detailPath: '/projects/sprialator',
     link: 'https://github.com/CollectionOfAtoms/sprialator',
     tags: ['creative-coding', 'generative', 'HTML5', 'SVG', 'visualizer'],
     video: {
-      src: '/projects/spiralator-preview.mp4',
+      src: '/projects/sprialator-preview.mp4',
       poster: '/projects/sprialator-poster.png',
     },
   };
@@ -133,7 +134,7 @@ export default function Home() {
       content: `Welcome to CollectionOfAtoms.com, my new home online. As time goes on, all of the places where we share ourselves online are being more and more corrupted by antagonistic business incentives.  This is my hedge against enshitification and censorship.  A place to keep those ideas I want to keep sharing, and place for me express myself and an avenue for people that once lost contact with me to find me once again.
       \n Putting myself forward in this way feels vulnerable, but vulnerable is something I am aiming to be more often. 
       \n Stay a minute and check something out.`,
-      bg: '#515a47',
+      bg: '#182908',
       textColor: '#ffecd3',
       link: '/about',
       ctaBg: '#f4f4f0',
@@ -169,7 +170,7 @@ export default function Home() {
       title: 'Music',
       content_title: 'Everything Stays',
       content_description: 'A classical guitar arrangement of a song from Adventure Time.',
-      bg: '#1b1b13',
+      bg: '#1A0427',
       audio: '/music/everything_stays_classical.mpeg',
       textColor: '#ffecd3',
       link: '/music',
@@ -183,9 +184,9 @@ export default function Home() {
       key: 'photography',
       title: 'Photography',
       content: '',
-      bg: '#121615',
+      bg: '#271E04',
       textColor: '#ffecd3',
-      mediaImage: '/photos/20190726_190449.jpg',
+      mediaImage: '/photos/20190624_183358.jpg',
       mediaPosition: 'center center',
       link: '/photography',
       ctaBg: 'rgba(0,0,0,0.78)',
@@ -254,7 +255,18 @@ export default function Home() {
                     <p>{section.content}</p>
                   </div>
                 ) : section.key === 'projects' && section.featuredProject ? (
-                  <article className="project-card home-project-card">
+                  <article
+                    className="project-card home-project-card"
+                    onClick={() => navigate(section.featuredProject.detailPath)}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        navigate(section.featuredProject.detailPath);
+                      }
+                    }}
+                    role="link"
+                    tabIndex={0}
+                  >
                     <div className="project-card__media project-card__media--center">
                       {section.featuredProject.video ? (
                         <video
@@ -287,6 +299,7 @@ export default function Home() {
                             href={section.featuredProject.website.url}
                             target="_blank"
                             rel="noreferrer"
+                            onClick={(event) => event.stopPropagation()}
                           >
                             {section.featuredProject.website.label} →
                           </a>

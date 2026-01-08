@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, NavLink, useLocation } from 'react-router-dom';
 import './App.css';
 
 import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
+import Sprialator from './pages/Sprialator';
 import Blog from './pages/Blog';
 import BlogPostPage from './pages/BlogPostPage';
 import Contact from './pages/Contact';
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="App dark">
 
         {/* Navigation Bar */}
@@ -46,6 +48,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/sprialator" element={<Sprialator />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:postId" element={<BlogPostPage />} />
           <Route path="/photography" element={<Photography />} />
@@ -70,6 +73,16 @@ function App() {
       </div>
     </Router>
   );
+}
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
 }
 
 export default App;

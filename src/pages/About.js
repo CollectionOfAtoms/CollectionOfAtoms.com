@@ -7,7 +7,7 @@ export default function About() {
       title: 'My Roots',
       text: `Born in Flagstaff, Arizona and raised in Boulder, Colorado, I learned to think for myself, to enjoy nature's abundance, and to never fear learning. In 2015 I moved away and hiked the Pacific Crest Trail from Mexico to Canada before putting down new roots in Oregon. 
       \n Today I'm based in Portland, Oregon, where I live in and help lead a community house. Much of my free time is spent tending to the place itself—repairing what’s worn, improving what’s awkward, and slowly shaping a space that can hold people well. `,
-      image: '/me/Longs_Peak.jpg',
+      image: '/me/Longs_Peak_centered-4real.jpg',
       fullBleed: true,
     },
     {
@@ -33,7 +33,7 @@ export default function About() {
     {
       title: 'I\'d Rather Be Working',
       text: `After being included in a layoff in April of 2025, I spent the summer attempting a hike from Mexico to Canada on the Continetal Divide Trail.  I didn't make it, but I did have an excellent summer.  Now that I'm back, I'm looking for a job I can be excited about: one that does good in the world.  
-      \n Download my resumé [here](/me/resume.png) and contact me if you any opportunities for me.`,
+      \n Download my resumé [here](/me/resume.png) and contact me if you have any opportunities for me.`,
       image: '/me/High_Mountain.jpg',
       imagePosition: 'left',
       key: 'working',
@@ -93,10 +93,31 @@ export default function About() {
               </>
             );
           }
+          if (section.key === 'working') {
+            return (
+              <>
+                <section className="about-block about-block--working" key={section.title + idx}>
+                  <h2 className="about-block__title">{section.title}</h2>
+                  <button
+                    className={`about-photo about-photo--working ${section.imagePosition === 'left' ? 'about-photo--image-left' : ''}`}
+                    onClick={() => setActiveImage({ src: section.image, alt: section.title })}
+                    aria-label={`Open ${section.title} photo`}
+                  >
+                    <img src={section.image} alt={section.title} />
+                  </button>
+                  <div
+                    className="about-block__text about-block__text--working"
+                    dangerouslySetInnerHTML={renderRichText(section.text)}
+                  />
+                </section>
+              </>
+            );
+          }
+
           return (
             <>
               <section
-                className={`about-block ${isRightAligned ? 'about-block--right' : 'about-block--left'} ${section.key === 'space' ? 'about-block--space' : ''} ${section.key === 'working' ? 'about-block--working' : ''}`}
+                className={`about-block ${isRightAligned ? 'about-block--right' : 'about-block--left'} ${section.key === 'space' ? 'about-block--space' : ''}`}
                 key={section.title + idx}
               >
                 <button
@@ -106,7 +127,7 @@ export default function About() {
                 >
                   <img src={section.image} alt={section.title} />
                 </button>
-                <div className={section.key === 'working' ? 'about-block__content about-block__content--working' : 'about-block__content'}>
+                <div className="about-block__content">
                   <h2>{section.title}</h2>
                   <p dangerouslySetInnerHTML={renderRichText(section.text)} />
                 </div>
