@@ -460,7 +460,7 @@ body.at-top .mini-player {
   filter: brightness(1.05);
 }
 
-.about-hero-image {
+.standard-page-hero-image {
   margin: 1.5rem 0;
   border-radius: 18px;
   overflow: hidden;
@@ -468,7 +468,7 @@ body.at-top .mini-player {
   height: 366px;
 }
 
-.about-hero-image img {
+.standard-page-hero-image img {
   width: 100%;
   display: block;
   height: 100%;
@@ -477,14 +477,14 @@ body.at-top .mini-player {
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
 }
 
-.about-hero-block {
+.standard-page-hero {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 2rem;
 }
 
-.about-hero-content h2 {
+.standard-page-hero-content h2 {
   margin: 0 0 0.25rem 0;
   font-family: 'Playfair Display', 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
   font-size: 2.05rem;
@@ -496,11 +496,11 @@ body.at-top .mini-player {
   text-underline-offset: 0.8rem;
 }
 
-.about-hero-content h2::after {
+.standard-page-hero-content h2::after {
   content: '\00a0\00a0\00a0';
 }
 
-.about-hero-content p {
+.standard-page-hero-content p {
   margin: 0;
   color: #ffecd3ff;
   line-height: 1.6;
@@ -510,14 +510,39 @@ body.at-top .mini-player {
   white-space: pre-line;
 }
 
-.about-hero-content a,
+.contact-top-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.contact-top-content h2 {
+  margin: 0;
+  font-family: 'Playfair Display', 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 2.05rem;
+  font-weight: 700;
+  padding-bottom: 0;
+  text-decoration: none;
+}
+
+.page.contact-page .contact-top-content p {
+  margin: 0;
+  color: #ffecd3ff;
+  line-height: 1.6;
+  font-size: 1.37rem;
+  text-align: center;
+  text-justify: auto;
+}
+
+.standard-page-hero-content a,
 .about-block a {
   color: #8fd1ff;
   text-decoration: underline;
   font-weight: 600;
 }
 
-.about-hero-content a:hover,
+.standard-page-hero-content a:hover,
 .about-block a:hover {
   color: #a7deff;
 }
@@ -1484,19 +1509,30 @@ body.at-top .mini-player {
   }
 }
 
+.contact-fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-inline-size: 0; /* helps prevent weird overflow in flex layouts */
+}
+
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
+  gap: 1rem;
   margin-top: 1rem;
+  border: none;
+  box-shadow: none;
 }
 
 .contact-form label {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
-  color: #c9d1d9;
-  font-weight: 600;
+  color: #ffecd3;
+  font-weight: 400;
+  font-size: 1.37rem;
+  line-height: 1.8;
 }
 
 .contact-form input,
@@ -1508,16 +1544,28 @@ body.at-top .mini-player {
   color: #ffecd3;
   font-family: inherit;
   font-size: 1rem;
+  transition: border-color 0.15s ease, outline-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  outline: 2px solid #58a6ff;
-  border-color: #58a6ff;
+  outline: none;
+  border-color: rgba(255, 236, 211, 0.55);
+  box-shadow: 0 0 0 3px rgba(255, 236, 211, 0.12);
 }
 
 .contact-submit {
+  align-self: center;
+  margin-top: 0;
+  margin-bottom: 0;
   width: 100%;
+  max-width: 250px;
+  box-sizing: border-box;
+}
+
+.contact-submit.button-standard-glow {
+  margin: 2.5rem auto 0;
+  width: min(100%, 250px);
 }
 
 .form-status {
@@ -1527,10 +1575,16 @@ body.at-top .mini-player {
 
 .form-status--success {
   color: #8bcf9f;
+  background-color: rgba(21, 32, 11, 0.7);
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
 }
 
 .form-status--error {
   color: #ffb3b3;
+  background-color: rgba(43, 20, 22, 0.7);
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
 }
 
 .music-list {
@@ -1954,13 +2008,14 @@ body.at-top .mini-player {
   text-align: center;
 }
 
-.sprialator-cta {
+.button-standard-glow {
   display: flex;
   width: fit-content;
   align-items: center;
   justify-content: center;
-  margin: 1.5rem auto 2rem;
+  margin: 2.5rem auto 2rem;
   padding: 0.9rem 1.6rem;
+  background: transparent;
   border: 1px solid #ffecd3;
   border-radius: 18px;
   color: #ffecd3;
@@ -1968,9 +2023,12 @@ body.at-top .mini-player {
   font-family: 'Inter', 'Exo 2', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 700;
   box-shadow: 0 0 18px rgba(255, 236, 211, 0.28);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
-.sprialator-cta:hover {
+.button-standard-glow:hover {
   background: #ffecd3;
   color: #2e1f08;
   box-shadow: 0 0 24px rgba(255, 236, 211, 0.45);

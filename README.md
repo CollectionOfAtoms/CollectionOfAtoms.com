@@ -64,12 +64,12 @@ src/
 ```
 
 ## ✨ Features
-	•	⚫ Modern dark-mode look by default
-	•	📱 Mobile-first layout with animated hamburger menu
-	•	🔗 Active link highlighting
-	•	🧬 Custom-designed favicon and icon system
-	•	🧩 Easily extensible for future enhancements
-
+- ⚫ Modern dark-mode look by default
+- 📱 Mobile-first layout with animated hamburger menu
+- 🔗 Active link highlighting
+- 🧬 Custom-designed favicon and icon system
+- ✉️ Contact form uses a `mailto:` link to open the visitor's email client (no backend email service)
+- 🧩 Easily extensible for future enhancements
 ⸻
 
 ## 🧑‍💻 Author

@@ -21,7 +21,7 @@ export default function Sprialator() {
         Sprialator: a browser-based visual system for exploring recursive motion and symmetry.
       </p>
       <a
-        className="sprialator-cta"
+        className="button-standard-glow"
         href="https://collectionofatoms.github.io/sprialator/"
         target="_blank"
         rel="noreferrer"

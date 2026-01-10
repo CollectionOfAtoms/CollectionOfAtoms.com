@@ -78,14 +78,14 @@ export default function About() {
           if (section.fullBleed) {
             return (
               <>
-                <section className="about-hero-block" key={section.title + idx}>
-                  <div className="about-hero-image">
+                <section className="standard-page-hero" key={section.title + idx}>
+                  <div className="standard-page-hero-image">
                     <img src={section.image} alt={section.title} />
                   </div>
                   <div className="about-divider about-divider--hero">
                     <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="" aria-hidden="true" />
                   </div>
-                  <div className="about-hero-content">
+                  <div className="standard-page-hero-content">
                     <h2>{section.title}</h2>
                     <p dangerouslySetInnerHTML={renderRichText(section.text)} />
                   </div>
