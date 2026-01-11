@@ -196,14 +196,14 @@ export default function Home() {
         <div className="home-section-wrapper">
           <section className="home-hero-banner">
             <img
-              src="/CollectionOfAtoms_logo/logo_aura.svg"
+              src="/CollectionOfAtoms_logo/Logo_aura.svg"
               alt="Collection of Atoms logo"
               className="home-hero-logo"
             />
           <h1 className="home-hero-title">CollectionOfAtoms</h1>
           <p className="home-hero-tagline">Thoughts, projects, and things still becoming.</p>
           <p className="home-hero-tagline home-hero-tagline--secondary">
-            Currently: exploring creative code + animal ethics + looking for my dream-job.
+            Currently: exploring creative code + discussing animal ethics + looking for my dream-job.
           </p>
           <button className="home-hero-button" onClick={scrollToFirstSection}>
             Explore ↓
