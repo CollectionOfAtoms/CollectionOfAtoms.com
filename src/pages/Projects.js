@@ -20,11 +20,12 @@ export default function Projects() {
     },
     {
       title: 'KrampusBot',
-      description: ['A mischievous bot project I built for a high-concept party with lore where guests emerged from their vaults for the first time in 1000 years to arrive mysteriously at a holiday party.', 
-        'The KrampusBot snarkily seeks to be entertained and is programmed to have a short conversation with the guest then assign them "festive" Christmas tasks like leaving a friend a ransom note or engaging an a nice game of fire-dreidel (beyblades with kerosene soaked dreidels)',
-        'When the KrampusBot finishes it would automatically print out the victim\'s tasks from a printer hidden overhead for them to check off.'
+      description: [
+        'A mischievous party bot built for a high-concept holiday vault gathering, greeting guests emerging after 1000 years.',
+        'It chats briefly, assigns snarky festive tasks, and prints the mission slip from a hidden overhead printer.',
       ],
       image: '/projects/KrampusBot.png',
+      detailPath: '/projects/krampusbot',
       link: 'https://github.com/CollectionOfAtoms/krampusbot',
       tags: ['automation', 'ChatGPT', 'bot'],
       mediaAlign: 'left',
@@ -33,7 +34,9 @@ export default function Projects() {
 
   return(
     <div className="page projects-page">
-      <h1>Projects</h1>
+      <div className="page-title-band">
+        <h1 className="page-title">Projects</h1>
+      </div>
       <div className="projects-grid">
         {projects.map((project) => {
           const isClickable = Boolean(project.detailPath);

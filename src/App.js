@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
 import Sprialator from './pages/Sprialator';
+import KrampusBot from './pages/KrampusBot';
 import Blog from './pages/Blog';
 import BlogPostPage from './pages/BlogPostPage';
 import Contact from './pages/Contact';
@@ -63,6 +64,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/sprialator" element={<Sprialator />} />
+            <Route path="/projects/krampusbot" element={<KrampusBot />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:postId" element={<BlogPostPage />} />
             <Route path="/photography" element={<Photography />} />
@@ -80,9 +82,9 @@ function App() {
               />
           </Routes>
           <footer className="site-footer">
-            <div>Becoming still and still becoming</div>
+            <div>Still becoming</div>
             <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="Atom logo" />
-            <div>Jesse Caldwell - 2025</div>
+            <div>Jesse Caldwell - 2026</div>
           </footer>
         </div>
       </Router>

@@ -14,7 +14,9 @@ export default function Music() {
 
   return (
     <div className="page music-page">
-      <h1>Music</h1>
+      <div className="page-title-band">
+        <h1 className="page-title">Music</h1>
+      </div>
       <p>Enjoy</p>
 
       <div className="music-list">

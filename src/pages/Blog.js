@@ -4,7 +4,9 @@ import { posts } from '../data/posts';
 export default function Blog() {
   return (
     <div className="page blog-page">
-      <h1>Blog</h1>
+      <div className="page-title-band">
+        <h1 className="page-title">Blog</h1>
+      </div>
       <p>Welcome to my brain.</p>
       {posts.map((post) => (
         <BlogPost

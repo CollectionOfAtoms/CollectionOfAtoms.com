@@ -81,7 +81,9 @@ const photos = [
 export default function Photography() {
   return (
     <div className="page photography-page">
-      <h1>Photography</h1>
+      <div className="page-title-band">
+        <h1 className="page-title">Photography</h1>
+      </div>
       <PhotoGrid photos={photos} />
     </div>
   );

@@ -429,6 +429,22 @@ body.at-top .mini-player {
   text-align: center;
 }
 
+.page-title-band {
+  min-height: clamp(3.5rem, 9vh, 5.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.page-title {
+  margin: 0 0 0.25rem;
+  font-family: 'Playfair Display', 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 2.05rem;
+  font-weight: 700;
+  text-align: center;
+}
+
 .page:not(.home) p {
   line-height: 1.8;
   color: #ffecd3;
@@ -551,7 +567,6 @@ body.at-top .mini-player {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-top: 1.5rem;
 }
 
 .about-divider {
@@ -1997,11 +2012,11 @@ body.at-top .mini-player {
   background: rgba(255, 255, 255, 0.18);
 }
 
-.sprialator-section {
+.project-detail-section {
   margin-top: 2rem;
 }
 
-.page.projects-page .sprialator-intro {
+.page.projects-page .project-detail-intro {
   margin: 0.75rem 0 0;
   color: rgba(255, 236, 211, 0.92);
   font-size: 1.35rem;
@@ -2034,21 +2049,32 @@ body.at-top .mini-player {
   box-shadow: 0 0 24px rgba(255, 236, 211, 0.45);
 }
 
-.sprialator-hero {
-  margin: 1.5rem 0 0;
+.project-detail-hero {
+  margin: 0;
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
 }
 
-.sprialator-hero__media {
+.project-detail-hero__media {
   width: 100%;
   height: clamp(240px, 45vh, 360px);
   object-fit: cover;
   display: block;
 }
 
-.sprialator-section h2 {
+.page-title-band .page-title {
+  margin: 0;
+}
+
+.krampusbot-hero__media {
+  height: auto;
+  object-fit: contain;
+  transform: scaleY(1.02);
+  transform-origin: bottom;
+}
+
+.project-detail-section h2 {
   margin: 0 0 0.75rem;
   font-size: 1.9rem;
   color: #ffecd3;
@@ -2059,11 +2085,11 @@ body.at-top .mini-player {
   text-underline-offset: 0.8rem;
 }
 
-.sprialator-section h2::after {
+.project-detail-section h2::after {
   content: '\00a0\00a0\00a0';
 }
 
-.sprialator-section h3 {
+.project-detail-section h3 {
   margin: 2.5rem 0 0.5rem;
   font-size: 1.3rem;
   color: #ffecd3;
@@ -2091,6 +2117,22 @@ body.at-top .mini-player {
   text-align: center;
 }
 
+.krampusbot-media {
+  margin: 1.5rem auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.krampusbot-media__image {
+  width: min(100%, 630px);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 236, 211, 0.12);
+  background: #0f2320;
+  display: block;
+}
+
 .project-divider {
   display: flex;
   justify-content: center;
@@ -2113,7 +2155,7 @@ body.at-top .mini-player {
   opacity: 0.6;
 }
 
-.page.projects-page p.sprialator-epilogue {
+.page.projects-page p.project-detail-epilogue {
   margin: 2.5rem auto 0;
   text-align: center;
   font-size: 1.25rem;

@@ -69,7 +69,9 @@ export default function About() {
 
   return (
     <div className="page about-page">
-      <h1>About</h1>
+      <div className="page-title-band">
+        <h1 className="page-title">About</h1>
+      </div>
       <div className="about-sections">
         {sections.map((section, idx) => {
           const isEven = idx % 2 === 0;

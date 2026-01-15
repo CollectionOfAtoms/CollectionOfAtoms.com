@@ -1,11 +1,13 @@
 export default function Sprialator() {
   return (
     <div className="page projects-page">
-      <h1>Sprialator</h1>
+      <div className="page-title-band">
+        <h1 className="page-title">Sprialator</h1>
+      </div>
 
-      <div className="sprialator-hero">
+      <div className="project-detail-hero">
         <video
-          className="sprialator-hero__media"
+          className="project-detail-hero__media"
           autoPlay
           loop
           muted
@@ -17,7 +19,7 @@ export default function Sprialator() {
         </video>
       </div>
 
-      <p className="sprialator-intro">
+      <p className="project-detail-intro">
         Sprialator: a browser-based visual system for exploring recursive motion and symmetry.
       </p>
       <a
@@ -29,7 +31,7 @@ export default function Sprialator() {
         Enter the Sprialator →
       </a>
 
-      <section className="sprialator-section">
+      <section className="project-detail-section">
         <h2>An Accidental Beginning</h2>
         <p>
           I began writing Sprialator after buying a projector for my home. Around the same time, I was learning a guitar cover of Pure Imagination. I had the idea to film a video from inside the guitar—something I occasionally do—and wanted a slowly rotating spiral projected behind me as a backdrop.
@@ -48,7 +50,7 @@ export default function Sprialator() {
         </div>
       </section>
       
-      <section className="sprialator-section">
+      <section className="project-detail-section">
         <h2>What's Interesting Here</h2>
         <p>Sprialator ended up being a learning project in several unexpected directions.</p>
 
@@ -90,7 +92,7 @@ export default function Sprialator() {
         </p>
       </section>
 
-      <p className="sprialator-epilogue">
+      <p className="project-detail-epilogue">
         Sprialator didn’t start with a plan. It just refused to stop.
       </p>
     </div>
