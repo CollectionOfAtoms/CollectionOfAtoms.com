@@ -28,7 +28,7 @@ export default function About() {
       text: `Philosophically, I’m an Absurdist. I don’t believe the universe offers us meaning by default. Instead, meaning emerges through what we choose to care about, what we build, and how we show up for one another. Creating things—ideas, systems, structures, places—is one way I participate in that ongoing act of meaning-making.
       \n
       I bring the most meaning to my own life by loving deeply. The experience of my two closest loves is something I look forward to every day — My cherished partner in life [Eleanor](ElleSparksStudio.com), and our amazing circus dog Nibbler.`,
-      image: '/me/Elle+Nibs.jpg',
+      image: '/me/Elle_and_Nibbler_howl.jpg',
     },
     {
       title: 'I\'d Rather Be Working',

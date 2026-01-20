@@ -87,7 +87,9 @@ export default function Contact() {
 
   return (
     <div className="page contact-page">
-      <h1>Contact</h1>
+      <div className="page-title-band">
+        <h1 className="page-title">Contact</h1>
+      </div>
 
       <section className="standard-page-hero">
         <div className="standard-page-hero-image">

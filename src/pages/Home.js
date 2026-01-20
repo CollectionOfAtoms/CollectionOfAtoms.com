@@ -165,14 +165,13 @@ export default function Home() {
       key: 'music',
       title: 'Music',
       content_title: tracks[0]?.title || 'Featured track',
-      content_description: tracks[0]?.description || '',
       bg: '#1A0427',
       textColor: '#ffecd3',
       link: '/music',
       ctaBg: '#f8f2e7',
       ctaColor: '#2e1f08',
       ctaText: 'Keep Listening',
-      mediaImage: '/me/Guitar_Outside.jpg',
+      mediaImage: '/me/Beach_guitar.jpg',
       mediaPosition: '25% center',
       trackIndex: 0,
     },
@@ -333,7 +332,6 @@ export default function Home() {
                   <div className="home-media-frame__content">
                     <div className="home-music">
                       <div className="home-music__title">{section.content_title}</div>
-                      <p className="home-music__desc">{section.content_description}</p>
                       {typeof section.trackIndex === 'number' ? (() => {
                         const isCurrent = currentIndex === section.trackIndex;
                         const scrubValue = isCurrent ? currentTime : 0;

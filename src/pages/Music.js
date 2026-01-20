@@ -17,7 +17,19 @@ export default function Music() {
       <div className="page-title-band">
         <h1 className="page-title">Music</h1>
       </div>
-      <p>Enjoy</p>
+
+      <section className="standard-page-hero">
+        <div className="standard-page-hero-image">
+          <img src="/me/Piano_hands.jpg" alt="Hands on piano keys" />
+        </div>
+        <div className="about-divider about-divider--hero">
+          <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="" aria-hidden="true" />
+        </div>
+        <div className="standard-page-hero-content">
+          <h2>Listen in.</h2>
+          <p>Original compositions, arrangements, covers, and experiments recorded along the way.</p>
+        </div>
+      </section>
 
       <div className="music-list">
         {tracks.map((track, index) => {

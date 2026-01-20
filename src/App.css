@@ -477,7 +477,6 @@ body.at-top .mini-player {
 }
 
 .standard-page-hero-image {
-  margin: 1.5rem 0;
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
@@ -727,7 +726,7 @@ body.at-top .mini-player {
 }
 
 .about-block:nth-of-type(4) .about-photo img { /* "Making Meaning" is 4th in the list (after hero) */
-  object-position: 80% center;
+  object-position: center;
 }
 
 .about-photo--right {

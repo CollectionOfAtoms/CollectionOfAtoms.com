@@ -12,6 +12,11 @@ const photos = [
     caption: 'Sierra Mountains, California, June 2019.',
   },
   {
+    src: '/photos/20190713_164823.jpg',
+    alt: 'Photo from July 13, 2019',
+    caption: 'July 13, 2019.',
+  },
+  {
     src: '/photos/20190726_161359.jpg',
     alt: 'Telluride',
     caption: 'Telluride Basin, July 2019.',
@@ -22,14 +27,44 @@ const photos = [
     caption: 'Blue lake, July 2019.',
   },
   {
+    src: '/photos/20190805_183952.jpg',
+    alt: 'Photo from August 5, 2019',
+    caption: 'August 5, 2019.',
+  },
+  {
     src: '/photos/20190818_142628.jpg',
     alt: 'Longs Peak Summit',
     caption: 'Yours Truly on the Summit of Longs Peak, August 2019. \n Photo Credit Hayden Ripple',
   },
   {
+    src: '/photos/20190822_132758.jpg',
+    alt: 'Photo from August 22, 2019',
+    caption: 'August 22, 2019.',
+  },
+  {
+    src: '/photos/20190913_182923~2.jpg',
+    alt: 'Photo from September 13, 2019',
+    caption: 'September 13, 2019.',
+  },
+  {
+    src: '/photos/20190918_140653.jpg',
+    alt: 'Photo from September 18, 2019',
+    caption: 'September 18, 2019.',
+  },
+  {
+    src: '/photos/20190918_144148.jpg',
+    alt: 'Photo from September 18, 2019',
+    caption: 'September 18, 2019.',
+  },
+  {
     src: '/photos/20190928_151114.jpg',
     alt: 'Autumn in Snoqualmie',
     caption: 'Autumn Descends on Snoqualmie Pass, September 2019.',
+  },
+  {
+    src: '/photos/20190928_161324.jpg',
+    alt: 'Photo from September 28, 2019',
+    caption: 'September 28, 2019.',
   },
   {
     src: '/photos/20190928_171913.jpg',
@@ -45,6 +80,36 @@ const photos = [
     src: '/photos/20200731_192729.jpg',
     alt: 'Burn Scar',
     caption: 'Walking Through an Old Burn Scar on Mt. Adams, July 2020.',
+  },
+  {
+    src: '/photos/20200731_193033.jpg',
+    alt: 'Photo from July 31, 2020',
+    caption: 'July 31, 2020.',
+  },
+  {
+    src: '/photos/20200808_200149.jpg',
+    alt: 'Photo from August 8, 2020',
+    caption: 'August 8, 2020.',
+  },
+  {
+    src: '/photos/20210122_063847.jpg',
+    alt: 'Photo from January 22, 2021',
+    caption: 'January 22, 2021.',
+  },
+  {
+    src: '/photos/20230930_134314.jpg',
+    alt: 'Photo from September 30, 2023',
+    caption: 'September 30, 2023.',
+  },
+  {
+    src: '/photos/20250623_134841.jpg',
+    alt: 'Photo from June 23, 2025',
+    caption: 'June 23, 2025.',
+  },
+  {
+    src: '/photos/20250630_142735-EDIT.jpg',
+    alt: 'Photo from June 30, 2025',
+    caption: 'June 30, 2025.',
   },
   {
     src: '/photos/20250801_100930.jpg',

@@ -58,6 +58,7 @@ export default function KrampusBot() {
           After a short and snarky dialog the bot formats a list of tasks and sends it (bypassing any user prompting) to a concealed printer that drops the list on the user as they finish typing. Guests walk away with their mission slips and get to appeasing the AI overlord of Christmas.
         </p>
 
+        <h3>Physical presence</h3>
         <figure className="krampusbot-media">
           <img
             className="krampusbot-media__image"
@@ -65,8 +66,6 @@ export default function KrampusBot() {
             alt="KrampusBot installation in the holiday vault party space"
           />
         </figure>
-
-        <h3>Physical presence</h3>
         <p>
           KrampusBot's enclosure and staging were designed to feel like a relic from a vault and sits invitingly, but serruptitiously in the corner. 
         </p>

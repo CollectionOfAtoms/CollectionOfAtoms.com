@@ -21,16 +21,16 @@ If you have trouble writing even one item on your list, this is a sign of a depr
 
 Most people, I find, answer this question like myself.  They frequently have items on their lists central to their their most cherished.  'Spending time with the people I love', 'raising my children', 'being a good friend', 'being dependable' and 'making the world a better place' are frequently on the list.  Others write about their personal enjoyment 'seeing the world', 'experiencing beauty', 'experiencing new things' and the like are also frequent.  
 
-What we don't usually see are purposes surrounding novelty like 'being the first humans to experience climate change' or 'killing whomever I need to to protect my family' though many of us alive today imagine vividly a future where resources are less abundant.  This is because the core value is usually rooted around experience itself or family iteslf, rather than the specifics of what is being experienced or what must be done to protect our families. 
+What we don't usually see are purposes surrounding novelty like 'being the first humans to experience climate change' or 'protecting my family by any means necessary' though many of us alive today can imagine vividly a future where resources are less abundant.  This is because the core value is usually rooted around an experience itself or the family iteslf, rather than the specifics of what is being experienced or what must be done to protect our families. 
 
 ### Why Every Value On Your List Depends On The Environment. 
 
 Here is my list:  
 
 - Love
-- My Dog Nibbler
-- My Friends
-- My Brother
+- My dog, Nibbler
+- My friends
+- My brother
 - Sunsets
 - Sitting with my face in the sunlight, with all my needs met in the moment beside a stream.
 
@@ -38,7 +38,7 @@ Yours is surely different but I'd bet it shares those core thematic tendencies w
 
 So why are all those values secretly environmentalism?  
 
-Well consider the <i>reductio-ad-absurdum</i> first: If the habitable environment of earth were truly lost, there would be no you.  There would be no friends or Nibbler or Brother.  There would be a Sunset, but there would be no me to enjoy it.  What about your list, do any of your earthly experiences of meaning transend the death of the environment?
+Well consider the _reductio-ad-absurdum_ first: If the habitable environment of earth were truly lost, there would be no you.  There would be no friends or Nibbler or Brother.  There would be a Sunset, but there would be no me to enjoy it.  What about your list, do any of your earthly experiences of meaning transend the death of the environment?
 
 I'm willing to wager that the answer is no.  
 
@@ -48,10 +48,23 @@ We've bounded the problem: Somewhere between the current state of the environmen
 
 So where does that line lie, and how can we peel back this pessimistic lower bound?  
 
-## Pictures of the Future
+## Survival is not Enough
 
-- Human Continuation
-- Human Flourishing
+The picture of the world today is unfortunately grim. We alive in 2026 have an unusual and unprescedented circumstance.  We find ourselves living in a world with a balooning population that presents an existential risk to the planet.  We didn't ask to be born into this world and no person is responsible for this predicament, but rather the agregate choices of us all.  
+
+The average global temperature is warming. Old growth forests are being destroyed. The biosphere is losing biodiversity. Global soil quality is on the decline. The oceans are becoming more acidic.
+
+### Human Continuation
+
+A lot of people, when considering some pessimistic version of the future think that one day nuclear proliferation will lead to the end of all human life. I'm here to convince you that this is not the case. Humans, of all animals on the planet are among the most likely to survive a nuclear proliferation event. Humans can see it coming. Humans can prepare. Humans can farm and gather new information and adapt our entire lifestyles to changing conditions where other animals cannot. And some of us will. Biology will continue until the planet disallows it, but the future that is built will be subject to the constraints that we have given it.  
+
+For the vast majority of those alive today, such an event would represent the end of a lot of meaning, either in that they will be dead, or in that those they love or the hopes for their future dreams will be destroyed alongside the loss of so much of the environment. 
+
+### Human Flourishing
+
+On the other hand our imaginations also let us imagine pictures of human flourishing.  The 'Star Trek' future may still be in our grasp.  Perhaps we, with our kind's great intellect, manage to solve the issues facing us.  Maybe we manage to preserve not only our lives, but our planet, and pass on a comfortable and habitable environment deep into the future. 
+
+### Meaning Under Scarcity
 
 ## Responding To The Present Moment
 
