@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { tracks } from '../data/tracks';
 

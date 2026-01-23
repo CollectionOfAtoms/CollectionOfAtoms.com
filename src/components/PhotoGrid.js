@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+"use client";
+
+import { useEffect, useState } from 'react';
 
 export default function PhotoGrid({ photos = [] }) {
   const [activeIndex, setActiveIndex] = useState(null);

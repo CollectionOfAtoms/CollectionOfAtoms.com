@@ -1,5 +1,4 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 export default function BlogPost({
   id,
@@ -21,7 +20,7 @@ export default function BlogPost({
       </header>
 
       {excerpt ? (
-        <Link className="blog-post__link" to={`/blog/${id}`}>
+        <Link className="blog-post__link" href={`/blog/${id}`}>
           <p className="blog-post__excerpt">{excerpt}</p>
           <span className="blog-post__cta">Read the full post →</span>
         </Link>

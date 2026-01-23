@@ -1,6 +1,3 @@
-import brainForAHeart from '../content/posts/Brain For a Heart.md';
-import onEnvironmentalism from '../content/posts/On Environmentalism.md';
-
 export const posts = [
   {
     id: 'brain-for-a-heart',
@@ -10,7 +7,7 @@ export const posts = [
     excerpt: 'Why the logo blends atoms, hearts, and brains, and how each symbol earned its place.',
     tags: ['identity', 'design', 'symbols'],
     status: 'Published',
-    file: brainForAHeart,
+    file: '/content/posts/Brain%20For%20a%20Heart.md',
   },
   {
     id: 'on-environmentalism',
@@ -20,7 +17,7 @@ export const posts = [
     excerpt: 'A guided reflection on the values that root us and why they depend on the environment.',
     tags: ['values', 'environment', 'reflection'],
     status: 'Drafting',
-    file: onEnvironmentalism,
+    file: '/content/posts/On%20Environmentalism.md',
   },
 ];
 
