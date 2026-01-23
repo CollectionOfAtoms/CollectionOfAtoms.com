@@ -1,8 +1,9 @@
 {
-  "/page": "app/page.js",
+  "/music/page": "app/music/page.js",
+  "/photography/page": "app/photography/page.js",
   "/about/page": "app/about/page.js",
-  "/_not-found/page": "app/_not-found/page.js",
-  "/projects/page": "app/projects/page.js",
   "/blog/page": "app/blog/page.js",
-  "/photography/page": "app/photography/page.js"
+  "/contact/page": "app/contact/page.js",
+  "/projects/page": "app/projects/page.js",
+  "/page": "app/page.js"
 }

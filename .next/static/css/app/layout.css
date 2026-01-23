@@ -186,7 +186,7 @@ body, html {
   width: 15px;
   height: 15px;
   margin: 0 0.69rem;
-  background: url('/public/CollectionOfAtoms_logo/Atom_transparent.svg') center/contain no-repeat;
+  background: url('/CollectionOfAtoms_logo/Atom_transparent.svg') center/contain no-repeat;
   opacity: 0.75;
   position: relative;
   top: 1.15px;
@@ -445,6 +445,55 @@ body.at-top .mini-player {
   text-align: center;
 }
 
+.not-found-page {
+  text-align: center;
+}
+
+.not-found-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.not-found-logo {
+  display: block;
+  width: min(308px, 90%);
+  margin: 0.5rem auto 1rem;
+}
+
+.not-found-content h2 {
+  margin: 0.2rem 0 0;
+  font-family: 'Playfair Display', 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 2rem;
+}
+
+.not-found-quote {
+  margin: 1rem 0 0;
+  padding: 1rem 1.4rem;
+  max-width: 90%;
+  border-left: 3px solid rgba(255, 236, 211, 0.55);
+  color: rgba(255, 236, 211, 0.85);
+  background: rgba(21, 32, 11, 0.45);
+  border-radius: 12px;
+  position: relative;
+}
+
+.not-found-quote::before {
+  content: '“';
+  font-size: 2.4rem;
+  line-height: 1;
+  position: absolute;
+  left: 0.75rem;
+  top: 0.2rem;
+  color: rgba(255, 236, 211, 0.6);
+}
+
+.not-found-quote p {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
 .page-title-band {
   min-height: clamp(3.5rem, 9vh, 5.5rem);
   display: flex;
@@ -506,6 +555,10 @@ body.at-top .mini-player {
   object-fit: cover;
   object-position: center;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+}
+
+.standard-page-hero-image--top img {
+  object-position: center top;
 }
 
 .standard-page-hero {
@@ -584,25 +637,25 @@ body.at-top .mini-player {
   gap: 1rem;
 }
 
-.about-divider {
+.section-divider {
   display: flex;
   justify-content: center;
-  padding: 0.1rem 0 0.2rem;
+  padding: 0.8rem 0 0.2rem;
 }
 
-.about-divider img {
+.section-divider img {
   width: 24px;
   height: 24px;
   opacity: 0.8;
 }
 
-.about-divider--hero {
+.section-divider--hero {
   align-items: center;
   gap: 0.75rem;
 }
 
-.about-divider--hero::before,
-.about-divider--hero::after {
+.section-divider--hero::before,
+.section-divider--hero::after {
   content: '';
   flex: 1 1;
   height: 1px;
@@ -1720,7 +1773,7 @@ body.at-top .mini-player {
 }
 
 .blog-post-page {
-  max-width: 720px;
+  max-width: 860px;
 }
 
 .blog-post-page__back {
