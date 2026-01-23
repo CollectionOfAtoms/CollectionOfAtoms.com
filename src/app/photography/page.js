@@ -127,9 +127,9 @@ const photos = [
     caption: 'Sunset Smoke Over Hayden Pass, Olympic National Park, September 2025.',
   },
   {
-    src: '/photos/20250916_192049.jpg',
-    alt: 'Berry Bush Beneath a Fiery Sky',
-    caption: 'Berry Bush Beneath the Fiery Sky, Olympic National Park, September 2025.',
+    src: '/photos/Golden_frog.jpg',
+    alt: 'Golden frog',
+    caption: 'Golden frog.',
   },
   {
     src: '/photos/20250926_125828.jpg',
@@ -149,6 +149,14 @@ export default function Photography() {
       <div className="page-title-band">
         <h1 className="page-title">Photography</h1>
       </div>
+      <section className="standard-page-hero">
+        <div className="standard-page-hero-image standard-page-hero-image--top">
+          <img src="/photos/Fiery_sunset_w_berries.jpg" alt="Fiery sunset with berries" />
+        </div>
+        <div className="section-divider section-divider--hero">
+          <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="" aria-hidden="true" />
+        </div>
+      </section>
       <PhotoGrid photos={photos} />
     </div>
   );

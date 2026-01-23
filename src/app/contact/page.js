@@ -104,7 +104,7 @@ export default function Contact() {
           <p>An openness to talking on the phone is welcomed.</p>
         </div>
 
-        <div className="about-divider about-divider--hero">
+        <div className="section-divider section-divider--hero">
           <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="" aria-hidden="true" />
         </div>
       </section>

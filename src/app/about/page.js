@@ -85,7 +85,7 @@ export default function About() {
                 <div className="standard-page-hero-image">
                   <img src={section.image} alt={section.title} />
                 </div>
-                <div className="about-divider about-divider--hero">
+                  <div className="section-divider section-divider--hero">
                   <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="" aria-hidden="true" />
                 </div>
                 <div className="standard-page-hero-content">
@@ -135,7 +135,7 @@ export default function About() {
                 </div>
               </section>
               {idx < sections.length - 1 && !['Care Beyond The Usual Scope', 'Thinking at Scale', 'Making Meaning', 'I\'d Rather Be Working'].includes(section.title) ? (
-                <div className="about-divider">
+                <div className="section-divider">
                   <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="" aria-hidden="true" />
                 </div>
               ) : null}

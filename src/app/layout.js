@@ -5,6 +5,9 @@ import ClientLayout from '../components/ClientLayout';
 export const metadata = {
   title: 'CollectionOfAtoms',
   description: 'Thoughts, projects, and things still becoming.',
+  icons: {
+    icon: '/CollectionOfAtoms_logo/Heart_favicon_64.png',
+  },
 };
 
 export default function RootLayout({ children }) {

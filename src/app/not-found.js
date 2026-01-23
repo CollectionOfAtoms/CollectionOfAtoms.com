@@ -1,8 +1,35 @@
 export default function NotFound() {
   return (
-    <div className="page">
-      <h1>404 - Page Not Found</h1>
-      <p>The page you’re looking for doesn’t exist.</p>
+    <div className="page not-found-page">
+      <img
+        src="/CollectionOfAtoms_logo/Logo_yellow_transparent_bold.svg"
+        alt="Collection of Atoms logo"
+        className="not-found-logo"
+      />
+      <div className="page-title-band">
+        <h1 className="page-title">404 - Page not found.</h1>
+      </div>
+      <div className="not-found-content">
+        <blockquote className="not-found-quote">
+          <p>
+            “We are going to die, and that makes us the lucky ones. Most people are never
+            going to die because they are never going to be born. The potential people who
+            could have been here in my place but who will in fact never see the light of day
+            outnumber the sand grains of Arabia. Certainly those unborn ghosts include
+            greater poets than Keats, scientists greater than Newton. We know this because
+            the set of possible people allowed by our DNA so massively exceeds the set of
+            actual people. In the teeth of these stupefying odds it is you and I, in our
+            ordinariness, that are here. We privileged few, who won the lottery of birth
+            against all odds, how dare we whine at our inevitable return to that prior state
+            from which the vast majority have never stirred?”
+          </p>
+          <cite>— Richard Dawkins</cite>
+        </blockquote>
+        <p>
+          This page is among the myriad combinations of pages that don’t
+          get to exist.
+        </p>
+      </div>
     </div>
   );
 }
