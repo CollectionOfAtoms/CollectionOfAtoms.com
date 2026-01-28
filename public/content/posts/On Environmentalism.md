@@ -13,6 +13,8 @@ As we begin, I'd like you to consider your own life. What brings purpose and mea
 
 Take a moment now and write a short list of the most important earthly things that bring you value to your own life. 
 
+[[meaning:prompt]]
+
 Just a few items will do. Your list doesn't need to be a comprehensive one of every possible thing that you can list. Once you have at three or four or five items listed out, come back and continue reading.  
 
 If you have trouble writing even one item on your list, this is a sign of a depressed mental state.  It's okay to be there, and I have been there myself many times throughout my life. But if you are there, the rest of this exercise isn't going to land, and may cause you to even experience shame or guilt that certainly won't be productive for the change I hope to make or for your own internal experience.  If this is you, come back later.  You haven't always felt this way, and there will be a time in your future where this is easy. 
@@ -36,6 +38,8 @@ Here is my list:
 
 Yours is surely different but I'd bet it shares those core thematic tendencies with my own: it is centered around your own experience or the experiences of others, especially propagating love and enjoyment.  
 
+[[meaning:echo]]
+
 So why are all those values secretly environmentalism?  
 
 Well consider the _reductio-ad-absurdum_ first: If the habitable environment of earth were truly lost, there would be no you.  There would be no friends or Nibbler or Brother.  There would be a Sunset, but there would be no me to enjoy it.  What about your list, do any of your earthly experiences of meaning transend the death of the environment?
@@ -43,6 +47,8 @@ Well consider the _reductio-ad-absurdum_ first: If the habitable environment of 
 I'm willing to wager that the answer is no.  
 
 It is clear then that all we value depends in some way on our ability to survive which depends on our environment.
+
+[[meaning:echo]]
 
 We've bounded the problem: Somewhere between the current state of the environment, and the total destruction of the habitable planet lies the destruction of meaning.
 

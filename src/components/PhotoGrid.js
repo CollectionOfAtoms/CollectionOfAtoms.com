@@ -45,22 +45,37 @@ export default function PhotoGrid({ photos = [] }) {
   return (
     <>
       <div className="photo-grid">
-        {photos.map((photo, index) => (
-          <button
-            key={photo.src}
-            className="photo-grid__item"
-            onClick={() => setActiveIndex(index)}
-            style={{ backgroundImage: `url(${photo.src})` }}
-            aria-label={photo.alt || 'Open photo'}
-          />
-        ))}
+        {photos.map((photo, index) => {
+          const thumbSrc = photo.thumbSrc || photo.thumb || photo.src;
+          const fullSrc = photo.fullSrc || photo.src;
+          return (
+            <button
+              key={fullSrc}
+              className="photo-grid__item"
+              onClick={() => setActiveIndex(index)}
+              aria-label={photo.alt || 'Open photo'}
+            >
+              <img
+                src={thumbSrc}
+                alt={photo.alt || 'Photo thumbnail'}
+                className="photo-grid__thumb"
+                loading="lazy"
+                decoding="async"
+              />
+            </button>
+          );
+        })}
       </div>
 
       {activePhoto ? (
         <div className="photo-overlay" onClick={closeOverlay}>
           <div className="photo-overlay__inner" onClick={(e) => e.stopPropagation()}>
             <button className="photo-overlay__close" onClick={closeOverlay} aria-label="Close photo">✕</button>
-            <img src={activePhoto.src} alt={activePhoto.alt || 'Full size photo'} />
+            <img
+              src={activePhoto.fullSrc || activePhoto.src}
+              alt={activePhoto.alt || 'Full size photo'}
+              loading="eager"
+            />
             {(activePhoto.caption || activePhoto.alt) && (
               <p className="photo-overlay__caption">
                 {activePhoto.caption || activePhoto.alt}

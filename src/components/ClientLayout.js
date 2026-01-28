@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { AudioPlayerProvider, useAudioPlayer } from '../context/AudioPlayerContext';
@@ -8,18 +8,54 @@ import { AudioPlayerProvider, useAudioPlayer } from '../context/AudioPlayerConte
 export default function ClientLayout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+  const navRef = useRef(null);
 
   const toggleMenu = () => setMenuOpen((open) => !open);
   const closeMenu = () => setMenuOpen(false);
 
   useEffect(() => {
-    const updateOffset = () => {
-      const atTop = window.scrollY <= 4;
-      document.body.classList.toggle('at-top', atTop);
+    const nav = navRef.current;
+    if (!nav) return undefined;
+
+    const updateHeight = () => {
+      const height = nav.getBoundingClientRect().height;
+      document.documentElement.style.setProperty('--navbar-height', `${height}px`);
     };
-    updateOffset();
-    window.addEventListener('scroll', updateOffset, { passive: true });
-    return () => window.removeEventListener('scroll', updateOffset);
+
+    updateHeight();
+
+    const updateVisibleHeight = () => {
+      const rect = nav.getBoundingClientRect();
+      const viewTop = 0;
+      const viewBottom = window.innerHeight || document.documentElement.clientHeight;
+      const visible = Math.max(0, Math.min(rect.bottom, viewBottom) - Math.max(rect.top, viewTop));
+      const value = `${visible}px`;
+      document.documentElement.style.setProperty('--navbar-visible-height', value);
+      document.body?.style.setProperty('--navbar-visible-height', value);
+      document.body.classList.toggle('navbar-in-view', visible > 0);
+    };
+
+    updateVisibleHeight();
+    window.addEventListener('scroll', updateVisibleHeight, { passive: true });
+    window.addEventListener('resize', updateVisibleHeight);
+
+    let resizeObserver;
+    if (typeof ResizeObserver !== 'undefined') {
+      resizeObserver = new ResizeObserver(updateHeight);
+      resizeObserver.observe(nav);
+    } else {
+      window.addEventListener('resize', updateHeight);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', updateVisibleHeight);
+      window.removeEventListener('resize', updateVisibleHeight);
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+      } else {
+        window.removeEventListener('resize', updateHeight);
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -36,7 +72,7 @@ export default function ClientLayout({ children }) {
   return (
     <AudioPlayerProvider>
       <div>
-        <nav className="navbar">
+        <nav className="navbar" ref={navRef}>
           <Link href="/" className="navbar-brand" onClick={closeMenu}>
             <img
               src="/CollectionOfAtoms_logo/Heart_bold_transparent.svg"

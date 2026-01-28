@@ -8,7 +8,7 @@ export default function About() {
     {
       title: 'My Roots',
       text: `Born in Flagstaff, Arizona and raised in Boulder, Colorado, I learned to think for myself, to enjoy nature's abundance, and to never fear learning. In 2015 I moved away and hiked the Pacific Crest Trail from Mexico to Canada before putting down new roots in Oregon. 
-      \n Today I'm based in Portland, Oregon, where I live in and help lead a community house. Much of my free time is spent tending to the place itself—repairing what’s worn, improving what’s awkward, and slowly shaping a space that can hold people well. `,
+      \n Today I'm based in Portland, Oregon, where I live in and help lead a community house. We're always making improvements and slowly shaping a space that can hold people well.`,
       image: '/me/Longs_Peak_centered-4real.jpg',
       fullBleed: true,
     },
@@ -85,7 +85,7 @@ export default function About() {
                 <div className="standard-page-hero-image">
                   <img src={section.image} alt={section.title} />
                 </div>
-                  <div className="section-divider section-divider--hero">
+                <div className="section-divider section-divider--hero">
                   <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="" aria-hidden="true" />
                 </div>
                 <div className="standard-page-hero-content">

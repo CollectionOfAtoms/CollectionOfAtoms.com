@@ -4,6 +4,27 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import { getPostById } from '../../../data/posts';
+import {
+  MeaningListEcho,
+  MeaningListPrompt,
+  MeaningListProvider,
+} from '../../../components/MeaningList';
+
+const MEANING_MARKER = /\[\[meaning:(prompt|echo)\]\]/g;
+
+const renderMeaningSections = (content) => {
+  const segments = content.split(MEANING_MARKER);
+  return segments.map((segment, index) => {
+    if (segment === 'prompt') {
+      return <MeaningListPrompt key={`meaning-prompt-${index}`} />;
+    }
+    if (segment === 'echo') {
+      return <MeaningListEcho key={`meaning-echo-${index}`} />;
+    }
+    if (!segment.trim()) return null;
+    return <ReactMarkdown key={`meaning-text-${index}`}>{segment}</ReactMarkdown>;
+  });
+};
 
 export default async function BlogPostPage({ params }) {
   const post = getPostById(params.postId);
@@ -24,13 +45,22 @@ export default async function BlogPostPage({ params }) {
 
   return (
     <div className="page blog-post-page">
-      <Link href="/blog" className="blog-post-page__back">← Back to Blog</Link>
+      <div className="page-title-band">
+        <h1 className="page-title">{post.title}</h1>
+      </div>
       <header className="blog-post-page__header">
         <p className="blog-post__meta">{post.date} · {post.readTime}</p>
       </header>
       <div className="blog-post__content">
-        <ReactMarkdown>{content}</ReactMarkdown>
+        {post.id === 'on-environmentalism' ? (
+          <MeaningListProvider storageKey={`meaning-list-${post.id}`}>
+            {renderMeaningSections(content)}
+          </MeaningListProvider>
+        ) : (
+          <ReactMarkdown>{content}</ReactMarkdown>
+        )}
       </div>
+      <Link href="/blog" className="blog-post-page__back">← Back to Blog</Link>
     </div>
   );
 }

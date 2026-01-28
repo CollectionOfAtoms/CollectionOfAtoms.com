@@ -1,8 +1,8 @@
 # 🌈 CollectionOfAtoms.com
 
-**CollectionOfAtoms.com** is the personal website of Jesse Caldwell — a digital home for projects, writing, and ways to get in touch. Built with React, it's styled with custom CSS, themed for dark mode, and fully responsive.
+**CollectionOfAtoms.com** is the personal website of Jesse Caldwell — a digital home for projects, writing, and ways to get in touch. Built with Next.js (App Router), styled with custom CSS, themed for dark mode, and fully responsive.
 
-![favicon](public/favicon.ico)
+![favicon](public/CollectionOfAtoms_logo/Heart_favicon_64.png)
 
 ---
 
@@ -10,8 +10,8 @@
 
 | Layer       | Technology          |
 |-------------|---------------------|
-| Frontend    | [React](https://reactjs.org/) (via `create-react-app`) |
-| Routing     | [React Router DOM](https://reactrouter.com/) |
+| Framework   | [Next.js](https://nextjs.org/) (App Router) |
+| Rendering   | React Server Components + Client Components |
 | Deployment  | [Vercel](https://vercel.com/) |
 | Styling     | CSS (custom, no frameworks) |
 | Favicon     | Custom icon (molecule-inspired human profile) |
@@ -26,8 +26,8 @@ The site is automatically deployed to [https://collectionofatoms.com](https://co
 
 1. **Repo**: [CollectionOfAtoms/CollectionOfAtoms.com](https://github.com/CollectionOfAtoms/CollectionOfAtoms.com)
 2. **App Name on Vercel**: `collectionofatoms-app`
-3. **Framework Preset**: `Create React App`
-4. **Output directory**: `build` (handled automatically by Vercel)
+3. **Framework Preset**: `Next.js`
+4. **Output directory**: `/.next` (handled automatically by Vercel)
 
 ---
 
@@ -42,7 +42,7 @@ cd CollectionOfAtoms.com
 npm install
 
 # Start the development server
-npm start
+npm run dev
 ```
 Open your browser to http://localhost:3000.
 
@@ -50,17 +50,24 @@ Open your browser to http://localhost:3000.
 
 ``` bash
 public/
-├── index.html         # HTML template
-├── favicon.ico        # Custom favicon (molecule profile)
+├── CollectionOfAtoms_logo/         # Logos + favicon
+├── content/posts/                  # Markdown blog posts
+├── music/                          # Audio tracks
+├── photos/                         # Photography assets
+└── projects/                       # Project media
 src/
-├── App.js             # App shell and router
-├── App.css            # Global styles
-├── pages/             # Individual page components
-│   ├── Home.js
-│   ├── About.js
-│   ├── Projects.js
-│   ├── Blog.js
-│   └── Contact.js
+├── app/                            # Next.js App Router
+│   ├── layout.js                    # Root layout + fonts + metadata
+│   ├── page.js                      # Home (server) + HomePageClient
+│   ├── not-found.js                 # 404 page
+│   ├── blog/                        # Blog index + [postId] route
+│   ├── projects/                    # Project detail routes
+│   └── ...                          # About, Contact, Music, Photography
+├── components/                      # Shared UI (ClientLayout, PhotoGrid, BlogPost)
+├── context/                         # Audio player context
+├── data/                            # Tracks + posts metadata
+├── App.css                          # Global styles
+└── index.css                        # Base styles
 ```
 
 ## ✨ Features
@@ -68,7 +75,7 @@ src/
 - 📱 Mobile-first layout with animated hamburger menu
 - 🔗 Active link highlighting
 - 🧬 Custom-designed favicon and icon system
-- ✉️ Contact form uses a `mailto:` link to open the visitor's email client (no backend email service)
+- ✉️ Contact form posts to Formspree (no custom backend)
 - 🧩 Easily extensible for future enhancements
 ⸻
 

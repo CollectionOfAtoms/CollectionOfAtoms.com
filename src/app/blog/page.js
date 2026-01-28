@@ -1,4 +1,4 @@
-import BlogPost from '../../components/BlogPost';
+import BlogPostCard from '../../components/BlogPostCard';
 import { posts } from '../../data/posts';
 
 export default function Blog() {
@@ -9,7 +9,7 @@ export default function Blog() {
       </div>
       <p>Welcome to my brain.</p>
       {posts.map((post) => (
-        <BlogPost
+        <BlogPostCard
           key={post.id}
           {...post}
         />

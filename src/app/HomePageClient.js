@@ -3,21 +3,18 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
-import ReactMarkdown from 'react-markdown';
 import { posts } from '../data/posts';
 import { tracks } from '../data/tracks';
 import { useAudioPlayer } from '../context/AudioPlayerContext';
+import BlogPostCard from '../components/BlogPostCard';
+import ProjectCard from '../components/ProjectCard';
 
-export default function HomePageClient({ latestExcerpt = '' }) {
+export default function HomePageClient() {
   const router = useRouter();
   const sectionsRef = useRef(null);
   const latestPost = posts[0];
   const { playTrack, togglePlay, currentIndex, isPlaying, progress, seekTo } = useAudioPlayer();
   const { currentTime, duration } = progress;
-
-  const blogExcerpt = latestPost && latestExcerpt
-    ? latestExcerpt
-    : 'Latest writing from the lab.';
 
   const featuredProject = {
     title: 'Sprialator',
@@ -27,7 +24,7 @@ export default function HomePageClient({ latestExcerpt = '' }) {
     ],
     website: {
       label: 'Check it out',
-      url: 'https://collectionofatoms.github.io/sprialator/',
+      url: '/projects/sprialator',
     },
     detailPath: '/projects/sprialator',
     link: 'https://github.com/CollectionOfAtoms/sprialator',
@@ -62,7 +59,7 @@ export default function HomePageClient({ latestExcerpt = '' }) {
       ctaBg: '#f4f4f0',
       ctaColor: '#1c2118',
       ctaText: 'Learn more about me',
-      portrait: 'me/Self_1.jpg',
+      portrait: '/me/Self_2.jpg',
     },
     {
       key: 'projects',
@@ -78,8 +75,6 @@ export default function HomePageClient({ latestExcerpt = '' }) {
     {
       key: 'blog',
       title: 'Blog',
-      content: blogExcerpt,
-      contentIsMarkdown: true,
       bg: '#2b1416',
       textColor: '#ffecd3',
       link: '/blog',
@@ -126,10 +121,15 @@ export default function HomePageClient({ latestExcerpt = '' }) {
               className="home-hero-logo"
             />
             <h1 className="home-hero-title">CollectionOfAtoms</h1>
-            <p className="home-hero-tagline">Thoughts, projects, and things still becoming.</p>
-            <p className="home-hero-tagline home-hero-tagline--secondary">
-              Currently: exploring creative code + discussing animal ethics + looking for my dream-job.
-            </p>
+            <div className="home-hero-text">
+              <div className="section-divider section-divider--hero">
+                <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="" aria-hidden="true" />
+              </div>
+              <p className="home-hero-tagline">Thoughts, projects, and things still becoming.</p>
+              <p className="home-hero-tagline home-hero-tagline--secondary">
+                Currently: exploring creative code + discussing animal ethics + looking for my dream-job.
+              </p>
+            </div>
             <button className="home-hero-button" onClick={scrollToFirstSection}>
               Explore ↓
             </button>
@@ -176,76 +176,10 @@ export default function HomePageClient({ latestExcerpt = '' }) {
                     <p>{section.content}</p>
                   </div>
                 ) : section.key === 'projects' && section.featuredProject ? (
-                  <article
-                    className="project-card home-project-card"
-                    onClick={() => router.push(section.featuredProject.detailPath)}
-                    onKeyDown={(event) => {
-                      if (event.key === 'Enter' || event.key === ' ') {
-                        event.preventDefault();
-                        router.push(section.featuredProject.detailPath);
-                      }
-                    }}
-                    role="link"
-                    tabIndex={0}
-                  >
-                    <div className="project-card__media project-card__media--center">
-                      {section.featuredProject.video ? (
-                        <video
-                          autoPlay
-                          loop
-                          muted
-                          playsInline
-                          preload="metadata"
-                          poster={section.featuredProject.video.poster}
-                        >
-                          <source src={section.featuredProject.video.src} type="video/mp4" />
-                        </video>
-                      ) : section.featuredProject.image ? (
-                        <img
-                          src={section.featuredProject.image}
-                          alt={`${section.featuredProject.title} preview`}
-                        />
-                      ) : (
-                        <span>Project image coming soon</span>
-                      )}
-                    </div>
-                    <div className="project-card__body">
-                      <h2 className="project-card__title">{section.featuredProject.title}</h2>
-                      <div className="project-card__desc">
-                        {section.featuredProject.description.map((paragraph) => (
-                          <p key={paragraph}>{paragraph}</p>
-                        ))}
-                        {section.featuredProject.website ? (
-                          <a
-                            href={section.featuredProject.website.url}
-                            target="_blank"
-                            rel="noreferrer"
-                            onClick={(event) => event.stopPropagation()}
-                          >
-                            {section.featuredProject.website.label} →
-                          </a>
-                        ) : null}
-                      </div>
-                      <ul className="project-card__tags">
-                        {section.featuredProject.tags.map((tag) => (
-                          <li key={tag}>#{tag}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <a
-                      className="project-card__github"
-                      href={section.featuredProject.link}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={`Open ${section.featuredProject.title} on GitHub`}
-                    >
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path
-                          d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.72-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.1-1.5-1.1-1.5-.9-.64.07-.63.07-.63 1 .07 1.52 1.05 1.52 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.38-2.04 1-2.76-.1-.26-.43-1.3.09-2.71 0 0 .82-.27 2.7 1.03a9.08 9.08 0 0 1 2.46-.34c.84 0 1.69.12 2.46.34 1.88-1.3 2.7-1.03 2.7-1.03.52 1.41.2 2.45.1 2.71.62.72 1 1.64 1 2.76 0 3.93-2.34 4.79-4.57 5.05.36.33.68.97.68 1.96 0 1.41-.01 2.55-.01 2.9 0 .27.18.6.69.49 3.96-1.35 6.83-5.17 6.83-9.67C22 6.58 17.52 2 12 2z"
-                        />
-                      </svg>
-                    </a>
-                  </article>
+                  <ProjectCard
+                    {...section.featuredProject}
+                    className="home-project-card"
+                  />
                 ) : section.key === 'music' ? (
                   <div className="home-media-frame">
                     <div
@@ -326,16 +260,10 @@ export default function HomePageClient({ latestExcerpt = '' }) {
                       }}
                     />
                   </div>
-                ) : section.key === 'blog' && section.contentIsMarkdown ? (
-                  <div className="home-blog-card">
-                    <h3 className="home-blog-card__title">{latestPost?.title || 'Latest post'}</h3>
-                    <div className="home-blog-excerpt blog-post__content">
-                      <div className="home-blog-excerpt__content">
-                        <ReactMarkdown>{section.content}</ReactMarkdown>
-                      </div>
-                    </div>
-                    <div className="home-blog-card__fade" aria-hidden="true" />
-                  </div>
+                ) : section.key === 'blog' ? (
+                  latestPost ? (
+                    <BlogPostCard {...latestPost} />
+                  ) : null
                 ) : (
                   section.content ? <p>{section.content}</p> : null
                 )}
