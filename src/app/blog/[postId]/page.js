@@ -5,29 +5,151 @@ import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import { getPostById } from '../../../data/posts';
 import {
-  MeaningListEcho,
-  MeaningListPrompt,
+  MeaningListAdd,
+  MeaningListEntry,
+  MeaningListList,
+  MeaningListListCustom,
   MeaningListProvider,
+  MeaningListSelectEnvironmental,
+  MeaningListNonEnvironmental,
+  MeaningListSubmit,
 } from '../../../components/MeaningList';
+import { parseMeaningContent, resolveMeaningProps } from '../../../lib/meaningMarkdown';
 
-const MEANING_MARKER = /\[\[meaning:(prompt|echo)\]\]/g;
+const stripMarkdownComments = (text) => text.replace(/<!--[\s\S]*?-->/g, '');
 
-const renderMeaningSections = (content) => {
-  const segments = content.split(MEANING_MARKER);
-  return segments.map((segment, index) => {
-    if (segment === 'prompt') {
-      return <MeaningListPrompt key={`meaning-prompt-${index}`} />;
+const renderMarkdownWithDividers = (text, keyPrefix) => {
+  const cleaned = stripMarkdownComments(text);
+  const chunks = cleaned.split('[[atom_divider]]');
+  return chunks.flatMap((chunk, chunkIndex) => {
+    const nodes = [];
+    if (chunk.trim()) {
+      nodes.push(
+        <ReactMarkdown key={`${keyPrefix}-text-${chunkIndex}`}>
+          {chunk}
+        </ReactMarkdown>,
+      );
     }
-    if (segment === 'echo') {
-      return <MeaningListEcho key={`meaning-echo-${index}`} />;
+    if (chunkIndex < chunks.length - 1) {
+      nodes.push(
+        <div className="section-divider section-divider--hero" key={`${keyPrefix}-divider-${chunkIndex}`}>
+          <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="" aria-hidden="true" />
+        </div>,
+      );
     }
-    if (!segment.trim()) return null;
-    return <ReactMarkdown key={`meaning-text-${index}`}>{segment}</ReactMarkdown>;
+    return nodes;
   });
 };
 
+const splitGoldBlocks = (text) => {
+  const regex = /\[\[gold\]\]([\s\S]*?)\[\[\/gold\]\]/g;
+  let lastIndex = 0;
+  let match;
+  const parts = [];
+  while ((match = regex.exec(text)) !== null) {
+    const start = match.index;
+    const end = regex.lastIndex;
+    if (start > lastIndex) {
+      parts.push({ type: 'text', value: text.slice(lastIndex, start) });
+    }
+    parts.push({ type: 'gold', value: match[1] });
+    lastIndex = end;
+  }
+  if (lastIndex < text.length) {
+    parts.push({ type: 'text', value: text.slice(lastIndex) });
+  }
+  return parts;
+};
+
+const splitHeroBlocks = (text) => {
+  const regex = /\[\[hero\]\]([\s\S]*?)\[\[\/hero\]\]/g;
+  let lastIndex = 0;
+  let match;
+  const parts = [];
+  while ((match = regex.exec(text)) !== null) {
+    const start = match.index;
+    const end = regex.lastIndex;
+    if (start > lastIndex) {
+      parts.push({ type: 'text', value: text.slice(lastIndex, start) });
+    }
+    parts.push({ type: 'hero', value: match[1] });
+    lastIndex = end;
+  }
+  if (lastIndex < text.length) {
+    parts.push({ type: 'text', value: text.slice(lastIndex) });
+  }
+  return parts;
+};
+
+const renderHeroBlock = (raw, key) => {
+  const lines = raw.split('\n').map((line) => line.trim()).filter(Boolean);
+  if (!lines.length) return null;
+  const [src, alt = 'Hero image'] = lines[0].split('|').map((entry) => entry.trim());
+  return (
+    <section className="standard-page-hero" key={key}>
+      <div className="standard-page-hero-image standard-page-hero-image--top">
+        <img src={src} alt={alt || 'Hero image'} />
+      </div>
+      <div className="section-divider section-divider--hero">
+        <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="" aria-hidden="true" />
+      </div>
+    </section>
+  );
+};
+
+const renderMeaningSections = (content, copy = {}) =>
+  parseMeaningContent(content).map((part, index) => {
+    if (part.type === 'text') {
+      if (!part.value.trim()) return null;
+      return splitHeroBlocks(part.value).flatMap((heroBlock, heroIndex) => {
+        if (heroBlock.type === 'hero') {
+          return renderHeroBlock(heroBlock.value, `hero-${index}-${heroIndex}`);
+        }
+        return splitGoldBlocks(heroBlock.value).flatMap((block, blockIndex) => {
+          if (block.type === 'gold') {
+            return (
+              <div className="blog-gold-block" key={`gold-${index}-${heroIndex}-${blockIndex}`}>
+                {renderMarkdownWithDividers(block.value, `gold-${index}-${heroIndex}-${blockIndex}`)}
+              </div>
+            );
+          }
+          return renderMarkdownWithDividers(block.value, `text-${index}-${heroIndex}-${blockIndex}`);
+        });
+      });
+    }
+
+    const mode = part.mode;
+    const props = resolveMeaningProps(mode, copy[mode] || {}, part.args || {});
+
+    if (mode === 'entry') return <MeaningListEntry key={`meaning-entry-${index}`} {...props} />;
+    if (mode === 'list') return <MeaningListList key={`meaning-list-${index}`} {...props} />;
+    if (mode === 'list-custom') {
+      const entries = typeof props.entries === 'string'
+        ? props.entries.split('|').map((entry) => entry.trim()).filter(Boolean)
+        : props.entries;
+      return (
+        <MeaningListListCustom
+          key={`meaning-list-custom-${index}`}
+          {...props}
+          entries={entries}
+        />
+      );
+    }
+    if (mode === 'select_environmental') {
+      return <MeaningListSelectEnvironmental key={`meaning-select-${index}`} {...props} />;
+    }
+    if (mode === 'list_non_environmental') {
+      return <MeaningListNonEnvironmental key={`meaning-non-env-${index}`} {...props} />;
+    }
+    if (mode === 'add') return <MeaningListAdd key={`meaning-add-${index}`} {...props} />;
+    if (mode === 'submit') return <MeaningListSubmit key={`meaning-submit-${index}`} {...props} />;
+
+    return null;
+  });
+
 export default async function BlogPostPage({ params }) {
-  const post = getPostById(params.postId);
+  const { postId } = await params;
+  const post = getPostById(postId);
 
   if (!post) {
     notFound();
@@ -43,18 +165,55 @@ export default async function BlogPostPage({ params }) {
     content = '*Unable to load this post right now.*';
   }
 
+  const meaningCopy = {
+    entry: {
+      heading: 'Entry',
+      hint: 'Capture whatever gives your life meaning. Keep it short. Three to five items is plenty.',
+      placeholder: 'e.g. my partner, the forest, making art',
+    },
+    list: {
+      heading: 'List',
+    },
+    'list-custom': {
+      heading: 'List',
+      hint: '',
+      entries: '',
+    },
+    select_environmental: {
+      heading: 'Values tied to environment',
+      hint: 'Tap the items that depend on the environment. Add a note once selected.',
+      commentPlaceholder: 'What about this depends on the environment?',
+    },
+    list_non_environmental: {
+      heading: 'Values less tied to environment',
+      hint: 'These were not marked as environmentally dependent. Add a note if you want.',
+      commentPlaceholder: 'Optional note',
+    },
+    add: {
+      heading: 'Add',
+      hint: 'Add more items and optional notes.',
+      entryPlaceholder: 'A new entry',
+      commentPlaceholder: 'Optional note',
+      addLabel: 'Add',
+    },
+    submit: {
+      heading: 'Submit',
+      hint: 'What changed, if anything, as you moved through the essay?',
+      placeholder: 'A sentence or two is plenty.',
+      submitLabel: 'Submit anonymously',
+      successMessage: 'Thanks — your reflection has been received.',
+    },
+  };
+
   return (
     <div className="page blog-post-page">
       <div className="page-title-band">
         <h1 className="page-title">{post.title}</h1>
       </div>
-      <header className="blog-post-page__header">
-        <p className="blog-post__meta">{post.date} · {post.readTime}</p>
-      </header>
       <div className="blog-post__content">
         {post.id === 'on-environmentalism' ? (
           <MeaningListProvider storageKey={`meaning-list-${post.id}`}>
-            {renderMeaningSections(content)}
+            {renderMeaningSections(content, meaningCopy)}
           </MeaningListProvider>
         ) : (
           <ReactMarkdown>{content}</ReactMarkdown>

@@ -117,10 +117,9 @@ export default function About() {
           }
 
           return (
-            <>
+            <div key={section.title + idx}>
               <section
                 className={`about-block ${isRightAligned ? 'about-block--right' : 'about-block--left'} ${section.key === 'space' ? 'about-block--space' : ''}`}
-                key={section.title + idx}
               >
                 <button
                   className={`about-photo ${isRightAligned ? 'about-photo--right' : 'about-photo--left'} ${section.imagePosition === 'left' ? 'about-photo--image-left' : ''} ${section.key === 'space' ? 'about-photo--no-shadow' : ''}`}
@@ -139,7 +138,7 @@ export default function About() {
                   <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="" aria-hidden="true" />
                 </div>
               ) : null}
-            </>
+            </div>
           );
         })}
       </div>

@@ -1,11 +1,6 @@
 export default function NotFound() {
   return (
     <div className="page not-found-page">
-      <img
-        src="/CollectionOfAtoms_logo/Logo_yellow_transparent_bold.svg"
-        alt="Collection of Atoms logo"
-        className="not-found-logo"
-      />
       <div className="page-title-band">
         <h1 className="page-title">404 - Page not found.</h1>
       </div>
@@ -25,6 +20,9 @@ export default function NotFound() {
           </p>
           <cite>— Richard Dawkins</cite>
         </blockquote>
+        <div className="section-divider section-divider--hero">
+                  <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="" aria-hidden="true" />
+        </div>
         <p>
           This page is among the myriad combinations of pages that don’t
           get to exist.

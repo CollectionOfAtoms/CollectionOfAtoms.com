@@ -462,7 +462,7 @@ body, html {
 }
 
 .not-found-quote {
-  margin: 1rem 0 0;
+  margin: 1rem 0 1rem;
   padding: 1rem 1.4rem;
   max-width: 90%;
   border-left: 3px solid rgba(255, 236, 211, 0.55);
@@ -1039,6 +1039,15 @@ body, html {
   text-align: center;
   font-size: clamp(2.2rem, 10vh, 3.6rem);
   color: #ffecd3;
+}
+
+.page.home .project-card__title,
+.page.home .blog-post__title,
+.page.home .home-music__title {
+  font-size: clamp(1.2rem, 3.6vw, 1.8rem);
+  line-height: 1.2;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .home-section p {
@@ -1918,6 +1927,23 @@ body, html {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
+  padding-bottom: 1rem;
+}
+
+.meaning-list__form--stack {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.meaning-list__form textarea {
+  flex: 1 1 100%;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 236, 211, 0.35);
+  background: rgba(12, 12, 12, 0.55);
+  color: #ffecd3;
+  font-family: inherit;
+  resize: vertical;
 }
 
 .meaning-list__form input {
@@ -1947,23 +1973,223 @@ body, html {
   gap: 0.4rem;
 }
 
+.meaning-list__choice {
+  width: 100%;
+  text-align: left;
+  padding: 0.35rem 0;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: #ffecd3;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.meaning-list__entry {
+  font-weight: inherit;
+  letter-spacing: normal;
+  color: inherit;
+}
+
+.meaning-list--select .meaning-list__item {
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.meaning-list--select .meaning-list__item:hover {
+  background: rgba(54, 166, 89, 0.18);
+}
+
+.meaning-list--select .meaning-list__item.is-selected {
+  background: rgba(54, 166, 89, 0.32);
+}
+
+.meaning-list--select .meaning-list__item-button {
+  font-weight: 600;
+}
+
+.meaning-list--add .meaning-list__item {
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.meaning-list--add .meaning-list__item.is-selected {
+  background: rgba(54, 166, 89, 0.32);
+}
+
+.meaning-list--add .meaning-list__entry {
+  font-weight: 600;
+}
+
+.meaning-list--add .meaning-list__comment-content--inline {
+  width: 100%;
+}
+
+.meaning-list__comment {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 236, 211, 0.25);
+  background: rgba(12, 12, 12, 0.55);
+  color: #ffecd3;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.meaning-list__item-label {
+  font-weight: 600;
+}
+
+.meaning-list__item-summary {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.meaning-list__comment-preview {
+  margin-top: 0.35rem;
+  color: rgba(255, 236, 211, 0.75);
+  font-size: 0.95rem;
+}
+
+.meaning-list__comment-content {
+  width: 100%;
+}
+
+.meaning-list__comment-content--inline {
+  width: 100%;
+}
+
+.meaning-list__comment-actions {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+@media (max-width: 899px) {
+  .meaning-list .meaning-list__items li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    grid-auto-flow: row;
+    row-gap: 0.4rem;
+    column-gap: 0.6rem;
+  }
+
+  .meaning-list .meaning-list__entry {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .meaning-list .meaning-list__comment-actions {
+    grid-column: 2;
+    grid-row: 1;
+    justify-content: flex-end;
+  }
+
+  .meaning-list .meaning-list__comment-content {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .meaning-list .meaning-list__comment-content .meaning-list__comment-input {
+    width: 100%;
+  }
+}
+
+@media (min-width: 900px) {
+  .meaning-list .meaning-list__items li {
+    display: grid;
+    grid-template-columns: minmax(160px, 28%) minmax(260px, 1fr) auto;
+    column-gap: 1rem;
+    align-items: start;
+  }
+
+  .meaning-list .meaning-list__comment-content--inline {
+    grid-column: 2;
+  }
+
+  .meaning-list .meaning-list__comment-actions {
+    grid-column: 3;
+    justify-content: flex-end;
+  }
+
+  .meaning-list .meaning-list__comment-input,
+  .meaning-list .meaning-list__comment-text {
+    flex: 1 1 auto;
+    max-width: 100%;
+    text-align: left;
+  }
+}
+
+.meaning-list__comment-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100%;
+  padding: 0.45rem 0.65rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 236, 211, 0.25);
+  background: rgba(12, 12, 12, 0.55);
+  color: #ffecd3;
+  font-family: inherit;
+  resize: none;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.meaning-list__comment-button {
+  border: 1px solid rgba(255, 236, 211, 0.4);
+  background: transparent;
+  color: #ffecd3;
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+.meaning-list__comment-text {
+  color: rgba(255, 236, 211, 0.85);
+  font-size: 0.95rem;
+}
+
+.meaning-list__item-button {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  font-family: 'EB Garamond', Garamond, 'Times New Roman', serif;
+  font-weight: inherit;
+  letter-spacing: 0;
+  line-height: inherit;
+  font-size: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
 .meaning-list__items li {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 0.8rem;
   padding: 0.45rem 0.6rem;
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.35);
 }
 
-.meaning-list__items button {
+
+.meaning-list__remove {
   background: transparent;
   border: 1px solid rgba(255, 236, 211, 0.4);
   color: #ffecd3;
   border-radius: 999px;
   padding: 0.2rem 0.6rem;
   cursor: pointer;
+  width: auto;
+  flex: 0 0 auto;
+  margin-left: auto;
 }
 
 .meaning-list__clear {
@@ -1977,6 +2203,27 @@ body, html {
 
 .meaning-list--echo {
   background: rgba(43, 20, 22, 0.6);
+}
+
+.meaning-list--custom {
+  background: #0f2320;
+}
+
+.meaning-list__hint--success {
+  color: #bff7c8;
+}
+
+.meaning-list__hint--error {
+  color: #ffb4b4;
+}
+
+.blog-gold-block {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-radius: 18px;
+  background: rgba(215, 190, 130, 0.12);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(215, 190, 130, 0.35);
 }
 
 .blog-post__content img[alt="Collection of Atoms logo"] {

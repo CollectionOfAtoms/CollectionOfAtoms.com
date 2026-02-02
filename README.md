@@ -13,6 +13,7 @@
 | Framework   | [Next.js](https://nextjs.org/) (App Router) |
 | Rendering   | React Server Components + Client Components |
 | Deployment  | [Vercel](https://vercel.com/) |
+| Database    | [Neon](https://neon.tech/) (PostgreSQL) |
 | Styling     | CSS (custom, no frameworks) |
 | Favicon     | Custom icon (molecule-inspired human profile) |
 
@@ -77,6 +78,18 @@ src/
 - 🧬 Custom-designed favicon and icon system
 - ✉️ Contact form posts to Formspree (no custom backend)
 - 🧩 Easily extensible for future enhancements
+
+## 🗄️ Database
+
+The site uses a Neon-hosted PostgreSQL database. Connection details are configured via environment variables in Vercel and local development:
+
+- `DATABASE_URL` — Neon connection string (PostgreSQL)
+
+Local setup example:
+
+```bash
+export DATABASE_URL="postgres://user:password@host.neon.tech/dbname?sslmode=require"
+```
 ⸻
 
 ## 🧑‍💻 Author

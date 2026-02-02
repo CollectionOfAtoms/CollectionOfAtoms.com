@@ -101,7 +101,7 @@ export default function Contact() {
         <div className="contact-top-content">
           <h2>Let’s connect.</h2>
           <p>I much prefer verbal communication.</p>
-          <p>An openness to talking on the phone is welcomed.</p>
+          <p>An openness to response by phone is welcomed.</p>
         </div>
 
         <div className="section-divider section-divider--hero">
