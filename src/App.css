@@ -1865,7 +1865,14 @@ body, html {
 
 .blog-post__content ul,
 .blog-post__content ol {
-  margin: 0 0 1rem 1.2rem;
+  margin: 1.2rem auto;
+  padding: 0.6rem 1.4rem 0.6rem 2.2rem;
+  max-width: 85%;
+  background: rgba(21, 32, 11, 0.4);
+  border: 1px solid rgba(255, 236, 211, 0.12);
+  border-radius: 16px;
+  font-size: 1.15rem;
+  font-family: 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
 }
 
 .blog-post__content li {
@@ -2287,6 +2294,21 @@ body, html {
   border-radius: 14px;
   box-shadow: 0 16px 34px rgba(0, 0, 0, 0.35);
   object-fit: contain;
+}
+
+.blog-image-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+.blog-image-button img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .blog-post__content img[alt$="icon"] {
