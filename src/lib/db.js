@@ -4,7 +4,11 @@ import { attachDatabasePool } from "@vercel/functions";
 // Connection pooling helper for stability.
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString:
+    process.env.POSTGRES_URL ||
+    process.env.DATABASE_URL ||
+    process.env.POSTGRES_PRISMA_URL ||
+    process.env.DATABASE_URL_UNPOOLED,
   // optional: keep these conservative for serverless
   max: 5,
   idleTimeoutMillis: 5000,

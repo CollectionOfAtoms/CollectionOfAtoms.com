@@ -14,9 +14,50 @@ import {
   MeaningListNonEnvironmental,
   MeaningListSubmit,
 } from '../../../components/MeaningList';
-import { parseMeaningContent, resolveMeaningProps } from '../../../lib/meaningMarkdown';
+import DailyComicEmbed from '../../../components/DailyComicEmbed';
+import { parseArgs, parseMeaningContent, resolveMeaningProps } from '../../../lib/meaningMarkdown';
 
 const stripMarkdownComments = (text) => text.replace(/<!--[\s\S]*?-->/g, '');
+
+const splitDailyComicTokens = (text) => {
+  const regex = /\[\[daily-comic([^\]]*)\]\]/g;
+  let lastIndex = 0;
+  let match;
+  const parts = [];
+  while ((match = regex.exec(text)) !== null) {
+    const start = match.index;
+    const end = regex.lastIndex;
+    if (start > lastIndex) {
+      parts.push({ type: 'text', value: text.slice(lastIndex, start) });
+    }
+    const args = parseArgs(match[1] || '');
+    parts.push({ type: 'daily-comic', args });
+    lastIndex = end;
+  }
+  if (lastIndex < text.length) {
+    parts.push({ type: 'text', value: text.slice(lastIndex) });
+  }
+  return parts;
+};
+
+const renderMarkdownWithDailyComic = (text, keyPrefix) =>
+  splitDailyComicTokens(text).map((part, index) => {
+    if (part.type === 'daily-comic') {
+      const caption = part.args?.caption || part.args?.title || '';
+      return (
+        <DailyComicEmbed
+          key={`${keyPrefix}-daily-comic-${index}`}
+          caption={caption}
+        />
+      );
+    }
+    if (!part.value.trim()) return null;
+    return (
+      <ReactMarkdown key={`${keyPrefix}-text-${index}`}>
+        {part.value}
+      </ReactMarkdown>
+    );
+  });
 
 const renderMarkdownWithDividers = (text, keyPrefix) => {
   const cleaned = stripMarkdownComments(text);
@@ -25,9 +66,10 @@ const renderMarkdownWithDividers = (text, keyPrefix) => {
     const nodes = [];
     if (chunk.trim()) {
       nodes.push(
-        <ReactMarkdown key={`${keyPrefix}-text-${chunkIndex}`}>
-          {chunk}
-        </ReactMarkdown>,
+        ...renderMarkdownWithDailyComic(
+          chunk,
+          `${keyPrefix}-chunk-${chunkIndex}`
+        )
       );
     }
     if (chunkIndex < chunks.length - 1) {
@@ -216,7 +258,7 @@ export default async function BlogPostPage({ params }) {
             {renderMeaningSections(content, meaningCopy)}
           </MeaningListProvider>
         ) : (
-          <ReactMarkdown>{content}</ReactMarkdown>
+          renderMarkdownWithDividers(content, 'post')
         )}
       </div>
       <Link href="/blog" className="blog-post-page__back">← Back to Blog</Link>

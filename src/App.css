@@ -1904,6 +1904,51 @@ body, html {
   padding: 0;
 }
 
+.daily-comic {
+  width: 100%;
+  max-width: 100%;
+  margin: 1.5rem auto;
+  text-align: center;
+}
+
+.daily-comic__frame {
+  display: inline-block;
+  background: #2b1416;
+  border: 1px solid rgba(255, 236, 211, 0.12);
+  border-radius: 18px;
+  padding: 1rem 1.2rem 1.1rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  max-width: 70%;
+}
+
+.daily-comic img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.blog-post__content .daily-comic .daily-comic__prompt {
+  margin: 0 0 0.75rem;
+  color: #f0f6fc;
+  font-size: 1.2rem;
+  text-align: center;
+  font-family: 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.daily-comic__caption {
+  margin-top: 0.6rem;
+  color: #b8c4d4;
+  font-size: 0.95rem;
+}
+
+.daily-comic__placeholder {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  background: linear-gradient(120deg, rgba(138, 180, 255, 0.12), rgba(138, 180, 255, 0.02));
+}
+
 .meaning-list {
   margin: 1.5rem 0;
   padding: 1.25rem 1.5rem;
@@ -2231,6 +2276,17 @@ body, html {
   width: min(368px, 80%);
   height: auto;
   margin: 1.5rem auto;
+}
+
+.blog-post__content img[alt="Paintings in a museum"],
+.blog-post__content img[alt="Mona Lisa in advertising"] {
+  display: block;
+  width: min(720px, 85%);
+  height: auto;
+  margin: 1.75rem auto;
+  border-radius: 14px;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.35);
+  object-fit: contain;
 }
 
 .blog-post__content img[alt$="icon"] {

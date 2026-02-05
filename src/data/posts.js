@@ -11,6 +11,21 @@ export const posts = [
     tags: ['identity', 'design', 'symbols'],
     status: 'Published',
     file: '/content/posts/Brain%20For%20a%20Heart.md',
+    listed: true,
+  },
+  {
+    id: 'on-ai-art',
+    title: 'On AI Art',
+    date: 'Feb 2026',
+    readTime: '6 min read',
+    excerpt: 'A reflection on authorship, craft, and meaning in the age of machine-made images.',
+    image: '/CollectionOfAtoms_logo/Logo_transparent_512.png',
+    imageAlt: 'Collection of Atoms logo',
+    imageFit: 'contain',
+    tags: ['ai', 'art', 'ethics'],
+    status: 'Drafting',
+    file: '/content/posts/On%20AI%20Art.md',
+    listed: true,
   },
   {
     id: 'on-environmentalism',
@@ -23,6 +38,7 @@ export const posts = [
     tags: ['values', 'environment', 'reflection'],
     status: 'Drafting',
     file: '/content/posts/On%20Environmentalism.md',
+    listed: false,
   },
 ];
 

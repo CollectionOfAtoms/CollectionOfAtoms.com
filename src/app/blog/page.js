@@ -8,7 +8,7 @@ export default function Blog() {
         <h1 className="page-title">Blog</h1>
       </div>
       <p>Welcome to my brain.</p>
-      {posts.map((post) => (
+      {posts.filter((post) => post.listed !== false).map((post) => (
         <BlogPostCard
           key={post.id}
           {...post}

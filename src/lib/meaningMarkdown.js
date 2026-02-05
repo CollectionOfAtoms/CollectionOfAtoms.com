@@ -1,10 +1,14 @@
-const parseArgs = (text = '') => {
+export const parseArgs = (text = '') => {
   const parsed = {};
-  const regex = /(\w+)\s*=\s*"([^"]*)"|(\w+)\s*=\s*'([^']*)'/g;
+  const regex = /(\w+)\s*=\s*"((?:\\.|[^"])*)"|(\w+)\s*=\s*'((?:\\.|[^'])*)'/g;
   let match;
   while ((match = regex.exec(text)) !== null) {
-    if (match[1]) parsed[match[1]] = match[2];
-    if (match[3]) parsed[match[3]] = match[4];
+    if (match[1]) {
+      parsed[match[1]] = match[2].replace(/\\(["'\\])/g, '$1');
+    }
+    if (match[3]) {
+      parsed[match[3]] = match[4].replace(/\\(["'\\])/g, '$1');
+    }
   }
   return parsed;
 };
