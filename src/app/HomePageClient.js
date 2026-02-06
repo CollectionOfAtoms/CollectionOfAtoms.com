@@ -50,7 +50,9 @@ export default function HomePageClient() {
     {
       key: 'about',
       title: "Hey I'm Jesse",
-      content: `Welcome to CollectionOfAtoms.com, my new home online. As time goes on, the corporate services we use to share ourselves online are being increasingly corrupted by anti-user business incentives.  This is my hedge against negative advertising incentives and censorship.  A place to keep those ideas I want to be sharing, a place for me express myself, and an avenue to get ahold of me as we negotiate our relationships with social media.
+      content: `Welcome to CollectionOfAtoms.com, my new home online. As time goes on, the corporate 
+      services we use to share ourselves online are being increasingly corrupted by anti-user 
+      business incentives.  This is my hedge against negative advertising incentives and censorship.  A place to keep those ideas I want to be sharing, a place for me to express myself, and an avenue to get ahold of me as we negotiate our relationships with social media.
       \n Putting myself forward in this way feels vulnerable, but vulnerable is something I am aiming to be more often. 
       \n Stay a minute and check something out.`,
       bg: '#15200B',

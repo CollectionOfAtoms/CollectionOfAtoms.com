@@ -2,8 +2,7 @@
 
 [[subtitle text="What AI changed about how we encounter art"]]
 
-[[hero]]
-/misc/Elle_beholding.jpg|Elle Beholding
+[[hero src="/misc/Elle_beholding.jpg" alt="Elle Beholding" focus="12% 50%"]]
 [[/hero]]
 
 It's been a few years now since the advent of AI‑generated art and music.

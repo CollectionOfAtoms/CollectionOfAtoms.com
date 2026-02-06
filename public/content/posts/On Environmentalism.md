@@ -1,7 +1,6 @@
 # On Environmentalism
 
-[[hero]]
-/misc/On_environmentalism.jpg|On Environmentalism
+[[hero src="/misc/On_environmentalism.jpg" alt="On Environmentalism" focus="center"]]
 [[/hero]]
 
 ### The Case For The Most Important Value

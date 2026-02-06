@@ -4,7 +4,10 @@ import { useEffect, useState } from "react";
 
 const DEFAULT_CAPTION = "Daily comic";
 
-export default function DailyComicEmbed({ caption = DEFAULT_CAPTION }) {
+export default function DailyComicEmbed({
+  caption = DEFAULT_CAPTION,
+  onImageClick,
+}) {
   const [state, setState] = useState({ status: "loading", data: null });
 
   useEffect(() => {
@@ -52,11 +55,31 @@ export default function DailyComicEmbed({ caption = DEFAULT_CAPTION }) {
         {state.data.prompt ? (
           <p className="daily-comic__prompt">Prompt: {state.data.prompt}</p>
         ) : null}
-        <img
-          src={state.data.imageUrl}
-          alt={caption || DEFAULT_CAPTION}
-          loading="lazy"
-        />
+        {onImageClick ? (
+          <button
+            type="button"
+            className="blog-image-button"
+            onClick={() =>
+              onImageClick({
+                src: state.data.imageUrl,
+                alt: caption || DEFAULT_CAPTION,
+              })
+            }
+            aria-label={`Open ${caption || DEFAULT_CAPTION}`}
+          >
+            <img
+              src={state.data.imageUrl}
+              alt={caption || DEFAULT_CAPTION}
+              loading="lazy"
+            />
+          </button>
+        ) : (
+          <img
+            src={state.data.imageUrl}
+            alt={caption || DEFAULT_CAPTION}
+            loading="lazy"
+          />
+        )}
         {caption ? (
           <figcaption className="daily-comic__caption">{caption}</figcaption>
         ) : null}

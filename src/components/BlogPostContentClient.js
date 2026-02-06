@@ -60,7 +60,7 @@ const splitGoldBlocks = (text) => {
 };
 
 const splitHeroBlocks = (text) => {
-  const regex = /\[\[hero\]\]([\s\S]*?)\[\[\/hero\]\]/g;
+  const regex = /\[\[hero([^\]]*)\]\]([\s\S]*?)\[\[\/hero\]\]/g;
   let lastIndex = 0;
   let match;
   const parts = [];
@@ -70,7 +70,8 @@ const splitHeroBlocks = (text) => {
     if (start > lastIndex) {
       parts.push({ type: 'text', value: text.slice(lastIndex, start) });
     }
-    parts.push({ type: 'hero', value: match[1] });
+    const args = parseArgs(match[1] || '');
+    parts.push({ type: 'hero', value: match[2], args });
     lastIndex = end;
   }
   if (lastIndex < text.length) {
@@ -79,10 +80,16 @@ const splitHeroBlocks = (text) => {
   return parts;
 };
 
-const HeroBlock = ({ raw, onImageClick }) => {
+const HeroBlock = ({ raw, args = {}, onImageClick }) => {
   const lines = raw.split('\n').map((line) => line.trim()).filter(Boolean);
-  if (!lines.length) return null;
-  const [src, alt = 'Hero image'] = lines[0].split('|').map((entry) => entry.trim());
+  const fallbackLine = lines[0] || '';
+  const [fallbackSrc, fallbackAlt = 'Hero image'] = fallbackLine
+    ? fallbackLine.split('|').map((entry) => entry.trim())
+    : [];
+  const src = args.src || args.url || fallbackSrc;
+  const alt = args.alt || args.title || fallbackAlt || 'Hero image';
+  const focus = args.focus || 'center';
+  if (!src) return null;
   return (
     <section className="standard-page-hero">
       <button
@@ -91,7 +98,7 @@ const HeroBlock = ({ raw, onImageClick }) => {
         onClick={() => onImageClick({ src, alt })}
         aria-label={`Open ${alt}`}
       >
-        <img src={src} alt={alt || 'Hero image'} />
+        <img src={src} alt={alt || 'Hero image'} style={{ objectPosition: focus }} />
       </button>
       <div className="section-divider section-divider--hero">
         <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="" aria-hidden="true" />
@@ -131,6 +138,7 @@ const renderMarkdownWithTokens = (text, keyPrefix, onImageClick) =>
         <DailyComicEmbed
           key={`${keyPrefix}-daily-comic-${index}`}
           caption={caption}
+          onImageClick={onImageClick}
         />
       );
     }
@@ -218,6 +226,7 @@ const renderContentBlocks = (content, keyPrefix, onImageClick) =>
         <HeroBlock
           key={`hero-${keyPrefix}-${heroIndex}`}
           raw={heroBlock.value}
+          args={heroBlock.args}
           onImageClick={onImageClick}
         />
       );

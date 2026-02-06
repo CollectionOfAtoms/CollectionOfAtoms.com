@@ -8,7 +8,7 @@ export default function About() {
     {
       title: 'My Roots',
       text: `Born in Flagstaff, Arizona and raised in Boulder, Colorado, I learned to think for myself, to enjoy nature's abundance, and to never fear learning. In 2015 I moved away and hiked the Pacific Crest Trail from Mexico to Canada before putting down new roots in Oregon. 
-      \n Today I'm based in Portland, Oregon, where I live in and help lead a community house. We're always making improvements and slowly shaping a space that can hold people well.`,
+      \n Today I'm based in Portland, Oregon, where I help lead a community house. We're always making improvements and slowly shaping a space that can hold people well.`,
       image: '/me/Longs_Peak_centered-4real.jpg',
       fullBleed: true,
     },
@@ -34,7 +34,7 @@ export default function About() {
     },
     {
       title: 'I\'d Rather Be Working',
-      text: `After being included in a layoff in April of 2025, I spent the summer attempting a hike from Mexico to Canada on the Continetal Divide Trail.  I didn't make it, but I did have an excellent summer.  Now that I'm back, I'm looking for a job I can be excited about: one that does good in the world.  
+      text: `After being included in a layoff in April of 2025, I spent the summer attempting a hike from Mexico to Canada on the Continetal Divide Trail.  I didn't make it to Canada, but I did hike 2000 miles have an excellent summer.  Now that I'm back, I'm looking for a job I can be excited about: one that does good in the world.  
       \n Download my resumé [here](/me/resume.png) and contact me if you have any opportunities for me.`,
       image: '/me/High_Mountain.jpg',
       imagePosition: 'left',

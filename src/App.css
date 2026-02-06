@@ -543,6 +543,19 @@ body, html {
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
 }
 
+.blog-post__content .standard-page-hero-image {
+  height: 366px;
+  width: 100%;
+  max-width: 100%;
+  margin: 1.75rem auto 0.75rem;
+}
+
+.blog-post__content .standard-page-hero-image img {
+  height: 100%;
+  object-fit: cover;
+  box-shadow: none;
+}
+
 .standard-page-hero-image--top img {
   object-position: center top;
 }
@@ -1944,6 +1957,30 @@ body, html {
   padding: 1rem 1.2rem 1.1rem;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
   max-width: 70%;
+}
+
+@media (max-width: 720px) {
+  .blog-post__content .standard-page-hero-image {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .blog-post__content .blog-image-button--framed {
+    max-width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .daily-comic {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .daily-comic__frame {
+    max-width: 100%;
+  }
 }
 
 .daily-comic img {

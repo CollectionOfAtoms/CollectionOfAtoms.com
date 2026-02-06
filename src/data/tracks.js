@@ -1,8 +1,8 @@
 export const tracks = [
   {
     title: 'Everything Stays',
-    description: 'A classical guitar arrangement of a song from Adventure Time',
-    src: '/music/everything_stays_classical.mpeg',
+    description: 'My classical guitar arrangement of a song from Adventure Time',
+    src: '/music/Everything_stays.mp3',
   },
   {
     title: 'Jade',
