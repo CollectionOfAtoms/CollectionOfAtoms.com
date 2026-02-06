@@ -17,8 +17,8 @@ import { parseArgs, parseMeaningContent, resolveMeaningProps } from '../lib/mean
 
 const stripMarkdownComments = (text) => text.replace(/<!--[\s\S]*?-->/g, '');
 
-const splitDailyComicTokens = (text) => {
-  const regex = /\[\[daily-comic([^\]]*)\]\]/g;
+const splitContentTokens = (text) => {
+  const regex = /\[\[(daily-comic|image|quote-inset|subtitle)([^\]]*)\]\]/g;
   let lastIndex = 0;
   let match;
   const parts = [];
@@ -28,8 +28,9 @@ const splitDailyComicTokens = (text) => {
     if (start > lastIndex) {
       parts.push({ type: 'text', value: text.slice(lastIndex, start) });
     }
-    const args = parseArgs(match[1] || '');
-    parts.push({ type: 'daily-comic', args });
+    const tokenType = match[1];
+    const args = parseArgs(match[2] || '');
+    parts.push({ type: tokenType, args });
     lastIndex = end;
   }
   if (lastIndex < text.length) {
@@ -122,8 +123,8 @@ const MarkdownBlock = ({ text, onImageClick, keyPrefix }) => {
   );
 };
 
-const renderMarkdownWithDailyComic = (text, keyPrefix, onImageClick) =>
-  splitDailyComicTokens(text).map((part, index) => {
+const renderMarkdownWithTokens = (text, keyPrefix, onImageClick) =>
+  splitContentTokens(text).map((part, index) => {
     if (part.type === 'daily-comic') {
       const caption = part.args?.caption || part.args?.title || '';
       return (
@@ -131,6 +132,48 @@ const renderMarkdownWithDailyComic = (text, keyPrefix, onImageClick) =>
           key={`${keyPrefix}-daily-comic-${index}`}
           caption={caption}
         />
+      );
+    }
+    if (part.type === 'image') {
+      const src = part.args?.src || part.args?.url;
+      if (!src) return null;
+      const alt = part.args?.alt || part.args?.title || 'Image';
+      const framed = String(part.args?.framed || '').toLowerCase() === 'true';
+      return (
+        <button
+          key={`${keyPrefix}-image-${index}`}
+          type="button"
+          className={`blog-image-button${framed ? ' blog-image-button--framed' : ''}`}
+          onClick={() => onImageClick({ src, alt })}
+          aria-label={`Open ${alt}`}
+        >
+          <img src={src} alt={alt} />
+        </button>
+      );
+    }
+    if (part.type === 'quote-inset') {
+      const textValue = part.args?.text || '';
+      if (!textValue.trim()) return null;
+      const align = (part.args?.align || 'center').toLowerCase();
+      const alignClass = ['left', 'right', 'center'].includes(align)
+        ? `quote-inset--${align}`
+        : 'quote-inset--center';
+      return (
+        <aside
+          key={`${keyPrefix}-quote-${index}`}
+          className={`quote-inset ${alignClass}`}
+        >
+          <p className="quote-inset__text">{textValue}</p>
+        </aside>
+      );
+    }
+    if (part.type === 'subtitle') {
+      const textValue = part.args?.text || '';
+      if (!textValue.trim()) return null;
+      return (
+        <p key={`${keyPrefix}-subtitle-${index}`} className="post-subtitle">
+          {textValue}
+        </p>
       );
     }
     return (
@@ -150,7 +193,7 @@ const renderMarkdownWithDividers = (text, keyPrefix, onImageClick) => {
     const nodes = [];
     if (chunk.trim()) {
       nodes.push(
-        ...renderMarkdownWithDailyComic(
+        ...renderMarkdownWithTokens(
           chunk,
           `${keyPrefix}-chunk-${chunkIndex}`,
           onImageClick

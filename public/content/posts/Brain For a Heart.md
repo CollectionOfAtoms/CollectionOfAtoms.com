@@ -1,6 +1,8 @@
 # Brain For A Heart
 
-What’s with the logo?
+[[subtitle text="What’s with the logo?"]]
+
+[[atom_divider]]
 
 This mark is about refusing a false choice: between thinking deeply and caring deeply.
 

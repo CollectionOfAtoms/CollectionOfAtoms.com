@@ -6,6 +6,7 @@ export default function BlogPostCard({
   date,
   readTime,
   excerpt,
+  subtitle,
   image,
   imageAlt,
   imageFit,
@@ -19,6 +20,7 @@ export default function BlogPostCard({
             <div>
               <p className="blog-post__meta">{date} · {readTime}</p>
               <h2 className="blog-post__title">{title}</h2>
+              {subtitle ? <p className="blog-post__subtitle">{subtitle}</p> : null}
             </div>
           </header>
 
