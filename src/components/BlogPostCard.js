@@ -1,4 +1,7 @@
+ "use client";
+
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function BlogPostCard({
   id,
@@ -8,10 +11,32 @@ export default function BlogPostCard({
   excerpt,
   subtitle,
   image,
+  imageSource,
   imageAlt,
   imageFit,
   tags = [],
 }) {
+  const [dynamicImageUrl, setDynamicImageUrl] = useState(null);
+
+  useEffect(() => {
+    if (imageSource !== 'daily-comic') return;
+    let active = true;
+    const load = async () => {
+      try {
+        const response = await fetch('/api/daily-comic/latest', { cache: 'no-store' });
+        if (!response.ok) return;
+        const json = await response.json();
+        const url = json?.data?.imageUrl;
+        if (active && url) setDynamicImageUrl(url);
+      } catch {
+        // ignore fetch failures for card image
+      }
+    };
+    load();
+    return () => {
+      active = false;
+    };
+  }, [imageSource]);
   return (
     <article className="blog-post">
       <div className="blog-post__layout">
@@ -40,13 +65,13 @@ export default function BlogPostCard({
           )}
         </div>
 
-        {image ? (
+        {(dynamicImageUrl || image) ? (
           <Link
             className={`blog-post__media${imageFit === 'contain' ? ' blog-post__media--contain' : ''}`}
             href={`/blog/${id}`}
             aria-label={`Read ${title}`}
           >
-            <img src={image} alt={imageAlt || `${title} preview`} />
+            <img src={dynamicImageUrl || image} alt={imageAlt || `${title} preview`} />
           </Link>
         ) : null}
       </div>

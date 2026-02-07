@@ -104,7 +104,7 @@ Realizing the way in which I was being manipulated caused me to regroup and put 
 It really got me thinking.
 
 Before AI art, all art we saw existed because some human had decided to make it.
-No matter how small, it cost the artist a sliver of their lifespan.
+No matter how small, it cost the artist a sliver of their lifespan and saved every member of the audience a sliver of their own.
 
 But now, a marketer with no artistic skill or intention, can create infinite art and put it in front of your eyes for you to react to.
 And they will.
