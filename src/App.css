@@ -1163,6 +1163,15 @@ body, html {
   margin: 0 0.5rem;
 }
 
+.home-section--photography .home-media-frame {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-section--photography:hover .home-media-frame {
+  border-color: rgba(255, 236, 211, 0.7);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+}
+
 .home-media-frame__image {
   position: absolute;
   inset: 0;
@@ -1743,6 +1752,13 @@ body, html {
   border-radius: 14px;
   padding: 1.5rem;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.blog-post:hover {
+  border-color: rgba(255, 236, 211, 0.7);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
 }
 
 .page.blog-page .blog-post + .blog-post {
@@ -1751,13 +1767,16 @@ body, html {
 
 .blog-post__layout {
   display: flex;
-  align-items: flex-start;
-  gap: 1.5rem;
+  align-items: stretch;
+  gap: 1.75rem;
 }
 
 .blog-post__text {
   flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
 }
 
 .blog-post__header {
@@ -1773,7 +1792,7 @@ body, html {
 }
 
 .blog-post__subtitle {
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.25rem;
   font-size: 0.95rem;
   font-style: italic;
   color: rgba(255, 236, 211, 0.88);
@@ -1798,7 +1817,7 @@ body, html {
 }
 
 .blog-post__excerpt {
-  margin: 0.5rem 0 1rem;
+  margin: 0.25rem 0 1rem;
   color: #c9d1d9;
   line-height: 1.7;
 }
@@ -1823,9 +1842,9 @@ body, html {
 }
 
 .blog-post__media {
-  flex: 0 0 clamp(120px, 24vw, 200px);
+  flex: 0 0 auto;
+  height: 100%;
   aspect-ratio: 1 / 1;
-  align-self: center;
   margin-left: auto;
   border-radius: 12px;
   overflow: hidden;
@@ -1833,6 +1852,14 @@ body, html {
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(7, 10, 16, 0.8);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  max-width: clamp(180px, 30vw, 260px);
+  align-self: center;
+}
+
+@media (min-width: 960px) {
+  .blog-post__media {
+    align-self: center;
+  }
 }
 
 .blog-post__media img {
@@ -2495,10 +2522,16 @@ body, html {
   box-shadow: 0 16px 35px rgba(0, 0, 0, 0.45);
   overflow: hidden;
   position: relative;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .project-card--link {
   cursor: pointer;
+}
+
+.project-card--link:hover {
+  border-color: rgba(255, 236, 211, 0.7);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
 }
 
 .project-card--link:focus-visible {
@@ -2577,7 +2610,7 @@ body, html {
   max-width: 854px;
   width: 100%;
   margin: 0 auto;
-  border: 5px solid #000000;
+  border: 1px solid #000000;
   box-sizing: border-box;
 }
 

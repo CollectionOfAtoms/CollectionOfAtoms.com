@@ -1,6 +1,6 @@
  "use client";
 
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 export default function BlogPostCard({
@@ -16,6 +16,7 @@ export default function BlogPostCard({
   imageFit,
   tags = [],
 }) {
+  const router = useRouter();
   const [dynamicImageUrl, setDynamicImageUrl] = useState(null);
 
   useEffect(() => {
@@ -38,7 +39,19 @@ export default function BlogPostCard({
     };
   }, [imageSource]);
   return (
-    <article className="blog-post">
+    <article
+      className="blog-post"
+      role="link"
+      tabIndex={0}
+      aria-label={`Read ${title}`}
+      onClick={() => router.push(`/blog/${id}`)}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          router.push(`/blog/${id}`);
+        }
+      }}
+    >
       <div className="blog-post__layout">
         <div className="blog-post__text">
           <header className="blog-post__header">
@@ -50,10 +63,7 @@ export default function BlogPostCard({
           </header>
 
           {excerpt ? (
-            <Link className="blog-post__link" href={`/blog/${id}`}>
-              <p className="blog-post__excerpt">{excerpt}</p>
-              <span className="blog-post__cta">Read the full post →</span>
-            </Link>
+            <p className="blog-post__excerpt">{excerpt}</p>
           ) : null}
 
           {tags.length > 0 && (
@@ -66,13 +76,9 @@ export default function BlogPostCard({
         </div>
 
         {(dynamicImageUrl || image) ? (
-          <Link
-            className={`blog-post__media${imageFit === 'contain' ? ' blog-post__media--contain' : ''}`}
-            href={`/blog/${id}`}
-            aria-label={`Read ${title}`}
-          >
+          <div className={`blog-post__media${imageFit === 'contain' ? ' blog-post__media--contain' : ''}`}>
             <img src={dynamicImageUrl || image} alt={imageAlt || `${title} preview`} />
-          </Link>
+          </div>
         ) : null}
       </div>
     </article>

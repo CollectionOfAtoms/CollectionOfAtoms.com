@@ -18,6 +18,7 @@ export const posts = [
   {
     id: 'brain-for-a-heart',
     title: 'Brain For A Heart',
+    subtitle: 'What’s with the logo?',
     date: 'Dec 2025',
     readTime: '4 min read',
     excerpt: 'Why the logo blends atoms, hearts, and brains, and how each symbol earned its place.',

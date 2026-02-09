@@ -23,7 +23,7 @@ export default function HomePageClient() {
       "Built for projection and physical interaction."
     ],
     website: {
-      label: 'Check it out',
+      label: '',
       url: '/projects/sprialator',
     },
     detailPath: '/projects/sprialator',
