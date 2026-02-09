@@ -15,14 +15,14 @@ export default function About() {
     {
       title: 'Thinking at Scale',
       text: `I’m drawn to large questions.  It was this drive that led me to study Astrophysics, and that which I learned that informs the broad directions of my life. It is why I will not use my efforts to help enable or support systems that I see as bad for humanity or the planet.
-      \n I long to bring about a future that we can show our children and say : "Look at what we did.  We studied our reality, we understood what must change, and we responded to it. We changed because we understood that ignorance was not a solution. We changed it because we love existence.  We changed it because we love you.  Now use this gift to show the universe something it has never seen before"`,
+      \n I long to bring about a future that we can show our children and say : "Look at what we did. We studied our reality, we understood what must change, and we responded to it. We changed because we understood that ignorance was not a solution. We changed it because we love existence. We changed it because we love you. Now use this gift to show the universe something it has never seen before"`,
       image: '/misc/Monocerous.jpeg',
     },
         {
       title: 'Care Beyond The Usual Scope',
       text: `I care deeply about animals and animal rights. My concern for them isn’t separate from my concern for people—it grows from the same place — valuing the experience of being matter-come-alive. A small bit of cosmic dust endowed with faculties enough to think and percieve on the only known bubble in the whole universe in which we do not perish instantly.        
       \nRealistically animal agriculture threatens what we humans hold most dear. Whether we value our own future, our legacies, the health and wellbeing of our most loved, our natural environment, or the happiness of our own children, then what our kind does with animals presents a threat to each of us. 
-      \n But so too, we must acknowledge the very real and tangible impact of our choices on the animals themselves, who are given no choices of their own and who are killed by the tens of billions each year.  Each has their own story, their own perspective, and their own desire to go on holding onto what is most dear to them: their own lives.`,
+      \n But so too, we must acknowledge the very real and tangible impact of our choices on the animals themselves, who are given no choices of their own and who are killed by the tens of billions each year. Each has their own story, their own perspective, and their own desire to go on holding onto what is most dear to them: their own lives.`,
       image: '/me/Chickens_sharp.png',
     },
     {
@@ -34,8 +34,8 @@ export default function About() {
     },
     {
       title: 'I\'d Rather Be Working',
-      text: `After being included in a layoff in April of 2025, I spent the summer attempting a hike from Mexico to Canada on the Continetal Divide Trail.  I didn't make it to Canada, but I did hike 2000 miles have an excellent summer.  Now that I'm back, I'm looking for a job I can be excited about: one that does good in the world.  
-      \n Download my resumé [here](/me/resume.png) and contact me if you have any opportunities for me.`,
+      text: `After being included in a layoff in April of 2025, I spent the summer attempting a hike from Mexico to Canada on the Continetal Divide Trail.  I didn't make it to Canada, but I did hike nearly 2000 miles and had an excellent summer. Now that I'm back, I'm looking for a job I can be excited about: one that does good in the world.  
+      \n Download my resumé [here](/me/resume.pdf) and contact me if you have any opportunities for me.`,
       image: '/me/High_Mountain.jpg',
       imagePosition: 'left',
       key: 'working',
