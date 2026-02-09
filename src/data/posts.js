@@ -4,7 +4,7 @@ export const posts = [
     title: 'The Loss of Assumed Intention',
     subtitle: 'What AI changed about how we encounter art',
     date: 'Feb 2026',
-    readTime: '7 min read',
+    readTime: '15 min read',
     excerpt: 'How AI art reshapes intention, attention, and trust—and why reclaiming human meaning matters.',
     image: '/misc/Cat_wall.jpg',
     imageSource: 'daily-comic',
