@@ -1,8 +1,8 @@
 {
   "crons": [
     {
-      "path": "/api/cron/daily-comic?key=@CRON_SECRET",
-      "schedule": "0 8 * * *"
+      "path": "/api/cron/daily-comic",
+      "schedule": "0 0 * * *"
     }
   ]
 }

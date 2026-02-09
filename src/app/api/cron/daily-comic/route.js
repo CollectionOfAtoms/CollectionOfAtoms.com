@@ -8,14 +8,14 @@ export const dynamic = "force-dynamic";
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 export async function GET(request) {
-  const params = request.nextUrl.searchParams;
-  const key = params.get("key");
-  if (key !== process.env.CRON_SECRET) {
-    return Response.json({ ok: false, error: "unauthorized" }, { status: 401 });
+  const authHeader = request.headers.get("authorization");
+  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+    return new Response("Unauthorized", { status: 401 });
   }
 
   const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD (UTC)
 
+  const params = request.nextUrl.searchParams;
   const force = params.get("force");
   const existing = await query(
     "select id, image_url from daily_comics where comic_date = $1",
@@ -27,8 +27,11 @@ export async function GET(request) {
 
   const prompts =
     ["Generate a comic that shows a narrative arc.",
-     "Generate a comic where two characters are talking with narrative stucture",
-     "Generate a comic with a compelling plot and narrative."
+     "Generate a comic where two characters are talking with narrative stucture.",
+     "Generate a comic with a compelling plot and narrative.",
+     "Generate an image made to go viral.",
+     "Generate an image made to cause a reaction.",
+     "Generate an image made to be confusing and maximize user engagement."
     ];
   const prompt = prompts[Math.floor(Math.random() * prompts.length)];
 
