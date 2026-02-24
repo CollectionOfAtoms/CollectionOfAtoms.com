@@ -1,6 +1,10 @@
 import BlogPostCard from '../../components/BlogPostCard';
 import { posts } from '../../data/posts';
 
+export const metadata = {
+  title: 'CollectionOfAtoms | Blog',
+};
+
 export default function Blog() {
   return (
     <div className="page blog-page">

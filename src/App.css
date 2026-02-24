@@ -433,10 +433,29 @@ body, html {
 .page h1.page-title {
   margin: 0 0 0.25rem;
   font-family: 'Baumans', 'Playfair Display', 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
-  font-size: 2.665rem;
+  font-size: clamp(1.8rem, 6.6vw, 2.665rem);
   font-weight: 900;
   text-align: center;
+  word-break: break-word;
+  hyphens: auto;
 }
+
+.page :where(ul, ol) {
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 3rem;
+  font-size: 1.37rem;
+}
+
+.page :where(li + li) {
+  margin-top: 0.25rem;
+}
+
+.page :where(ul, ol) li::marker {
+  color: #d5a957;
+}
+
 
 .not-found-page {
   text-align: center;
@@ -574,8 +593,8 @@ body, html {
   font-weight: 700;
   padding-bottom: 0;
   text-decoration: underline;
-  text-decoration-color: rgba(81, 90, 71, 0.6);
-  text-decoration-thickness: 2px;
+  text-decoration-color: #d5a957;
+  text-decoration-thickness: 1px;
   text-underline-offset: 0.8rem;
 }
 
@@ -646,6 +665,7 @@ body, html {
   width: 24px;
   height: 24px;
   opacity: 0.8;
+  filter: brightness(0) saturate(100%) invert(73%) sepia(42%) saturate(472%) hue-rotate(0deg) brightness(96%) contrast(90%);
 }
 
 .section-divider--hero {
@@ -659,7 +679,7 @@ body, html {
   content: '';
   flex: 1;
   height: 1px;
-  background: rgba(215, 190, 130, 0.6);
+  background: #d5a957;
 }
 
 .about-block {
@@ -708,8 +728,8 @@ body, html {
   font-weight: 700;
   padding-bottom: 0;
   text-decoration: underline;
-  text-decoration-color: rgba(81, 90, 71, 0.6);
-  text-decoration-thickness: 2px;
+  text-decoration-color: #d5a957;
+  text-decoration-thickness: 1px;
   text-underline-offset: 0.8rem;
 }
 
@@ -929,20 +949,20 @@ body, html {
 }
 
 .home-hero-banner {
-  height: calc(100vh - 43px);
-  min-height: calc(100vh - 43px);
+  height: calc(100svh - var(--navbar-height, 43px));
+  min-height: calc(100svh - var(--navbar-height, 43px));
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: top;
+  justify-content: flex-start;
   gap: 0.35rem;
   text-align: center;
   color: #ffecd3;
   background: none;
   border-radius: 0;
   box-shadow: none;
-  overflow: visible;
-  /* padding-top: 0.75rem; keep clear of navbar */
+  overflow: hidden;
+  padding: clamp(0.5rem, 2vh, 1.5rem) 1rem;
   position: relative;
   z-index: 1;
   box-sizing: border-box;
@@ -959,15 +979,16 @@ body, html {
 }
 
 .home-hero-logo {
-  width: min(460px, 80vw);
-  max-width: 475px;
-  margin-top: 2rem;
-  margin-bottom: 1.1rem;
+  width: min(560px, 80vw, 55vh);
+  max-width: 580px;
+  height: auto;
+  margin-top: clamp(0.75rem, 3vh, 2rem);
+  margin-bottom: clamp(0.4rem, 1.6vh, 1.1rem);
 }
 
 .home-hero-title {
   margin: 0 0 0.6rem;
-  font-size: clamp(4.3rem, 8.4vw, 6.4rem);
+  font-size: clamp(2.8rem, 7vh, 6.4rem);
   font-weight: 800;
   font-family: 'Playfair Display', 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
   letter-spacing: -0.01em;
@@ -978,7 +999,7 @@ body, html {
 
 .home-hero-tagline {
   margin: 0.6rem 0 0;
-  font-size: clamp(1.4rem, 2.9vw, 1.85rem);
+  font-size: clamp(1.1rem, 3vh, 1.85rem);
   line-height: 1.6;
   font-weight: 400;
   letter-spacing: 0.02em;
@@ -990,14 +1011,15 @@ body, html {
 }
 
 .home-hero-tagline.home-hero-tagline--secondary {
-  font-size: clamp(0.75rem, 1.15vw, 0.95rem);
+  font-size: clamp(0.7rem, 1.6vh, 0.95rem);
   line-height: 1.5;
   margin-top: 0.35rem;
   text-align: center;
 }
 
 .home-hero-button {
-  margin-top: 2.9rem;
+  margin-top: auto;
+  margin-bottom: auto;
   padding: 1rem 1.9rem;
   border: 1px solid rgba(255, 255, 255, 0.45);
   border-radius: 18px;
@@ -1009,6 +1031,20 @@ body, html {
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   position: relative;
   z-index: 2;
+}
+
+@media (max-height: 720px) {
+  .home-hero-banner {
+    gap: 0.2rem;
+  }
+
+  .home-hero-title {
+    margin-bottom: 0.35rem;
+  }
+
+  .home-hero-tagline {
+    line-height: 1.4;
+  }
 }
 
 .home-hero-button:hover {
@@ -1054,13 +1090,24 @@ body, html {
   color: #ffecd3;
 }
 
-.page.home .project-card__title,
+.page.home .project-card__title {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  word-break: break-word;
+  hyphens: auto;
+  font-family: 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+}
+
 .page.home .blog-post__title,
 .page.home .home-music__title {
   font-size: clamp(1.2rem, 3.6vw, 1.8rem);
   line-height: 1.2;
   word-break: break-word;
   hyphens: auto;
+}
+
+.page.blog-page .blog-post__title {
+  font-size: 1.4rem;
 }
 
 .home-section p {
@@ -1102,7 +1149,7 @@ body, html {
 .home-blog-card__title {
   margin: 0;
   font-size: 1.6rem;
-  color: #ffecd3;
+  color: #d5a957;
   letter-spacing: -0.01em;
   font-family: 'Playfair Display', 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
 }
@@ -1360,6 +1407,11 @@ body, html {
     width: 100%;
     align-items: flex-start;
     text-align: left;
+  }
+
+  .home-music__title {
+    width: 100%;
+    text-align: center;
   }
 
   .home-music__desc {
@@ -1789,6 +1841,7 @@ body, html {
 .blog-post__title {
   margin: 0.35rem 0 0.5rem;
   font-size: 1.4rem;
+  color: #d5a957;
 }
 
 .blog-post__subtitle {
@@ -1923,18 +1976,18 @@ body, html {
 
 .blog-post__content ul,
 .blog-post__content ol {
-  margin: 1.2rem auto;
-  padding: 0.6rem 1.4rem 0.6rem 2.2rem;
+  margin-bottom: 10px;
+  padding: 10px 1.4rem 16px 2.2rem;
   max-width: 85%;
   background: rgba(21, 32, 11, 0.4);
   border: 1px solid rgba(255, 236, 211, 0.12);
   border-radius: 16px;
-  font-size: 1.15rem;
+  font-size: 1.37rem;
   font-family: 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
 }
 
 .blog-post__content li {
-  margin: 0.35rem 0;
+  margin: 0.4rem 0 0;
 }
 
 .blog-post__content a {
@@ -2022,6 +2075,7 @@ body, html {
   color: #f0f6fc;
   font-size: 1.2rem;
   text-align: center;
+  text-wrap: balance;
   font-family: 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
 }
 
@@ -2029,6 +2083,7 @@ body, html {
   margin-top: 0.6rem;
   color: #b8c4d4;
   font-size: 0.95rem;
+  text-wrap: balance;
 }
 
 .daily-comic__placeholder {
@@ -2360,6 +2415,67 @@ body, html {
   border: 1px solid rgba(215, 190, 130, 0.35);
 }
 
+.standard-red-block {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-radius: 18px;
+  background: rgba(43, 20, 22, 0.6);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(213, 169, 87, 0.2);
+  width: fit-content;
+  max-width: calc(100% - 2rem);
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.standard-blue-block {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-radius: 18px;
+  background: #0f2320;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(138, 180, 255, 0.25);
+  width: fit-content;
+  max-width: calc(100% - 2rem);
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  text-align: center;
+  font-family: 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.standard-blue-block p {
+  margin: 10px 0;
+}
+
+.architecture-diagram__svg {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.architecture-diagram__svg--horizontal {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .architecture-diagram__svg {
+    width: min(640px, 80vw);
+  }
+
+  .architecture-diagram__svg--vertical {
+    display: none;
+  }
+
+  .architecture-diagram__svg--horizontal {
+    display: block;
+  }
+}
+
 .blog-post__content img[alt="Collection of Atoms logo"] {
   display: block;
   width: min(368px, 80%);
@@ -2400,8 +2516,9 @@ body, html {
 .quote-inset {
   position: relative;
   margin: 2rem auto;
-  max-width: 80%;
+  max-width: min(80%, 70ch);
   width: fit-content;
+  display: table;
   padding: 1.4rem 1.8rem;
   border-radius: 16px;
   background: rgba(15, 35, 32, 0.4);
@@ -2434,19 +2551,20 @@ body, html {
   margin: 0;
   font-size: 1.15rem;
   line-height: 1.7;
-  text-align: center;
   font-family: 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
   color: #ffecd3;
   text-justify: auto;
+  text-wrap: balance;
 }
 
 .blog-post__content .quote-inset__text {
-  margin: 0 !important;
+  margin: 0;
+  text-align: center !important;
 }
 
 @media (min-width: 960px) {
   .quote-inset {
-    max-width: 70%;
+    max-width: min(70%, 64ch);
   }
 
   .quote-inset--left {
@@ -2588,6 +2706,11 @@ body, html {
   object-position: center;
 }
 
+.project-card--collection .project-card__media img,
+.project-card--collection .project-card__media video {
+  object-position: center top;
+}
+
 .project-card__body {
   padding: 1.5rem 1.5rem 3rem;
   display: flex;
@@ -2600,10 +2723,18 @@ body, html {
 
 .project-card__title {
   margin: 0;
-  font-size: 1.5rem;
-  color: #ffecd3;
+  font-size: 1.8rem;
+  color: #d5a957;
   align-self: flex-end;
   text-align: right;
+  font-family: 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+}
+
+@media (max-width: 680px) {
+  .project-card__title {
+    align-self: center;
+    text-align: center;
+  }
 }
 
 .home-project-card {
@@ -2745,6 +2876,34 @@ body, html {
   display: block;
 }
 
+.project-detail-hero--collection {
+  background: #0d0e11;
+}
+
+.project-detail-hero__media--collection {
+  object-position: center;
+}
+
+@media (max-width: 900px), (max-height: 720px) {
+  .project-detail-hero--collection {
+    aspect-ratio: 1007 / 1024;
+  }
+
+  .project-detail-hero__media--collection {
+    height: 100%;
+    transform: scale(1.25);
+    transform-origin: center;
+  }
+}
+
+@media (min-width: 1100px) and (min-height: 760px) {
+  .project-detail-hero__media--collection {
+    height: auto;
+    object-fit: contain;
+    transform: none;
+  }
+}
+
 .page-title-band .page-title {
   margin: 0;
 }
@@ -2762,8 +2921,8 @@ body, html {
   color: #ffecd3;
   font-family: 'Playfair Display', 'Exo 2', 'Inter', 'Manrope', 'Helvetica Neue', Arial, sans-serif;
   text-decoration: underline;
-  text-decoration-color: rgba(15, 35, 32, 0.6);
-  text-decoration-thickness: 2px;
+  text-decoration-color: #d5a957;
+  text-decoration-thickness: 1px;
   text-underline-offset: 0.8rem;
 }
 
@@ -2813,28 +2972,6 @@ body, html {
   border: 1px solid rgba(255, 236, 211, 0.12);
   background: #0f2320;
   display: block;
-}
-
-.project-divider {
-  display: flex;
-  justify-content: center;
-  margin: 3rem 0;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.project-divider::before,
-.project-divider::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: rgba(215, 190, 130, 0.6);
-}
-
-.project-divider img {
-  width: 22px;
-  height: 22px;
-  opacity: 0.6;
 }
 
 .page.projects-page p.project-detail-epilogue {

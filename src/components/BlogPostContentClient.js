@@ -18,7 +18,7 @@ import { parseArgs, parseMeaningContent, resolveMeaningProps } from '../lib/mean
 const stripMarkdownComments = (text) => text.replace(/<!--[\s\S]*?-->/g, '');
 
 const splitContentTokens = (text) => {
-  const regex = /\[\[(daily-comic|image|quote-inset|subtitle)([^\]]*)\]\]/g;
+  const regex = /\[\[(daily-comic|image|quote-inset|subtitle)([\s\S]*?)\]\]/g;
   let lastIndex = 0;
   let match;
   const parts = [];

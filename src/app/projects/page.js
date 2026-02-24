@@ -29,6 +29,18 @@ export default function Projects() {
       tags: ['automation', 'ChatGPT', 'bot'],
       mediaAlign: 'left',
     },
+    {
+      title: 'CollectionOfAtoms.com',
+      description: [
+        'The place where you are right now: a personal home for ideas, projects, and personal shares.',
+        'Designed as a living space that can grow with me and showcase my skills.',
+      ],
+      image: '/misc/CollectionOfAtoms-Home.png',
+      detailPath: '/projects/collectionofatoms',
+      tags: ['portfolio', 'design', 'Next.js'],
+      mediaAlign: 'center',
+      className: 'project-card--collection',
+    },
   ];
 
   return(

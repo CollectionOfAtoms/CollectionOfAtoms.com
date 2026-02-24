@@ -1,3 +1,7 @@
+export const metadata = {
+  title: 'CollectionOfAtoms | Sprialator',
+};
+
 export default function Sprialator() {
   return (
     <div className="page projects-page">
@@ -22,6 +26,7 @@ export default function Sprialator() {
       <p className="project-detail-intro">
         Sprialator: a browser-based visual system for exploring recursive motion and symmetry.
       </p>
+
       <a
         className="button-standard-glow"
         href="https://collectionofatoms.github.io/sprialator/"
@@ -45,7 +50,7 @@ export default function Sprialator() {
         <p>
           At that point, I had a project without a use. Instead of abandoning it, I decided to see if it could live somewhere else—and submitted it as an art piece to SOAK, my region’s local Burning Man festival.
         </p>
-        <div className="project-divider">
+        <div className="section-divider section-divider--hero">
             <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="" aria-hidden="true" />
         </div>
       </section>
@@ -67,7 +72,7 @@ export default function Sprialator() {
           In the end, I hacked together a solution by using an existing morphing library in an unintended way—pre-generating the transitional forms between shapes ahead of time, then animating through those intermediate states. It wasn’t elegant, but it worked, and it taught me a lot about where abstraction helps and where it gets in the way.
         </p>
 
-        <div className="project-divider">
+        <div className="section-divider section-divider--hero">
           <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="" aria-hidden="true" />
         </div>
 

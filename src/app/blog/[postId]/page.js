@@ -5,6 +5,14 @@ import { notFound } from 'next/navigation';
 import { getPostById } from '../../../data/posts';
 import BlogPostContentClient from '../../../components/BlogPostContentClient';
 
+export async function generateMetadata({ params }) {
+  const { postId } = await params;
+  const post = getPostById(postId);
+  return {
+    title: `CollectionOfAtoms | ${post?.title || 'Blog Post'}`,
+  };
+}
+
 export default async function BlogPostPage({ params }) {
   const { postId } = await params;
   const post = getPostById(postId);

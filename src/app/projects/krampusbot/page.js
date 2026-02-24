@@ -1,3 +1,7 @@
+export const metadata = {
+  title: 'CollectionOfAtoms | KrampusBot',
+};
+
 export default function KrampusBot() {
   return (
     <div className="page projects-page">
@@ -22,6 +26,7 @@ export default function KrampusBot() {
       <p className="project-detail-intro">
         KrampusBot is a mischievous party bot that assigns festive tasks after a short, snarky conversation.
       </p>
+
       <a
         className="button-standard-glow"
         href="https://github.com/CollectionOfAtoms/krampusbot"
@@ -30,7 +35,7 @@ export default function KrampusBot() {
       >
         View on GitHub →
       </a>
-
+      
       <section className="project-detail-section">
         <h2>What It Does</h2>
         <p>
@@ -41,7 +46,7 @@ export default function KrampusBot() {
         <p>
           KrampusBot (lazily) listens, riffs on what you say, then assigns special tasks from a themed list as well as some it makes up-whole cloth designed to get guests engaging with the activities of the party.
         </p>
-        <div className="project-divider">
+        <div className="section-divider section-divider--hero">
           <img src="/CollectionOfAtoms_logo/Atom_transparent.svg" alt="" aria-hidden="true" />
         </div>
       </section>
