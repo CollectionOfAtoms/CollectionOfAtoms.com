@@ -18,7 +18,7 @@ import { parseArgs, parseMeaningContent, resolveMeaningProps } from '../lib/mean
 const stripMarkdownComments = (text) => text.replace(/<!--[\s\S]*?-->/g, '');
 
 const splitContentTokens = (text) => {
-  const regex = /\[\[(daily-comic|image|quote-inset|subtitle)([\s\S]*?)\]\]/g;
+  const regex = /\[\[(daily-comic|image|excerpt|subtitle|big-quote)([\s\S]*?)\]\]/g;
   let lastIndex = 0;
   let match;
   const parts = [];
@@ -159,7 +159,7 @@ const renderMarkdownWithTokens = (text, keyPrefix, onImageClick) =>
         </button>
       );
     }
-    if (part.type === 'quote-inset') {
+    if (part.type === 'excerpt') {
       const textValue = part.args?.text || '';
       if (!textValue.trim()) return null;
       const align = (part.args?.align || 'center').toLowerCase();
@@ -182,6 +182,17 @@ const renderMarkdownWithTokens = (text, keyPrefix, onImageClick) =>
         <p key={`${keyPrefix}-subtitle-${index}`} className="post-subtitle">
           {textValue}
         </p>
+      );
+    }
+    if (part.type === 'big-quote') {
+      const textValue = part.args?.text || '';
+      if (!textValue.trim()) return null;
+      const author = part.args?.author || '';
+      return (
+        <blockquote key={`${keyPrefix}-big-quote-${index}`} className="big-quote">
+          <p>{textValue}</p>
+          {author ? <cite>— {author}</cite> : null}
+        </blockquote>
       );
     }
     return (

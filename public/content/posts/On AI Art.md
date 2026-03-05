@@ -17,7 +17,7 @@ Art shifts from an invitation to a human experience to a mechanism for extractin
 
 ## What I Thought In 2022
 
-[[quote-inset text="Art shifts from an invitation to a human experience to a mechanism for extracting attention." align="right"]]
+[[excerpt text="Art shifts from an invitation to a human experience to a mechanism for extracting attention." align="right"]]
 
 I have been following the progress of OpenAI since 2018 with a lot of anticipation.
 I was fascinated by machine learning and the breakneck pace of advancement.
@@ -124,7 +124,7 @@ Do not get me wrong: the endeavor to automate art is an art form of its own.
 I could imagine new artistic uses for such a machine and novel capabilities realized from it.
 But this new form of art has a new ability: it can pass itself off as being intentional when there was no intent.
 
-[[quote-inset text="I hadn't given due credit to art before, but its very nature bestowed a Trust (Capital T) – Trust enough that the artist thought it was worthwhile to create." align="left"]]
+[[excerpt text="I hadn't given due credit to art before, but its very nature bestowed a Trust (Capital T) – Trust enough that the artist thought it was worthwhile to create." align="left"]]
 
 I hadn't given due credit to art before, but its very nature bestowed a Trust (Capital T) – Trust enough that the artist thought it was worthwhile to create.
 And now that Trust is being hijacked.
@@ -155,7 +155,7 @@ However, there are places where AI art is not needed or wanted.
 When a marketer uses an AI image to avoid paying a small sum to someone who took stock photos that already exist and on which the AI model is trained, that sucks.
 When propagandists make doorcam videos of crimes that never happened and get people pumping cortisol through their veins over something that never happened, that sucks.
 
-[[quote-inset text="When propagandists make doorcam videos of crimes that never happened and get people pumping cortisol through their veins over something that never happened, that sucks." align="center"]]
+[[excerpt text="When propagandists make doorcam videos of crimes that never happened and get people pumping cortisol through their veins over something that never happened, that sucks." align="center"]]
 
 **Restoring signals of intention.**  
 I believe we can build support around causes like this and legislate specific use cases.
@@ -182,7 +182,7 @@ We want to establish culture and shared values, not be cops to one another.
 Our world is crazy.
 But by divesting ourselves from these malicious use cases, we pave the way to legislate.
 
-[[quote-inset text="By divesting ourselves from these malicious use cases, we pave the way to legislate." align="right"]]
+[[excerpt text="By divesting ourselves from these malicious use cases, we pave the way to legislate." align="right"]]
 
 If you see the value in what I’m saying, then consider making the commitment.
 There’s no club—but if you are serious about it, consider getting out a pen and paper, writing down a few commitments you can stand by, and signing them.
@@ -201,7 +201,7 @@ AI didn’t remove intention—but it made it optional.
 And when intention becomes optional, we lose a basic form of trust we once took for granted.
 What once invited us into another human experience can now exist solely to extract our attention, without care for whether it was worth making at all.
 
-[[quote-inset text="[W]hen intention becomes optional, we lose a basic form of trust" align="center"]]
+[[excerpt text="[W]hen intention becomes optional, we lose a basic form of trust" align="center"]]
 
 We still have agency.
 We can choose restraint over convenience, disclosure over ambiguity, and invitation over extraction.

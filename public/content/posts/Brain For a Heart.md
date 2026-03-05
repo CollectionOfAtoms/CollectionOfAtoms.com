@@ -31,8 +31,6 @@ Without a brain to question the world curiously, the atom may as well not exist.
 
 ![Collection of Atoms logo](/CollectionOfAtoms_logo/Logo_yellow_transparent_bold.svg)
 
-> “The cosmos is full beyond measure of elegant truths; of exquisite interrelationships; of the awesome machinery of nature. […] We are a way for the cosmos to know itself.”
->
-> — Carl Sagan
+[[big-quote text="The cosmos is full beyond measure of elegant truths; of exquisite interrelationships; of the awesome machinery of nature. […] We are a way for the cosmos to know itself." author="Carl Sagan"]]
 
 This logo is a reminder to think clearly, feel honestly, and remember what we’re made of.
