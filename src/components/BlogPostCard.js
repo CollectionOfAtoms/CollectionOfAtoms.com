@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { formatPostDate } from '../data/posts';
 
 export default function BlogPostCard({
   id,
@@ -56,7 +57,7 @@ export default function BlogPostCard({
         <div className="blog-post__text">
           <header className="blog-post__header">
             <div>
-              <p className="blog-post__meta">{date} · {readTime}</p>
+              <p className="blog-post__meta">{formatPostDate(date)} · {readTime}</p>
               <h2 className="blog-post__title">{title}</h2>
               {subtitle ? <p className="blog-post__subtitle">{subtitle}</p> : null}
             </div>

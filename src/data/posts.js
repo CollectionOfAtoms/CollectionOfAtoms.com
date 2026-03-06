@@ -1,9 +1,15 @@
+export function formatPostDate(mmddyyyy) {
+  const [m, , y] = mmddyyyy.split('/');
+  return new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric' })
+    .format(new Date(y, m - 1));
+}
+
 export const posts = [
   {
     id: 'on-ai-art',
     title: 'The Loss of Assumed Intention',
     subtitle: 'What AI changed about how we encounter art',
-    date: 'Feb 2026',
+    date: '02/01/2026',
     readTime: '15 min read',
     excerpt: 'How AI art reshapes intention, attention, and trust—and why reclaiming human meaning matters.',
     image: '/misc/Cat_wall.jpg',
@@ -18,8 +24,8 @@ export const posts = [
   {
     id: 'brain-for-a-heart',
     title: 'Brain For A Heart',
-    subtitle: 'What’s with the logo?',
-    date: 'Dec 2025',
+    subtitle: "What's with the logo?",
+    date: '12/01/2025',
     readTime: '4 min read',
     excerpt: 'Why the logo blends atoms, hearts, and brains, and how each symbol earned its place.',
     image: '/CollectionOfAtoms_logo/Logo_transparent_512.png',
@@ -34,7 +40,7 @@ export const posts = [
     id: 'tree-of-heaven',
     title: 'Tree of Heaven, the Tree from Hell',
     subtitle: 'A primer on Tree of Heaven in Portland, Oregon and how to manage it.',
-    date: 'Mar 2026',
+    date: '03/01/2026',
     readTime: '6 min read',
     excerpt: 'It smells faintly of cat urine, it can crack through concrete, and it will outlast your patience. Here\'s what Tree of Heaven is, how it conquered Portland, and how to actually fight back.',
     tags: ['invasive species', 'portland', 'environment', 'gardening'],
@@ -45,7 +51,7 @@ export const posts = [
   {
     id: 'on-environmentalism',
     title: 'On Environmentalism',
-    date: 'Mar 2024',
+    date: '03/01/2024',
     readTime: '8 min read',
     excerpt: 'A guided reflection on the values that root us and why they depend on the environment.',
     image: '/misc/On_environmentalism.jpg',

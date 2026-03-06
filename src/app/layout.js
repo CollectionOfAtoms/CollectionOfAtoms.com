@@ -8,6 +8,11 @@ export const metadata = {
   icons: {
     icon: '/CollectionOfAtoms_logo/Heart_favicon_64.png',
   },
+  alternates: {
+    types: {
+      'application/rss+xml': '/feed.xml',
+    },
+  },
 };
 
 export default function RootLayout({ children }) {
