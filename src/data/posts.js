@@ -31,6 +31,18 @@ export const posts = [
     listed: true,
   },
   {
+    id: 'tree-of-heaven',
+    title: 'Tree of Heaven, the Tree from Hell',
+    subtitle: 'A primer on Tree of Heaven in Portland, Oregon and how to manage it.',
+    date: 'Mar 2026',
+    readTime: '6 min read',
+    excerpt: 'It smells faintly of cat urine, it can crack through concrete, and it will outlast your patience. Here\'s what Tree of Heaven is, how it conquered Portland, and how to actually fight back.',
+    tags: ['invasive species', 'portland', 'environment', 'gardening'],
+    status: 'Drafting',
+    file: '/content/posts/Tree%20of%20Heaven.md',
+    listed: false,
+  },
+  {
     id: 'on-environmentalism',
     title: 'On Environmentalism',
     date: 'Mar 2024',
